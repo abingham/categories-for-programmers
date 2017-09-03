@@ -11,6 +11,7 @@ Welcome to Categories for Programmers's documentation!
    :caption: Contents:
 
    01-category-the-essence-of-computation
+   02-types-and-functions
    30-lawvere-theories
 
 
