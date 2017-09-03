@@ -1,6 +1,4 @@
-==========================
-Categories for Programmers
-==========================
+# Categories for Programmers
 
 This is a [Sphinx build](http://www.sphinx-doc.org/) for Bartosz
 Milewski's
@@ -8,8 +6,7 @@ Milewski's
 My main goal is to create an EPUB version of the series that is easy to consume
 on e-readers.
 
-Building the EPUB
-=================
+## Building the EPUB
 
 The main tool you need for building the output
 is [Sphinx](http://www.sphinx-doc.org/). The Sphinx website does a fine just
@@ -27,8 +24,7 @@ This should work on OS X, linux, and windows.
 
 Once this is done, the output will be in `_build/epub`.
 
-Contributing
-============
+## Contributing
 
 I'd love any help people want to give! My basic approach is pretty simple. I run pandoc over a single chapter (blog post), converting it to reStructuredText. For example, to convert the first chapter I used this command:
 
@@ -44,8 +40,7 @@ The output goes into the `rst` directory. I do a few small edits to the file:
 
 And then I link the new file into `index.rst`.
 
-Images sources
---------------
+### Images sources
 
 I'm currently using the wordpress-hosted images of the original blog posts as
 the image sources. This works just fine, even though Sphinx warns about it. It
