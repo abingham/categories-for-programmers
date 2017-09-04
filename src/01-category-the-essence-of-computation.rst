@@ -1,5 +1,5 @@
 ================================================
-Chapter 1 - Category: The Essence of Composition
+Chapter 1 - Category: The Essence of Composition
 ================================================
 
 A category is an embarrassingly simple concept. A category consists of
@@ -12,25 +12,14 @@ is a category. Arrows compose, so if you have an arrow from object A to
 object B, and another arrow from object B to object C, then there must
 be an arrow — their composition — that goes from A to C.
 
-.. raw:: html
-
-   <div id="attachment_3483" class="wp-caption aligncenter"
-   data-shortcode="caption" style="width: 520px">
-
 |IMG_1330|
 In a category, if there is an arrow going from A to B and an arrow going
 from B to C then there must also be a direct arrow from A to C that is
 their composition. This diagram is not a full category because it’s
 missing identity morphisms (see later).
 
-.. raw:: html
-
-   </div>
-
- 
-
-.. rubric:: Arrows as Functions
-   :name: arrows-as-functions
+Arrows as Functions
+===================
 
 Is this already too much abstract nonsense? Do not despair. Let’s talk
 concretes. Think of arrows, which are also called *morphisms*, as

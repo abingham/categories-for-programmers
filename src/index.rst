@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Categories for Programmers's documentation!
-======================================================
+Categories for Programmers
+==========================
+
+:Author:
+    Bartosz Milewski
 
 .. toctree::
    :maxdepth: 2
