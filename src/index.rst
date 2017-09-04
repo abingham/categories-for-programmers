@@ -16,6 +16,7 @@ Categories for Programmers
    01-category-the-essence-of-computation
    02-types-and-functions
    03-categories-great-and-small
+   04-kleisli-categories
    30-lawvere-theories
 
 
