@@ -17,6 +17,7 @@ Categories for Programmers
    02-types-and-functions
    03-categories-great-and-small
    04-kleisli-categories
+   05-products-and-coproducts
    30-lawvere-theories
 
 
