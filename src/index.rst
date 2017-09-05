@@ -22,6 +22,7 @@ Categories for Programmers
    06-simple-algebraic-data-types
    07-functors
    08-functorality
+   09-function-types
    30-lawvere-theories
 
 
