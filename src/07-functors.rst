@@ -1,90 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-3889 post type-post status-publish format-standard hentry category-category-theory category-haskell">
-
-January 20, 2015
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Functors
-   :name: functors
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-`Haskell <https://bartoszmilewski.com/category/haskell/>`__
-`[26]
-Comments <https://bartoszmilewski.com/2015/01/20/functors/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_3889" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part of Categories for Programmers. Previously: `Simple
-    Algebraic Data
-    Types <https://bartoszmilewski.com/2015/01/13/simple-algebraic-data-types/>`__.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+====================
+Chapter 7 - Functors
+====================
 
 At the risk of sounding like a broken record, I will say this about
 functors: A functor is a very simple but powerful idea. Category theory
@@ -97,14 +13,14 @@ them. A functor also maps morphisms — it’s a function on morphisms. But
 it doesn’t map morphisms willy-nilly — it preserves connections. So if a
 morphism *f* in C connects object *a* to object *b*,
 
-::
+.. code-block:: haskell
 
     f :: a -> b
 
 the image of *f* in D, *F f*, will connect the image of *a* to the image
 of *b*:
 
-::
+.. code-block:: haskell
 
     F f :: F a -> F b
 
@@ -116,21 +32,21 @@ connected in the other category. But there’s something more to the
 structure of a category: there’s also the composition of morphisms. If
 *h* is a composition of *f* and *g*:
 
-::
+.. code-block:: haskell
 
     h = g . f
 
 we want its image under F to be a composition of the images of *f* and
 *g*:
 
-::
+.. code-block:: haskell
 
     F h = F g . F f
 
 |FunctorCompos| Finally, we want all identity morphisms in C to be
 mapped to identity morphisms in D:
 
-::
+.. code-block:: haskell
 
     F ida = idF a
 
@@ -159,8 +75,8 @@ category to the identity morphism *id\ :sub:`c`*. It acts like a black
 hole, compacting everything into one singularity. We’ll see more of this
 functor when we discuss limits and colimits.
 
-.. rubric:: Functors in Programming
-   :name: functors-in-programming
+Functors in Programming
+=======================
 
 Let’s get down to earth and talk about programming. We have our category
 of types and functions. We can talk about functors that map this
@@ -170,13 +86,13 @@ types. We’ve seen examples of such mappings, maybe without realizing
 that they were just that. I’m talking about definitions of types that
 were parameterized by other types. Let’s see a few examples.
 
-.. rubric:: The Maybe Functor
-   :name: the-maybe-functor
+The Maybe Functor
+=================
 
 The definition of ``Maybe`` is a mapping from type ``a`` to type
 ``Maybe a``:
 
-::
+.. code-block:: haskell
 
     data Maybe a = Nothing | Just a
 
@@ -189,7 +105,7 @@ programming, I will almost always mean endofunctors.) A functor is not
 only a mapping of objects (here, types) but also a mapping of morphisms
 (here, functions). For any function from ``a`` to ``b``:
 
-::
+.. code-block:: haskell
 
     f :: a -> b
 
@@ -200,7 +116,7 @@ we’ll just return ``Nothing`` back. And if the argument is ``Just``,
 we’ll apply the function ``f`` to its contents. So the image of ``f``
 under ``Maybe`` is the function:
 
-::
+.. code-block:: haskell
 
     f’ :: Maybe a -> Maybe b
     f’ Nothing = Nothing
@@ -211,7 +127,7 @@ which is very handy in cases like these.) In Haskell, we implement the
 morphism-mapping part of a functor as a higher order function called
 ``fmap``. In the case of ``Maybe``, it has the following signature:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> (Maybe a -> Maybe b)
 
@@ -222,14 +138,14 @@ signature may be interpreted in two ways: as a function of one argument
 ``(Maybe a -> Maybe b)``; or as a function of two arguments returning
 ``Maybe b``:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> Maybe a -> Maybe b
 
 Based on our previous discussion, this is how we implement ``fmap`` for
 ``Maybe``:
 
-::
+.. code-block:: haskell
 
     fmap _ Nothing = Nothing
     fmap f (Just x) = Just (f x)
@@ -239,8 +155,8 @@ To show that the type constructor ``Maybe`` together with the function
 identity and composition. These are called “the functor laws,” but they
 simply ensure the preservation of the structure of the category.
 
-.. rubric:: Equational Reasoning
-   :name: equational-reasoning
+Equational Reasoning
+====================
 
 To prove the functor laws, I will use *equational reasoning*, which is a
 common proof technique in Haskell. It takes advantage of the fact that
@@ -250,7 +166,7 @@ renaming variables to avoid name conflicts. Think of this as either
 inlining a function, or the other way around, refactoring an expression
 into a function. Let’s take the identity function as an example:
 
-::
+.. code-block:: haskell
 
     id x = x
 
@@ -265,7 +181,7 @@ can replace ``fmap f Nothing`` with ``Nothing``, or the other way
 around. Let’s see how this works in practice. Let’s start with the
 preservation of identity:
 
-::
+.. code-block:: haskell
 
     fmap id = id
 
@@ -273,11 +189,11 @@ There are two cases to consider: ``Nothing`` and ``Just``. Here’s the
 first case (I’m using Haskell pseudo-code to transform the left hand
 side to the right hand side):
 
-::
+.. code-block:: haskell
 
-      fmap id Nothing 
+      fmap id Nothing
     = { definition of fmap }
-      Nothing 
+      Nothing
     = { definition of id }
       id Nothing
 
@@ -287,11 +203,11 @@ you carry out such proofs by “burning the candle at both ends,” until
 you hit the same expression in the middle — here it was ``Nothing``. The
 second case is also easy:
 
-::
+.. code-block:: haskell
 
-      fmap id (Just x) 
+      fmap id (Just x)
     = { definition of fmap }
-      Just (id x) 
+      Just (id x)
     = { definition of id }
       Just x
     = { definition of id }
@@ -299,17 +215,17 @@ second case is also easy:
 
 Now, lets show that ``fmap`` preserves composition:
 
-::
+.. code-block:: haskell
 
     fmap (g . f) = fmap g . fmap f
 
 First the ``Nothing`` case:
 
-::
+.. code-block:: haskell
 
-      fmap (g . f) Nothing 
+      fmap (g . f) Nothing
     = { definition of fmap }
-      Nothing 
+      Nothing
     = { definition of fmap }
       fmap g Nothing
     = { definition of fmap }
@@ -317,7 +233,7 @@ First the ``Nothing`` case:
 
 And then the ``Just`` case:
 
-::
+.. code-block:: haskell
 
       fmap (g . f) (Just x)
     = { definition of fmap }
@@ -334,7 +250,7 @@ And then the ``Just`` case:
 It’s worth stressing that equational reasoning doesn’t work for C++
 style “functions” with side effects. Consider this code:
 
-::
+.. code-block:: c++
 
     int square(int x) {
         return x * x;
@@ -350,7 +266,7 @@ style “functions” with side effects. Consider this code:
 Using equational reasoning, you would be able to inline ``square`` to
 get:
 
-::
+.. code-block:: c++
 
     double y = counter() * counter();
 
@@ -359,8 +275,8 @@ the same result. Despite that, the C++ compiler will try to use
 equational reasoning if you implement ``square`` as a macro, with
 disastrous results.
 
-.. rubric:: Optional
-   :name: optional
+Optional
+========
 
 Functors are easily expressed in Haskell, but they can be defined in any
 language that supports generic programming and higher-order functions.
@@ -370,7 +286,7 @@ implementation is much more complex, dealing with various ways the
 argument may be passed, with copy semantics, and with the resource
 management issues characteristic of C++):
 
-::
+.. code-block:: c++
 
     template<class T>
     class optional {
@@ -387,11 +303,11 @@ This template provides one part of the definition of a functor: the
 mapping of types. It maps any type ``T`` to a new type ``optional<T>``.
 Let’s define its action on functions:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
-    std::function<optional<B>(optional<A>)> 
-    fmap(std::function<B(A)> f) 
+    std::function<optional<B>(optional<A>)>
+    fmap(std::function<B(A)> f)
     {
         return [f](optional<A> opt) {
             if (!opt.isValid())
@@ -404,7 +320,7 @@ Let’s define its action on functions:
 This is a higher order function, taking a function as an argument and
 returning a function. Here’s the uncurried version of it:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
     optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
@@ -424,22 +340,22 @@ specified explicitly? Consider a situation where the input function
 ``f`` takes an ``int`` to a ``bool``. How will the compiler figure out
 the type of ``g``:
 
-::
+.. code-block:: c++
 
     auto g = fmap(f);
 
 especially if, in the future, there are multiple functors overloading
 ``fmap``? (We’ll see more functors soon.)
 
-.. rubric:: Typeclasses
-   :name: typeclasses
+Typeclasses
+===========
 
 So how does Haskell deal with abstracting the functor? It uses the
 typeclass mechanism. A typeclass defines a family of types that support
 a common interface. For instance, the class of objects that support
 equality is defined as follows:
 
-::
+.. code-block:: haskell
 
     class Eq a where
         (==) :: a -> a -> Bool
@@ -451,13 +367,13 @@ type is ``Eq``, you have to declare it an *instance* of this class and
 provide the implementation of ``(==)``. For example, given the
 definition of a 2D ``Point`` (a product type of two ``Float``\ s):
 
-::
+.. code-block:: haskell
 
     data Point = Pt Float Float
 
 you can define the equality of points:
 
-::
+.. code-block:: haskell
 
     instance Eq Point where
         (Pt x y) == (Pt x' y') = x == x' && y == y'
@@ -477,7 +393,7 @@ the case with ``Eq``, but a family of type constructors. Fortunately a
 Haskell typeclass works with type constructors as well as with types. So
 here’s the definition of the ``Functor`` class:
 
-::
+.. code-block:: haskell
 
     class Functor f where
         fmap :: (a -> b) -> f a -> f b
@@ -491,7 +407,7 @@ than a type by looking at its usage: acting on other types, as in
 ``Functor``, you have to give it a type constructor, as is the case with
 ``Maybe``:
 
-::
+.. code-block:: haskell
 
     instance Functor Maybe where
         fmap _ Nothing = Nothing
@@ -501,15 +417,15 @@ By the way, the ``Functor`` class, as well as its instance definitions
 for a lot of simple data types, including ``Maybe``, are part of the
 standard Prelude library.
 
-.. rubric:: Functor in C++
-   :name: functor-in-c
+Functor in C++
+==============
 
 Can we try the same approach in C++? A type constructor corresponds to a
 template class, like ``optional``, so by analogy, we would parameterize
 ``fmap`` with a *template template parameter* ``F``. This is the syntax
 for it:
 
-::
+.. code-block:: c++
 
     template<template<class> F, class A, class B>
     F<B> fmap(std::function<B(A)>, F<A>);
@@ -518,7 +434,7 @@ We would like to be able to specialize this template for different
 functors. Unfortunately, there is a prohibition against partial
 specialization of template functions in C++. You can’t write:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
     optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
@@ -526,10 +442,10 @@ specialization of template functions in C++. You can’t write:
 Instead, we have to fall back on function overloading, which brings us
 back to the original definition of the uncurried ``fmap``:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
-    optional<B> fmap(std::function<B(A)> f, optional<A> opt) 
+    optional<B> fmap(std::function<B(A)> f, optional<A> opt)
     {
         if (!opt.isValid())
             return optional<B>{};
@@ -541,8 +457,8 @@ This definition works, but only because the second argument of ``fmap``
 selects the overload. It totally ignores the more generic definition of
 ``fmap``.
 
-.. rubric:: The List Functor
-   :name: the-list-functor
+The List Functor
+================
 
 To get some intuition as to the role of functors in programming, we need
 to look at more examples. Any type that is parameterized by another type
@@ -550,7 +466,7 @@ is a candidate for a functor. Generic containers are parameterized by
 the type of the elements they store, so let’s look at a very simple
 container, the list:
 
-::
+.. code-block:: haskell
 
     data List a = Nil | Cons a (List a)
 
@@ -559,7 +475,7 @@ We have the type constructor ``List``, which is a mapping from any type
 to define the lifting of functions: Given a function ``a->b`` define a
 function ``List a -> List b``:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> (List a -> List b)
 
@@ -576,7 +492,7 @@ tail? We apply ``f`` to the head and apply the lifted (``fmap``\ ped)
 ``f`` to the tail. This is a recursive definition, because we are
 defining lifted ``f`` in terms of lifted ``f``:
 
-::
+.. code-block:: haskell
 
     fmap f (Cons x t) = Cons (f x) (fmap f t)
 
@@ -590,7 +506,7 @@ head ``(f x)`` with the new tail ``(fmap f t)`` using the ``Cons``
 constructor. Putting it all together, here’s the instance declaration
 for the list functor:
 
-::
+.. code-block:: haskell
 
     instance Functor List where
         fmap _ Nil = Nil
@@ -601,7 +517,7 @@ If you are more comfortable with C++, consider the case of a
 container. The implementation of ``fmap`` for ``std::vector`` is just a
 thin encapsulation of ``std::transform``:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
     std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v)
@@ -617,7 +533,7 @@ thin encapsulation of ``std::transform``:
 We can use it, for instance, to square the elements of a sequence of
 numbers:
 
-::
+.. code-block:: c++
 
     std::vector<int> v{ 1, 2, 3, 4 };
     auto w = fmap([](int i) { return i*i; }, v);
@@ -633,8 +549,8 @@ implementation of ``fmap`` above). I’m happy to say that the new
 proposed C++ range library makes the functorial nature of ranges much
 more pronounced.
 
-.. rubric:: The Reader Functor
-   :name: the-reader-functor
+The Reader Functor
+==================
 
 Now that you might have developed some intuitions — for instance,
 functors being some kind of containers — let me show you an example
@@ -647,7 +563,7 @@ Haskell, a function type is constructed using the arrow type constructor
 You’ve already seen it in infix form, ``a->b``, but it can equally well
 be used in prefix form, when parenthesized:
 
-::
+.. code-block:: haskell
 
     (->) a b
 
@@ -655,7 +571,7 @@ Just like with regular functions, type functions of more than one
 argument can be partially applied. So when we provide just one type
 argument to the arrow, it still expects another one. That’s why:
 
-::
+.. code-block:: haskell
 
     (->) a
 
@@ -672,7 +588,7 @@ are the types that are formed using the type constructor ``(->) r``
 acting on, respectively, ``a`` and ``b``. Here’s the type signature of
 ``fmap`` applied to this case:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> (r -> a) -> (r -> b)
 
@@ -681,7 +597,7 @@ a function ``g::r->a``, create a function ``r->b``. There is only one
 way we can compose the two functions, and the result is exactly what we
 need. So here’s the implementation of our ``fmap``:
 
-::
+.. code-block:: haskell
 
     instance Functor ((->) r) where
         fmap f g = f . g
@@ -690,22 +606,22 @@ It just works! If you like terse notation, this definition can be
 reduced further by noticing that composition can be rewritten in prefix
 form:
 
-::
+.. code-block:: haskell
 
     fmap f g = (.) f g
 
 and the arguments can be omitted to yield a direct equality of two
 functions:
 
-::
+.. code-block:: haskell
 
     fmap = (.)
 
 This combination of the type constructor ``(->) r`` with the above
 implementation of ``fmap`` is called the reader functor.
 
-.. rubric:: Functors as Containers
-   :name: functors-as-containers
+Functors as Containers
+======================
 
 We’ve seen some examples of functors in programming languages that
 define general-purpose containers, or at least objects that contain some
@@ -717,7 +633,7 @@ Haskell’s laziness, a traditional container, like a list, may actually
 be implemented as a function. Consider, for instance, an infinite list
 of natural numbers, which can be compactly defined as:
 
-::
+.. code-block:: haskell
 
     nats :: [Integer]
     nats = [1..]
@@ -758,7 +674,7 @@ show you how much we don’t care about being able to access the values
 inside a functor object, here’s a type constructor that ignores
 completely its argument ``a``:
 
-::
+.. code-block:: haskell
 
     data Const c a = Const c
 
@@ -768,7 +684,7 @@ it to create a functor. The data constructor (also called ``Const``)
 takes just one value of type ``c``. It has no dependence on ``a``. The
 type of ``fmap`` for this type constructor is:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> Const c a -> Const c b
 
@@ -776,7 +692,7 @@ Because the functor ignores its type argument, the implementation of
 ``fmap`` is free to ignore its function argument — the function has
 nothing to act upon:
 
-::
+.. code-block:: haskell
 
     instance Functor (Const c) where
         fmap _ (Const v) = Const v
@@ -785,7 +701,7 @@ This might be a little clearer in C++ (I never thought I would utter
 those words!), where there is a stronger distinction between type
 arguments — which are compile-time — and values, which are run-time:
 
-::
+.. code-block:: c++
 
     template<class C, class A>
     struct Const {
@@ -797,7 +713,7 @@ The C++ implementation of ``fmap`` also ignores the function argument
 and essentially re-casts the ``Const`` argument without changing its
 value:
 
-::
+.. code-block:: c++
 
     template<class C, class A, class B>
     Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
@@ -809,8 +725,8 @@ many constructions. In category theory, it’s a special case of the
 Δ\ :sub:`c` functor I mentioned earlier — the endo-functor case of a
 black hole. We’ll be seeing more of it it in the future.
 
-.. rubric:: Functor Composition
-   :name: functor-composition
+Functor Composition
+===================
 
 It’s not hard to convince yourself that functors between categories
 compose, just like functions between sets compose. A composition of two
@@ -823,7 +739,7 @@ particular, it’s easy to compose endofunctors. Remember the function
 ``maybeTail``? I’ll rewrite it using the Haskell’s built in
 implementation of lists:
 
-::
+.. code-block:: haskell
 
     maybeTail :: [a] -> Maybe [a]
     maybeTail [] = Nothing
@@ -842,7 +758,7 @@ break through the outer ``Maybe``. But we can’t just send ``f`` inside
 ``(fmap f)`` to operate on the inner list. For instance, let’s see how
 we can square the elements of a ``Maybe`` list of integers:
 
-::
+.. code-block:: haskell
 
     square x = x * x
 
@@ -856,33 +772,33 @@ outer ``fmap``, it should use the implementation from the ``Maybe``
 instance, and for the inner one, the list functor implementation. It may
 not be immediately obvious that the above code may be rewritten as:
 
-::
+.. code-block:: haskell
 
     mis2 = (fmap . fmap) square mis
 
 But remember that ``fmap`` may be considered a function of just one
 argument:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> (f a -> f b)
 
 In our case, the second ``fmap`` in ``(fmap . fmap)`` takes as its
 argument:
 
-::
+.. code-block:: haskell
 
     square :: Int -> Int
 
 and returns a function of the type:
 
-::
+.. code-block:: haskell
 
     [Int] -> [Int]
 
 The first ``fmap`` then takes that function and returns a function:
 
-::
+.. code-block:: haskell
 
     Maybe [Int] -> Maybe [Int]
 
@@ -907,8 +823,8 @@ these things because I find it pretty amazing that we can recognize the
 same structures repeating themselves at many levels of abstraction.
 We’ll see later that functors form categories as well.
 
-.. rubric:: Challenges
-   :name: challenges
+Challenges
+==========
 
 #. Can we turn the ``Maybe`` type constructor into a functor by
    defining:
@@ -926,2016 +842,11 @@ We’ll see later that functors form categories as well.
    true for the tail part of the list you’re applying it to (in other
    words, use *induction*).
 
-.. rubric:: Acknowledgments
-   :name: acknowledgments
+Acknowledgments
+===============
 
 Gershom Bazerman is kind enough to keep reviewing these posts. I’m
 grateful for his patience and insight.
-
-*Next:
-`Functoriality <https://bartoszmilewski.com/2015/02/03/functoriality/>`__*
-
-`Follow @BartoszMilewski <https://twitter.com/BartoszMilewski>`__
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1260507762" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-2117006534" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2015/01/20/functors/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2015/01/20/functors/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2015/01/20/functors/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2015/01/20/functors/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2015/01/20/functors/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2015/01/20/functors/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2015/01/20/functors/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-3889-59ae3bc12bea1"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=3889&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-3889-59ae3bc12bea1"
-   data-name="like-post-frame-3549518-3889-59ae3bc12bea1">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 26 Responses to “Functors”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-39710">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-39710">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   `Непросмотренные ссылки – 11 \| Откомпилируй
-   Это <http://compileit.ru/?p=348>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 22, 2015 at 8:16
-   am <https://bartoszmilewski.com/2015/01/20/functors/#comment-39710>`__
-   […] Functors […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40035">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40035">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image4| Philip Craig Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 25, 2015 at 12:21
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40035>`__
-   Thanks so much for all these posts
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40425">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40425">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image5| Nikolay Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 30, 2015 at 6:33
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40425>`__
-   | How cool is it! I was a bit confused though in the beginning with
-     “Given two categories, C and D, a functor F maps objects … A
-     functor also maps morphisms — it’s a function on morphisms.”
-   | To me, what functor does sounds roughly like “it defines a category
-     on objects of D with morphisms from C”. Or, otherwise, D is assumed
-     to be isomorphic to C.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40428">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40428">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image6| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 30, 2015 at 7:05
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40428>`__
-   @Nikolai: An isomorphism is invertible, a general functor isn’t. It
-   can map multiple objects to one object and multiple morphisms to one
-   morphism. You can’t invert such a mapping. A collapsing or an
-   embedding mapping is not invertible.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40430">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40430">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image7| Nikolay Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 30, 2015 at 7:54
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40430>`__
-   Yes, you’re right of course. Isomorphism is a too strict statement
-   here. What I was trying to say is that not any two categories C and D
-   can be mapped with a functor, for example, F C can contain morphisms
-   that do not exist in D, right?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40434">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40434">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image8| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 30, 2015 at 9:12
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40434>`__
-   Actually, any two non-empty categories can be mapped using the
-   ``Const`` functor.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40627">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40627">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image9| Nikolay Says:
-
-   .. raw:: html
-
-      </div>
-
-   `February 1, 2015 at 7:59
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40627>`__
-   So in the sense that for any C, D there exists F such that F C is a
-   “subset” of D? I I understand that. I guess, I was missing a bit more
-   strictness in the beginning. I misinterpreted the mapping of
-   morphisms as a necessary condition of F being a functor: “for
-   categories C, D and function on objects F: ob(C) -> ob(D) => F is a
-   functor (=maps morphisms)”, whereas it’s a a part of functor
-   definition
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-40932">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-40932">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image10| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `February 2, 2015 at 10:29
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-40932>`__
-   I’m not sure what the distinction between “necessary condition” and
-   “part of definition.” A functor is a mapping of objects *and*
-   morphisms. Every object and every morphism from C must be mapped. But
-   it doesn’t matter whether all objects and morphism in D are covered
-   or not. It’s the same situation as with functions: they don’t have to
-   be “onto” (surjective) or injective (have a look at the last section
-   of Products and Coproducts).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-41175">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-41175">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image11| Nikolay Says:
-
-   .. raw:: html
-
-      </div>
-
-   `February 4, 2015 at 5:35
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-41175>`__
-   | After I’ve finished reading it’s pretty clear from the text what a
-     functor is, so it probably makes no sense to explain now what I was
-     confused with after the first paragraph.
-   | Maybe I can formulate it as “a more formal definition sometimes
-     would be nice to have, in my opinion”. It helps to get a feeling
-     what you’re talking about in what follows.
-   | Anyway, your posts are just enjoyable. Thanks for that.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-42056">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-42056">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image12| `Legogris (@Legogris) <http://twitter.com/Legogris>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `February 16, 2015 at 3:57
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-42056>`__
-   I am taking a course in category theory and if I have any regrets
-   right now it would be not finding your blog earlier. If I am able to
-   pass the final report it will be hugely thanks to these and your
-   older posts – the Haskell connection is making everything so much
-   easier to understand. Have you considered attaching a Bitcoin address
-   or something for people like me who want to donate as a thank you for
-   the work so far?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-43429">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-43429">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image13| Randall Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 18, 2015 at 10:41
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-43429>`__
-   On the remark that the C++ version of the Const functor is perhaps
-   simpler: would it maybe become more complicated if \_v was declared
-   const, and c was passed to fmap by const reference, rather than by
-   copy (and perhaps other stuff like that that one has to worry about
-   that starts to clutter declarations)?
-
-   I ended up with
-
-   ::
-
-       template<class C, class A>
-       struct Const {
-         Const(const C &v) : _v(v) {}
-         const C _v;
-       };
-
-       template<class A, class B, class C>
-       Const<C, B> fmap(const std::function<B(A)>&, const Const<C, A> &c) {
-         return Const<C, B>{c._v};
-       }
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-45602">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-45602">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image14| Robin Trew Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 2, 2015 at 5:46
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-45602>`__
-   Excellent work – thank you.
-
-   ( FWIW There seems to be a slight style bleed from the code style
-   into the discursive text (reducing the legibility) from “This is a
-   higher order function” onwards. )
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-45611">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-45611">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image15| Leno Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 3, 2015 at 12:59
-   am <https://bartoszmilewski.com/2015/01/20/functors/#comment-45611>`__
-   I’ve chuckled a bit on this one: “Let’s call the argument type r and
-   the result type a”. Wouldn’t it be cleared to the reader to name the
-   argument type “a”, and the result type “r”? You know, just use the
-   initial letter of each rather than using the initial letter of the
-   *other one* :).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50274">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50274">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image16| jjj Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 18, 2015 at 5:48
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-50274>`__
-   First, Bartosz, let me extend a great thanks for your truly excellent
-   tutorials. I have read a good number of articles and texts, but your
-   series draws connections between category theory and computer science
-   better than any other.
-
-   There is a proof above showing the preservation of identity.
-
-   ::
-
-       fmap id = id
-
-   The ``just x`` case seems to end prematurely. Forgive me if I am
-   picking a nit, but this is often where I get stuck. Specifically, on
-   what constitutes an adequate proof (honestly I often have difficulty
-   identifying what we are even trying to prove when it comes to
-   category theory).
-
-   ::
-
-       fmap id (Just x)
-       = { def fmap}
-       Just (id x)
-       = { def id }
-       Just x
-       = { def id } // I think this last step is needed
-       id (Just x)
-
-   I hate to think of the last step (the one I added) as ‘obvious’ since
-   many steps are seemingly obvious and it is the correct sequence of
-   seemingly obvious steps that makes it a proof. On the other hand, the
-   step I added may not be needed, but then I am confused about how the
-   result (without the extra step) actually proves that
-   ``fmap id = id``.
-
-   Thank you again for the excellent tutorials.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50276">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50276">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image17| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 18, 2015 at 7:03
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-50276>`__
-   @jjj: You’re right. Since I did this last step explicitly in the
-   ``Nothing`` case, there is no good justification to skip it in the
-   ``Just`` case. I fixed it. Thanks for paying attention.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-57374">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-57374">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   `Containers (not ioc) \| cannibal
-   coder <https://cannibalcoder.wordpress.com/2015/11/18/containers-not-ioc/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 18, 2015 at 1:23
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-57374>`__
-   […] object ( here a value wrapped in a function ) that can be mapped
-   to another object of the same type paraphrased from here.  it is
-   typically shown […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-60121">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-60121">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image18| `gregnwosu <http://gregnwosu.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 8, 2016 at 8:48
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-60121>`__
-   | not sure whether my inductive reasoning is correct , can you check?
-   | fmap (g.f) Nothing = Nothing
-   | (fmap g) . (fmap f) $ Nothing =Nothing
-
-   | fmap (g.f) (x:xs) = (g.f) x: fmap (g.f) xs
-   | (fmap g) . (fmap f) = fmap g (fmap f x:xs) = fmap g (f x: fmap xs)
-     = g ( f x) : (fmap g(fmap f xs)) = (g.f)x : tail which has been
-     proved by induction?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-60248">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-60248">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image19| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 10, 2016 at 3:37
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-60248>`__
-   The relevant observation is that, when you’re checking composition
-   for ``x:xs``, you can take as granted the inductive hypothesis for
-   the tail:
-
-   ::
-
-       fmap (g . f) xs = (fmap g . fmap f) xs
-
-   You also have to prove that composition works for an empty list.
-
-   It also makes sense to use the equational reasoning style, where each
-   step is explicitly justified by one of your assumptions.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-65949">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-65949">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image20| Alexey Birukov Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 7, 2016 at 12:42
-   am <https://bartoszmilewski.com/2015/01/20/functors/#comment-65949>`__
-   Have made russian translation to this part:
-   https://habrahabr.ru/post/305018/
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66984">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66984">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image21| `Kevin
-   Zeidler <https://www.facebook.com/app_scoped_user_id/10105738640530183/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `September 24, 2016 at 3:18
-   am <https://bartoszmilewski.com/2015/01/20/functors/#comment-66984>`__
-   Outstanding stuff, Bartosz. I was just talking with someone the other
-   day, opining about the lack of a truly accessible introduction to
-   category theory (a la Linear Algebra Done Right, or Spivak’s
-   Calculus). Yours is the best I’ve found so far. Thanks!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67548">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67548">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   `Improving Java Optional – Think green, think
-   functional <https://viniciusluisr.wordpress.com/2016/11/09/improving-java-optional/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 8, 2016 at 6:58
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-67548>`__
-   […] is the monadic context wrapped object type” that unfortunately
-   are terminal operations “functors can solve this problem, and I will
-   make a post about it […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67567">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67567">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image22| `octaviantuchila14 <http://octavianex.wordpress.com>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 12, 2016 at 5:13
-   am <https://bartoszmilewski.com/2015/01/20/functors/#comment-67567>`__
-   Hi!
-
-   | Great post!
-   | Are there any answers to the exercises posted somewhere?
-
-   It’s really difficult too see if my solutions are correct.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68169">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68169">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   `Purity in an impure language with the free monad in a CQRS
-   app <http://blog.leifbattermann.de/2016/12/25/purity-in-an-impure-language-free-monad-tic-tac-toe-cqrs-event-souring/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 25, 2016 at 2:05
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-68169>`__
-   […] Also each DSL has to have a definition of map. (It has to be a
-   Functor.) […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-70237">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-70237">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image23| `stabbles <http://stoppels.blog>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 25, 2017 at 2:28
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-70237>`__
-   Very nice!
-
-   Small remark on
-
-       Notice that, unlike in C++ or Java, you don’t have to specify the
-       Eq class (or interface) when defining Point — you can do it later
-       in client code
-
-   You *can* do this in C++ because operator== is a free function. Here
-   is an example:
-
-   ::
-
-       struct Point {
-           int const x;
-           int const y;
-       };
-
-       constexpr bool operator==(Point const &lhs, Point const &rhs)
-       {
-           return lhs.x == rhs.x && lhs.y == rhs.y;
-       }
-
-       int main()
-       {
-           static_assert(Point{1, 2} == Point{1,2}, "Should be equal");
-       }
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-73636">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-73636">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image24| `HenryChern <http://henrychern.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `August 12, 2017 at 11:55
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-73636>`__
-   “type functions” are “function types” (under “The Reader Functor”).
-   Is that so?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-73693">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-73693">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image25| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `August 14, 2017 at 3:55
-   pm <https://bartoszmilewski.com/2015/01/20/functors/#comment-73693>`__
-   (->) is a type function: a function that acts on types and produces a
-   type. When you apply it to two types, a and b, you get a function
-   type, a->b. In other words, you produce the type of a function that
-   takes a value of type a as an argument and returns a value of type b.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2015/01/20/functors/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  January 20, 2015 at 5:44 pm
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-   `Haskell <https://bartoszmilewski.com/category/haskell/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2015/01/20/functors/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Blog at WordPress.com. <https://wordpress.com/?ref=footer_blog>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-65f16e220ad21f38035c67ba6ae67047">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ee9ee7d0fc302fcfc3678e0c67442fd5">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ad6350f5199dc0b7baac49841da261f2">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-fad78be0d39573f5b05e459624ac10bf">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-463a92005cd9f50479a691903e883ae4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-5fd83faa8136695f7d6d1f3fe7bfe919">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-a0430fb2f4acd7237ad585d734c4269e">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-1eb733404e284f54709375bea86226a4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-d2bec3faf8ad66ce11c4592d9e7e7612">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-01aedf82ca3035479d03695235607dcd">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-7c26dc91767d4916e6b4efbaccc4d75b">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-62288ac65c238d13d7273143d4442fcd">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-d42dd46c69476ea0478111fa098ef4a4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image32|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 .. |Functor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg?w=300&h=263
    :class: aligncenter wp-image-3944 size-medium
    :width: 300px
@@ -2960,109 +871,3 @@ Sorry, your blog cannot share posts by email.
    :class: avatar avatar-48
    :width: 48px
    :height: 48px
-.. |image5| image:: https://2.gravatar.com/avatar/ee9ee7d0fc302fcfc3678e0c67442fd5?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image6| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image7| image:: https://2.gravatar.com/avatar/ee9ee7d0fc302fcfc3678e0c67442fd5?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image8| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image9| image:: https://2.gravatar.com/avatar/ee9ee7d0fc302fcfc3678e0c67442fd5?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image10| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image11| image:: https://2.gravatar.com/avatar/ee9ee7d0fc302fcfc3678e0c67442fd5?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image12| image:: https://i1.wp.com/pbs.twimg.com/profile_images/92686163/Untitled_normal.png?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image13| image:: https://0.gravatar.com/avatar/fad78be0d39573f5b05e459624ac10bf?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image14| image:: https://1.gravatar.com/avatar/463a92005cd9f50479a691903e883ae4?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image15| image:: https://2.gravatar.com/avatar/5fd83faa8136695f7d6d1f3fe7bfe919?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image16| image:: https://1.gravatar.com/avatar/a0430fb2f4acd7237ad585d734c4269e?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image17| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image18| image:: https://1.gravatar.com/avatar/1eb733404e284f54709375bea86226a4?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image19| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image20| image:: https://1.gravatar.com/avatar/d2bec3faf8ad66ce11c4592d9e7e7612?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image21| image:: https://i0.wp.com/graph.facebook.com/v2.2/10105738640530183/picture?q=type%3Dlarge%26_md5%3D09b4560f1d56adfd0aa9dde5a15cf26d&resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image22| image:: https://1.gravatar.com/avatar/7c26dc91767d4916e6b4efbaccc4d75b?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image23| image:: https://0.gravatar.com/avatar/62288ac65c238d13d7273143d4442fcd?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image24| image:: https://1.gravatar.com/avatar/d42dd46c69476ea0478111fa098ef4a4?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image25| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image32| image:: https://pixel.wp.com/b.gif?v=noscript
-

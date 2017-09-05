@@ -20,6 +20,7 @@ Categories for Programmers
    04-kleisli-categories
    05-products-and-coproducts
    06-simple-algebraic-data-types
+   07-functors
    30-lawvere-theories
 
 
