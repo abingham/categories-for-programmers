@@ -45,19 +45,19 @@ Let’s make this even more explicit by writing some C code. We have one
 function ``f`` that takes an argument of type ``A`` and returns a value
 of type ``B``:
 
-::
+.. code-block:: c
 
     B f(A a);
 
 and another:
 
-::
+.. code-block:: c
 
     C g(B b);
 
 Their composition is:
 
-::
+.. code-block:: c
 
     C g_after_f(A a)
     {
@@ -72,19 +72,19 @@ Library that takes two functions and returns their composition, but
 there isn’t one. So let’s try some Haskell for a change. Here’s the
 declaration of a function from A to B:
 
-::
+.. code-block:: haskell
 
     f :: A -> B
 
 Similarly:
 
-::
+.. code-block:: haskell
 
     g :: B -> C
 
 Their composition is:
 
-::
+.. code-block:: haskell
 
     g . f
 
@@ -93,13 +93,13 @@ straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
 
-::
+.. code-block:: haskell
 
     g ∘ f
 
 You can even use Unicode double colons and arrows:
 
-::
+.. code-block:: haskell
 
     f ∷ A → B
 
@@ -114,18 +114,20 @@ Properties of Composition
 There are two extremely important properties that the composition in any
 category must satisfy.
 
-1. Composition is associative. If you have three morphisms, f, g, and h,
-that can be composed (that is, their objects match end-to-end), you
-don’t need parentheses to compose them. In math notation this is
-expressed as:
+Property 1: Composition is associative
+--------------------------------------
 
-::
+If you have three morphisms, f, g, and h, that can be composed (that is, their
+objects match end-to-end), you don’t need parentheses to compose them. In math
+notation this is expressed as:
+
+.. code-block:: haskell
 
     h∘(g∘f) = (h∘g)∘f = h∘g∘f
 
 In (pseudo) Haskell:
 
-::
+.. code-block:: haskell
 
     f :: A -> B
     g :: B -> C
@@ -137,20 +139,22 @@ In (pseudo) Haskell:
 Associativity is pretty obvious when dealing with functions, but it may
 be not as obvious in other categories.
 
-2. For every object A there is an arrow which is a unit of composition.
+Property 2: For every object A there is an arrow which is a unit of composition
+-------------------------------------------------------------------------------
+
 This arrow loops from the object to itself. Being a unit of composition
 means that, when composed with any arrow that either starts at A or ends
 at A, respectively, it gives back the same arrow. The unit arrow for
 object A is called id\ :sub:`A` (identity on A). In math notation, if f
 goes from A to B then
 
-::
+.. code-block:: haskell
 
     f∘idA = f
 
 and
 
-::
+.. code-block:: haskell
 
     idB∘f = f
 
@@ -159,18 +163,18 @@ identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-::
+.. highlight:: c++
 
     template<class T> T id(T x) { return x; }
 
 Of course, in C++ nothing is that simple, because you have to take into
 account not only what you’re passing but also how (that is, by value, by
-reference, by const reference, by move, and so on).
+reference, by const reference, by move, and so on). c++
 
 In Haskell, the identity function is part of the standard library
 (called Prelude). Here’s its declaration and definition:
 
-::
+.. code-block:: haskell
 
     id :: a -> a
     id x = x
@@ -199,7 +203,7 @@ This concludes our second Haskell lesson.
 
 The identity conditions can be written (again, in pseudo-Haskell) as:
 
-::
+.. code-block:: haskell
 
     f . id == f
     id . f == f
