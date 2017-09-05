@@ -13,6 +13,7 @@ Categories for Programmers
    :maxdepth: 2
    :caption: Contents:
 
+   preface
    01-category-the-essence-of-computation
    02-types-and-functions
    03-categories-great-and-small
