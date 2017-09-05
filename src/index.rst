@@ -11,10 +11,14 @@ Categories for Programmers
 
 .. toctree::
    :maxdepth: 1
-   :caption: Part I
 
    preface
-   01-category-the-essence-of-computation
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Part I
+
+   part1-category-the-essence-of-computing
    02-types-and-functions
    03-categories-great-and-small
    04-kleisli-categories

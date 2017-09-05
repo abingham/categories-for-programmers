@@ -1,6 +1,6 @@
-================================================
-Chapter 1 - Category: The Essence of Composition
-================================================
+======================================
+ Category: The Essence of Composition
+======================================
 
 A category is an embarrassingly simple concept. A category consists of
 objects and arrows that go between them. That’s why categories are so
@@ -163,7 +163,7 @@ identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-.. highlight:: c++
+.. code-block:: c++
 
     template<class T> T id(T x) { return x; }
 
