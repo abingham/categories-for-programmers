@@ -2,35 +2,32 @@
 Preface
 =======
 
-:
-    For some time now I’ve been floating the idea of writing a book
-    about category theory that would be targeted at programmers. Mind
-    you, not computer scientists but programmers — engineers rather than
-    scientists. I know this sounds crazy and I am properly scared. I
-    can’t deny that there is a huge gap between science and engineering
-    because I have worked on both sides of the divide. But I’ve always
-    felt a very strong compulsion to explain things. I have tremendous
-    admiration for Richard Feynman who was the master of simple
-    explanations. I know I’m no Feynman, but I will try my best. I’m
-    starting by publishing this preface — which is supposed to motivate
-    the reader to learn category theory — in hopes of starting a
-    discussion and soliciting feedback.
+For some time now I’ve been floating the idea of writing a book about category
+theory that would be targeted at programmers. Mind you, not computer scientists
+but programmers — engineers rather than scientists. I know this sounds crazy and
+I am properly scared. I can’t deny that there is a huge gap between science and
+engineering because I have worked on both sides of the divide. But I’ve always
+felt a very strong compulsion to explain things. I have tremendous admiration
+for Richard Feynman who was the master of simple explanations. I know I’m no
+Feynman, but I will try my best. I’m starting by publishing this preface — which
+is supposed to motivate the reader to learn category theory — in hopes of
+starting a discussion and soliciting feedback.
 
 I will attempt, in the space of a few paragraphs, to convince you that
 this book is written for you, and whatever objections you might have to
 learning one of the most abstract branches of mathematics in your
-“copious spare time” are totally unfounded.
+“copious spare time” are totally unfounded.
 
 My optimism is based on several observations. First, category theory is
-a treasure trove of extremely useful programming ideas. Haskell
-programmers have been tapping this resource for a long time, and the
+a treasure trove of extremely useful programming ideas. Haskell
+programmers have been tapping this resource for a long time, and the
 ideas are slowly percolating into other languages, but this process is
 too slow. We need to speed it up.
 
 Second, there are many different kinds of math, and they appeal to
 different audiences. You might be allergic to calculus or algebra, but
 it doesn’t mean you won’t enjoy category theory. I would go as far as
-to argue that category theory is the kind of math that is particularly
+to argue that category theory is the kind of math that is particularly
 well suited for the minds of programmers. That’s because category theory
 — rather than dealing with particulars — deals with structure. It deals
 with the kind of structure that makes programs composable.
@@ -40,7 +37,7 @@ definition of the category itself. And I will argue strongly that
 composition is the essence of programming. We’ve been composing things
 forever, long before some great engineer came up with the idea of a
 subroutine. Some time ago the principles of structural programming
-revolutionized programming because they made blocks of code composable.
+revolutionized programming because they made blocks of code composable.
 Then came object oriented programming, which is all about composing
 objects. Functional programming is not only about composing functions
 and algebraic data structures — it makes concurrency composable —
