@@ -1,89 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-4445 post type-post status-publish format-standard hentry category-category-theory">
-
-April 15, 2015
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Limits and Colimits
-   :name: limits-and-colimits
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__
-`[29]
-Comments <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_4445" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 12 of Categories for Programmers. Previously:
-    `Declarative
-    Programming <https://bartoszmilewski.com/2015/04/15/category-theory-and-declarative-programming/>`__.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+================================
+Chapter 12 - Limits and Colimits
+================================
 
 It seems like in category theory everything is related to everything and
 everything can be viewed from many angles. Take for instance the
@@ -181,7 +98,7 @@ just like we picked a universal object for our definition of a product.
 
 There are many ways to go about it. For instance, we may define a
 *category of cones* based on a given functor D. Objects in that category
-are cones. Not every object ``c`` in *C* can be an apex of a cone,
+are cones. Not every object ``c`` in *C* can be an apex of a cone,
 though, because there may be no natural transformation between
 Δ\ :sub:`c` and D.
 
@@ -192,7 +109,7 @@ product, we imposed the condition that the morphisms between candidate
 objects (the apexes) must be common factors for the projections. For
 instance:
 
-::
+.. code-block:: haskell
 
     p' = p . m
     q' = q . m
@@ -209,7 +126,7 @@ the triangles whose one side is the factorizing morphism all commute.
 
 |Cone Commutativity|
 The commuting triangle connecting two cones, with the factorizing
-morphism ``h``  (here, the lower cone is the universal one, with
+morphism ``h``  (here, the lower cone is the universal one, with
 ``Lim D`` as its apex).
 
 .. raw:: html
@@ -237,8 +154,8 @@ diagram is the product of two objects. The product (together with the
 two projections) contains the information about both objects. And being
 universal means that it has no extraneous junk.
 
-.. rubric:: Limit as a Natural Isomorphism
-   :name: limit-as-a-natural-isomorphism
+Limit as a Natural Isomorphism
+==============================
 
 There is still something unsatisfying about this definition of a limit.
 I mean, it’s workable, but we still have this commutativity condition
@@ -273,7 +190,7 @@ functor from *C* to **Set** — it maps objects to sets. In fact it’s a
 contravariant functor. Here’s how we define its action on morphisms:
 Let’s take a morphism ``f`` from ``c'`` to ``c``:
 
-::
+.. code-block:: haskell
 
     f :: c' -> c
 
@@ -284,20 +201,20 @@ to define the corresponding mapping between ``C(c, Lim D)`` and
 see if we can map it to some element of ``C(c', Lim D)``. An element of
 a hom-set is a morphism, so we have:
 
-::
+.. code-block:: haskell
 
     u :: c -> Lim D
 
 We can precompose ``u`` with ``f`` to get:
 
-::
+.. code-block:: haskell
 
     u . f :: c' -> Lim D
 
 And that’s an element of ``C(c', Lim D)``— so indeed, we have found a
 mapping of morphisms:
 
-::
+.. code-block:: haskell
 
     contramap :: (c' -> c) -> (c -> Lim D) -> (c' -> Lim D)
     contramap f u = u . f
@@ -315,14 +232,14 @@ this particular set of natural transformations is a (contravariant)
 functor. How can we show that? Again, let’s define its action on a
 morphism:
 
-::
+.. code-block:: haskell
 
     f :: c' -> c
 
 The lifting of ``f`` should be a mapping of natural transformations
 between two functors that go from *I* to *C*:
 
-::
+.. code-block:: haskell
 
     Nat(Δc, D) -> Nat(Δc', D)
 
@@ -331,27 +248,27 @@ selection of morphisms — its components — one morphism per element of
 *I*. A component of some α (a member of ``Nat(Δc, D)``) at ``a`` (an
 object in *I*) is a morphism:
 
-::
+.. code-block:: haskell
 
     αa :: Δca -> D a
 
 or, using the definition of the constant functor Δ,
 
-::
+.. code-block:: haskell
 
     αa :: c -> D a
 
 Given ``f`` and α, we have to construct a β, a member of
 ``Nat(Δc', D)``. Its component at ``a`` should be a morphism:
 
-::
+.. code-block:: haskell
 
     βa :: c' -> D a
 
 We can easily get the latter from the former by precomposing it with
 ``f``:
 
-::
+.. code-block:: haskell
 
     βa = αa . f
 
@@ -363,7 +280,7 @@ Given our morphism ``f``, we have thus built a mapping between two
 natural transformations, component-wise. This mapping defines
 ``contramap`` for the functor:
 
-::
+.. code-block:: haskell
 
     c -> Nat(Δc, D)
 
@@ -382,7 +299,7 @@ between them. So without further ado, here’s the conclusion: A functor
 ``D`` from *I* to *C* has a limit ``Lim D`` if and only if there is a
 natural isomorphism between the two functors I have just defined:
 
-::
+.. code-block:: haskell
 
     C(c, Lim D) ≃ Nat(Δc, D)
 
@@ -413,8 +330,8 @@ As a preview of coming attractions, let me mention that the set
 so our natural isomorphism relates two hom-sets, which points at an even
 more general relationship called an adjunction.
 
-.. rubric:: Examples of Limits
-   :name: examples-of-limits
+Examples of Limits
+==================
 
 We’ve seen that the categorical product is a limit of a diagram
 generated by a simple category we called **2**.
@@ -434,7 +351,7 @@ between them (and, as always, the identity morphisms). This category
 selects a diagram in *C* consisting of two objects, ``a`` and ``b``, and
 two morphisms:
 
-::
+.. code-block:: haskell
 
     f :: a -> b
     g :: a -> b
@@ -442,7 +359,7 @@ two morphisms:
 To build a cone over this diagram, we have to add the apex, ``c`` and
 two projections:
 
-::
+.. code-block:: haskell
 
     p :: c -> a
     q :: c -> b
@@ -451,7 +368,7 @@ two projections:
 
 We have two triangles that must commute:
 
-::
+.. code-block:: haskell
 
     q = f . p
     q = g . p
@@ -460,7 +377,7 @@ This tells us that ``q`` is uniquely determined by one of these
 equations, say, ``q = f . p``, and we can omit it from the picture. So
 we are left with just one condition:
 
-::
+.. code-block:: haskell
 
     f . p = g . p
 
@@ -472,7 +389,7 @@ For instance, take ``a`` to be the two-dimensional plane parameterized
 by coordinates ``x`` and ``y``. Take ``b`` to be the real line, and
 take:
 
-::
+.. code-block:: haskell
 
     f (x, y) = 2 * y + x
     g (x, y) = y - x
@@ -480,7 +397,7 @@ take:
 The equalizer for these two functions is the set of real numbers (the
 apex, ``c``) and the function:
 
-::
+.. code-block:: haskell
 
     p t = (t, (-2) * t)
 
@@ -490,27 +407,27 @@ plane. Along this line, the two functions are equal.
 Of course, there are other sets ``c'`` and functions ``p'`` that may
 lead to the equality:
 
-::
+.. code-block:: haskell
 
     f . p' = g . p'
 
 but they all uniquely factor out through ``p``. For instance, we can
 take the singleton set ``()`` as ``c'`` and the function:
 
-::
+.. code-block:: haskell
 
     p'() = (0, 0)
 
 It’s a good cone, because ``f (0, 0) = g (0, 0)``. But it’s not
 universal, because of the unique factorization through ``h``:
 
-::
+.. code-block:: haskell
 
     p' = p . h
 
 with
 
-::
+.. code-block:: haskell
 
     h () = 0
 
@@ -526,7 +443,7 @@ three-object category of the shape: ``1->2<-3``. The diagram
 corresponding to this category consists of three objects, ``a``, ``b``,
 and ``c``, and two morphisms:
 
-::
+.. code-block:: haskell
 
     f :: a -> b
     g :: c -> b
@@ -536,7 +453,7 @@ This diagram is often called a *cospan*.
 A cone built on top of this diagram consists of the apex, ``d``, and
 three morphisms:
 
-::
+.. code-block:: haskell
 
     p :: d -> a
     q :: d -> c
@@ -548,7 +465,7 @@ Commutativity conditions tell us that ``r`` is completely determined by
 the other morphisms, and can be omitted from the picture. So we are only
 left with the following condition:
 
-::
+.. code-block:: haskell
 
     g . q = f . p
 
@@ -564,7 +481,7 @@ case in which ``g`` is a constant function, say ``g _ = 1.23`` (assuming
 that ``b`` is a set of real numbers). Then you are really solving the
 equation:
 
-::
+.. code-block:: haskell
 
     f x = 1.23
 
@@ -607,14 +524,14 @@ There’s also a more advanced use of a pullback in type inference. There
 is often a need to *unify* types of two expressions. For instance,
 suppose that the compiler wants to infer the type of a function:
 
-::
+.. code-block:: haskell
 
     twice f x = f (f x)
 
 It will assign preliminary types to all variables and sub-expressions.
 In particular, it will assign:
 
-::
+.. code-block:: haskell
 
     f       :: t0
     x       :: t1
@@ -623,14 +540,14 @@ In particular, it will assign:
 
 from which it will deduce that:
 
-::
+.. code-block:: haskell
 
     twice :: t0 -> t1 -> t3
 
 It will also come up with a set of constraints resulting from the rules
 of function application:
 
-::
+.. code-block:: haskell
 
     t0 = t1 -> t2 -- because f is applied to x
     t0 = t2 -> t3 -- because f is applied to (f x)
@@ -639,7 +556,7 @@ These constraints have to be unified by finding a set of types (or type
 variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
-::
+.. code-block:: haskell
 
     t1 = t2 = t3 = Int
     twice :: (Int -> Int) -> Int -> Int
@@ -649,14 +566,14 @@ substitution is obtained using a pullback. I won’t go into the details,
 because they are beyond the scope of this book, but you can convince
 yourself that the result should be:
 
-::
+.. code-block:: haskell
 
     twice :: (t -> t) -> t -> t
 
 with ``t`` a free type variable.
 
-.. rubric:: Colimits
-   :name: colimits
+Colimits
+========
 
 Just like all constructions in category theory, limits have their dual
 image in opposite categories. When you invert the direction of all
@@ -692,8 +609,8 @@ colimit corresponding to the diagram based on an empty category.
 The dual of the pullback is called the *pushout*. It’s based on a
 diagram called a span, generated by the category ``1<-2->3``.
 
-.. rubric:: Continuity
-   :name: continuity
+Continuity
+==========
 
 I said previously that functors come close to the idea of continuous
 mappings of categories, in the sense that they never break existing
@@ -721,7 +638,7 @@ A hom-functor is an example of a continuous functor. Recall that the
 hom-functor, ``C(a, b)``, is contravariant in the first variable and
 covariant in the second. In other words, it’s a functor:
 
-::
+.. code-block:: haskell
 
     Cop × C -> Set
 
@@ -733,7 +650,7 @@ In Haskell, a hom-functor is the mapping of any two types to a function
 type, so it’s just a parameterized function type. When we fix the second
 parameter, let’s say to ``String``, we get the contravariant functor:
 
-::
+.. code-block:: haskell
 
     newtype ToString a = ToString (a -> String)
     instance Contravariant ToString where
@@ -743,7 +660,7 @@ Continuity means that when ``ToString`` is applied to a colimit, for
 instance a coproduct ``Either b c``, it will produce a limit; in this
 case a product of two function types:
 
-::
+.. code-block:: haskell
 
     ToString (Either b c) ~ (b -> String, c -> String)
 
@@ -755,7 +672,7 @@ familiar reader functor. Its continuity means that, for instance, any
 function returning a product is equivalent to a product of functions; in
 particular:
 
-::
+.. code-block:: haskell
 
     r -> (a, b) ~ (r -> a, r -> b)
 
@@ -771,8 +688,8 @@ calculus limits and continuity are defined in terms of open
 neighborhoods. Open sets, which define topology, form a category (a
 poset).
 
-.. rubric:: Challenges
-   :name: challenges
+Challenges
+==========
 
 #. How would you describe a pushout in the category of C++ classes?
 #. Show that the limit of the identity functor ``Id :: C -> C`` is the
@@ -791,2125 +708,11 @@ poset).
 Next: `Free
 Monoids <https://bartoszmilewski.com/2015/07/21/free-monoids/>`__.
 
-.. rubric:: Acknowledgments
-   :name: acknowledgments
-
-| I’d like to thank Gershom Bazerman for checking my math and logic, and
-  André van Meulebrouck, who has been volunteering his editing help.
-| `Follow @BartoszMilewski <https://twitter.com/BartoszMilewski>`__
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-467066400" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-616227263" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-4445-59ae3c2ed831c"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=4445&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-4445-59ae3c2ed831c"
-   data-name="like-post-frame-3549518-4445-59ae3c2ed831c">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 29 Responses to “Limits and Colimits”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-45704">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-45704">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image18| `Rasmus Svensson <http://gravatar.com/raekmannen>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 5, 2015 at 9:14
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-45704>`__
-   Shouldn’t the double-colon be an equals sign here?
-
-   ::
-
-       t0 :: t1 -> t2
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-45705">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-45705">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image19| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 5, 2015 at 9:51
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-45705>`__
-   Oops! Fixed, thanks.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-45822">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-45822">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image20| `kimolas <http://kimolas.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 8, 2015 at 6:42
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-45822>`__
-   “A generalization of this construction to categories other tha[n] 2”
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-46286">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-46286">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image21| `bhall <http://bhall.wordpress.com/>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 18, 2015 at 5:23
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-46286>`__
-   Do limits have to be unique? I’m guessing the answer is “no” since
-   products only have to be “unique up to isomorphism”. Or is there some
-   way the limit gets around this?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-46296">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-46296">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image22| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 18, 2015 at 10:42
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-46296>`__
-   As with all universal constructions, they are unique up to a unique
-   isomorphism.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50737">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50737">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image23| ahala Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 27, 2015 at 3:32
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-50737>`__
-   Do these words “limits”, “Continuity” come from analysis? How do they
-   coincide when taking analysis from the the point of view of Category?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50763">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50763">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image24| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 27, 2015 at 12:37
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-50763>`__
-   @ahala: Yes, indeed. More specifically from topology. Open subsets
-   form a category in a topological space, with inclusions playing the
-   role of morphisms. **Top** is a category of topological spaces with
-   continuous functions as morphisms.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-54806">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-54806">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image25| weekendwarrior Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 2, 2015 at 6:15
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-54806>`__
-   Let G be the functor from C to Set that maps every c in C to the set
-   of cones (for functor D) with apex c. IOW, ``G(c) = Nat(Δc, D)``.
-   Next, for *any* X in C, let ``FX`` be the functor from C to Set that
-   maps every c in C to the set C(c, X). Also, for any X in C, let
-   ``PX`` stand for the assertion “there exists a natural isomorphism
-   between the functors ``FX`` and G.” Finally, let T denote the theorem
-   stated in the “Limit as natural isomorphism” section (right after “So
-   without further ado, here’s the conclusion:…”. I can paraphrase T (or
-   rather, my understanding of it) in two not-obviously-equivalent ways.
-   Here’s the first one: “The functor D has a limit with apex X if and
-   only if ``PX``.” And the second one: “\ *Any* cone with apex X is a
-   limit of D if and only if ``PX``.” Maybe these two formulations can
-   be made to coincide with a suitable insertion of “up to [unique]
-   isomorphism” somewhere, but the question still remains: is either of
-   them indeed equivalent to T?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-54861">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-54861">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image26| weekendwarrior Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 3, 2015 at 5:48
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-54861>`__
-   In the example on pullbacks (the one where one of the morphisms is a
-   function with image {42}), it’s not clear to me what the pullback d
-   is in the end. AFAICT, it is the product e \\times c, where e is the
-   set {t \| t \\in a and f t = 42}. Is this correct? Either way, I
-   think the example would be more useful to your readers if the
-   pullback was fully spelled out. (BTW, sorry for the inept notation; I
-   have not figured out how to render math in these comments.)
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-54887">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-54887">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image27| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 4, 2015 at 2:31
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-54887>`__
-   @weekendwarrior: Your first question boils down to: Is the limiting
-   cone unique? The answer is: Like every universal construction, it’s
-   unique up to unique isomorphism.
-
-   As for your second question, I added a parenthetical remark that
-   should clear the confusion (the image of g is not a set — it’s a
-   number — an element of the set of numbers).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-54893">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-54893">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image28| weekendwarrior Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 4, 2015 at 3:58
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-54893>`__
-   We must be using different definitions. I’ve always seen the “image
-   of a function” g defined as the *subset* of the function’s codomain
-   consisting of the elements g(x), as x ranges over the function’s
-   domain. In the example it so happens that the set corrsponding to
-   this description is a singleton, but it is still a set. But maybe
-   we’re talking past each other. I think your point is that in the
-   example, the category C where the pullback lives is not the category
-   Set, but rather something else. Haskell types? If so, I’m even more
-   curious now to know what exactly is the pullback (i.e. the object d
-   and morphisms p and q) in that example.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-54941">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-54941">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image29| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 4, 2015 at 8:51
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-54941>`__
-   You’re right about the image. Thank you for keeping me on my toes.
-
-   I rewrote the example so it’s more explicit. I hope it helps.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-55000">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-55000">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image30| weekendwarrior Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 6, 2015 at 12:44
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-55000>`__
-   Yes, the new version is very clear. Thanks!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66057">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66057">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image31| `Juan Manuel (@babui\_) <http://twitter.com/babui_>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 13, 2016 at 2:26
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-66057>`__
-   When you say that the terminal object is the limit making I the empty
-   category, how does delta\_c picks the apex of the cone? If I is the
-   empty category no object of I can be used to get to c using delta\_c.
-   What am I missing?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66061">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66061">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image32| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 13, 2016 at 9:52
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-66061>`__
-   @Juan: Good point! This is one of these tricky limiting cases, like
-   dividing zero by zero. On the one hand, you can’t get to ``c``
-   because the source category is empty. On the other hand, the constant
-   functor ignores its argument, so it shouldn’t matter.
-
-   The best explanation is that the const functor trick is more of a
-   motivation for the rigorous definition of a limit as a natural
-   isomorphism:
-
-   ::
-
-       C(c, Lim D) ≃ Nat(Δc, D)
-
-   Let’s analyze the right hand side. There is only one functor from the
-   empty category to *C* — the empty functor. So both ``Δc`` and ``D``
-   are empty functors. There is only one natural transformation between
-   empty functors — the identity natural transformation. The right hand
-   side is therefore a singleton set, for any choice of ``c``. Which
-   means that all the hom-sets ``C(c, Lim D)`` must be singletons. That
-   makes ``Lim D`` the terminal object.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66075">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66075">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image33| `Juan Manuel (@babui\_) <http://twitter.com/babui_>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 14, 2016 at 12:02
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-66075>`__
-   Thanks for your explanation. I can’t say I fully understand it but at
-   least makes perfect sense.
-
-   Somehow this reminds me of an scene of the film Matrix when a child
-   says: “there is no spoon”. But here we have an identity natural
-   transformation between two no-spoons (empty functors).
-
-   Mindboggling.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66783">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66783">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image34| Shimin Guo Says:
-
-   .. raw:: html
-
-      </div>
-
-   `September 7, 2016 at 2:27
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-66783>`__
-   How is it that a cone is entirely determined by its apex when D is
-   fixed? Couldn’t there be multiple natural transformations from Δc to
-   D, which means multiple cones corresponding to the same c?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-66785">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-66785">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image35| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `September 7, 2016 at 4:20
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-66785>`__
-   Shimin Guo: You’re absolutely right. In fact I later talk about a set
-   of natural transformations ``Nat(Δc, D)``. I’m removing this
-   statement from the post. Thank you for spotting this.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67403">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67403">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image36| `John Armstrong <http://drmathochist.wordpress.com/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 23, 2016 at 1:22
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67403>`__
-   Sorry to come in so long after the post went up, but I wanted to
-   point out a slight error in terminology. When discussing pull-backs,
-   the diagram you’re talking about is related to spans, but is not
-   ITSELF a span.
-
-   A span in a category is a diagram of the form
-
-   |A\_1\\leftarrow B\\rightarrow A\_2|
-
-   (I’m hoping that works, but just in case: A1 A2)
-
-   Given A1 and A2, the spans between them form a category as you might
-   expect: morphisms are the ones taken from hom(B, B’) that make both
-   side triangles commute. They look like product cones, actually.
-
-   What does this have to do with pull-backs? well, spans can be
-   composed! Say we’ve got two of them:
-
-   | |A\_1\\leftarrow B\_1\\rightarrow A\_2|
-   | |A\_2\\leftarrow B\_2\\rightarrow A\_3|
-
-   We can chain them up in the middle:
-
-   |A\_1\\leftarrow B\_1\\rightarrow A\_2\\leftarrow B\_2\\rightarrow
-   A\_3|
-
-   And now we can pull back the middle part to get an object C with
-   morphisms to B1 and B2 that make the square in the middle commute.
-   Composing with the outer morphisms we get morphisms from C to A1 and
-   A3, which makes a span:
-
-   |A\_1\\leftarrow C\\rightarrow A\_3|
-
-   Does this mean that spans form a category? well, not quite. The
-   problem is that this composition by pull-backs isn’t quite
-   associative. But if we consider the morphisms between spans (the ones
-   that look like product cone morphisms from before), then this
-   composition of spans (as 1-morphisms) is associative *up to a
-   canonical 2-morphism*, making this a “weak” 2-category. The specific
-   2-morphism is defined by a natural isomorphism called the
-   “associator”, the existence of which should follow from other
-   material in this very post!
-
-   Similarly, in push-outs the diagrams you mention are not quite
-   co-spans, but the ideas are related, mutatis mutandis, as above.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67415">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67415">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image42| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 23, 2016 at 10:01
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67415>`__
-   You’re right, I confused spans with cospans. Fixed!
-
-   I just talked about bicategories in my last lecture. This would be a
-   good example.
-
-   BTW, I had no idea latex would work in WordPress. Must be a new
-   thing.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67417">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67417">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image43| `John Armstrong <http://drmathochist.wordpress.com/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 24, 2016 at 5:56
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67417>`__
-   I used to use it when I was still math-blogging at
-   unapologetic.wordpress.com. Seems to be on by default here!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67420">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67420">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image44| eschnett Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 24, 2016 at 5:11
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67420>`__
-   You mention “category 13” in your post where you introduce spans. I
-   assume that’s an html quoting error, where the arrows have turned
-   into comments and eaten the object “2”.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67421">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67421">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image45| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `October 24, 2016 at 7:17
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67421>`__
-   @eschnett: Exactly! Thanks for noticing.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67772">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67772">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image46| capnfreako Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 25, 2016 at 7:16
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67772>`__
-   After reviewing the Wikipedia article on *coequalizer*, as well as a
-   few of the references it points to, I’m still not clear on its
-   significance in programming. Can you offer any hints?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67774">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67774">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image47| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 25, 2016 at 1:55
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-67774>`__
-   This `blog
-   post <http://blog.functorial.com/posts/2012-02-19-What-If-Haskell-Had-Equalizers.html>`__
-   by Phil Freeman provides some intuitions about equalizers and
-   coequalizers.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-69876">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-69876">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image48| Mark Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 5, 2017 at 2:20
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-69876>`__
-   I would like to dive deeper into your Hindley-Milner pullback
-   example. Do you have any references I can look at?
-
-   I’m really enjoying the videos, thanks for the good work!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-69917">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-69917">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image49| veix Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 8, 2017 at 5:56
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-69917>`__
-   “The intuition is that the limit embodies the properties of the whole
-   diagram in a single object.”
-
-   this intuition seems misleading to me in the case of equalizer
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-70976">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-70976">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image50| `karkunow <http://karkunow.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 23, 2017 at 3:38
-   pm <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-70976>`__
-   | @Bartosz,
-   | It seems that there is a problem with ‘precomposing’ word. You have
-     two statements:
-   | 1). We can precompose f with u to get: u . f :: c’ -> Lim D
-   | 2). We can easily get the latter from the former by precomposing it
-     with f: βa = αa . f
-
-   | And obviously one of them must be wrong.
-   | To solve the problem you need to change, for example, the second
-     one to:
-   | “We can easily get the latter from the former by composing it with
-     f: βa = αa . f”
-   | or
-   | “We can easily get the latter from the former by precomposing f
-     with αa: βa = αa . f”
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-71007">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-71007">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image51| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 24, 2017 at 8:21
-   am <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/#comment-71007>`__
-   @karkunow: Yes, this is an ongoing problem. I think I will, from now
-   on, use precompose f to mean “first act with f” which, incidentally
-   means that f will be on the right of the dot (that’s where the
-   confusion comes from: it’s “post” dot).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2015/04/15/limits-and-colimits/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  April 15, 2015 at 8:46 am
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Create a free website or blog at
-WordPress.com. <https://wordpress.com/?ref=footer_website>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-4c62f44155a43ed215dd680683e8dce7">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-9e9968f17084069910490607aae744c8">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c28371a3b467d45b93aed57252229d89">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-8ba5c32605adc61b0bc9b6396482c7ac">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-4aa6db921795b84b986eb4aac8ffd569">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-b4a7426cee3700d21354b77b4a29fddd">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-4b9e90ffb9e35c53596e1234c34a92f0">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ed8df1b934fbb8259a5d1f369e168172">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ef3ac5dd2108e05f505ff9ed04740196">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-90b33f49f6f5de5cf8e80f0a7aac6caa">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-9ccc8e38bbfb38b77d468bfc5d9e3307">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ce17817b1139b9d248ff46805e263b8d">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-6996fe77db9f65db1834b998b5222f9b">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image58|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+Acknowledgments
+===============
+
+I’d like to thank Gershom Bazerman for checking my math and logic, and André van
+Meulebrouck, who has been volunteering his editing help.
 
 .. |ProductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg?w=150&h=99
    :class: alignnone wp-image-3767 size-thumbnail
@@ -2999,151 +802,3 @@ Sorry, your blog cannot share posts by email.
    :width: 300px
    :height: 86px
    :target: https://bartoszmilewski.files.wordpress.com/2015/04/continuity.jpg
-.. |image18| image:: https://1.gravatar.com/avatar/4c62f44155a43ed215dd680683e8dce7?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image19| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image20| image:: https://0.gravatar.com/avatar/9e9968f17084069910490607aae744c8?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image21| image:: https://0.gravatar.com/avatar/c28371a3b467d45b93aed57252229d89?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image22| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image23| image:: https://2.gravatar.com/avatar/8ba5c32605adc61b0bc9b6396482c7ac?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image24| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image25| image:: https://1.gravatar.com/avatar/4aa6db921795b84b986eb4aac8ffd569?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image26| image:: https://1.gravatar.com/avatar/4aa6db921795b84b986eb4aac8ffd569?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image27| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image28| image:: https://1.gravatar.com/avatar/4aa6db921795b84b986eb4aac8ffd569?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image29| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image30| image:: https://1.gravatar.com/avatar/4aa6db921795b84b986eb4aac8ffd569?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image31| image:: https://i1.wp.com/pbs.twimg.com/profile_images/452017421855907841/W65GNlUV_normal.jpeg?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image32| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image33| image:: https://i1.wp.com/pbs.twimg.com/profile_images/452017421855907841/W65GNlUV_normal.jpeg?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image34| image:: https://1.gravatar.com/avatar/4b9e90ffb9e35c53596e1234c34a92f0?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image35| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image36| image:: https://2.gravatar.com/avatar/ed8df1b934fbb8259a5d1f369e168172?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |A\_1\\leftarrow B\\rightarrow A\_2| image:: https://s0.wp.com/latex.php?latex=A_1%5Cleftarrow+B%5Crightarrow+A_2&bg=ffffff&fg=29303b&s=0
-   :class: latex
-.. |A\_1\\leftarrow B\_1\\rightarrow A\_2| image:: https://s0.wp.com/latex.php?latex=A_1%5Cleftarrow+B_1%5Crightarrow+A_2&bg=ffffff&fg=29303b&s=0
-   :class: latex
-.. |A\_2\\leftarrow B\_2\\rightarrow A\_3| image:: https://s0.wp.com/latex.php?latex=A_2%5Cleftarrow+B_2%5Crightarrow+A_3&bg=ffffff&fg=29303b&s=0
-   :class: latex
-.. |A\_1\\leftarrow B\_1\\rightarrow A\_2\\leftarrow B\_2\\rightarrow A\_3| image:: https://s0.wp.com/latex.php?latex=A_1%5Cleftarrow+B_1%5Crightarrow+A_2%5Cleftarrow+B_2%5Crightarrow+A_3&bg=ffffff&fg=29303b&s=0
-   :class: latex
-.. |A\_1\\leftarrow C\\rightarrow A\_3| image:: https://s0.wp.com/latex.php?latex=A_1%5Cleftarrow+C%5Crightarrow+A_3&bg=ffffff&fg=29303b&s=0
-   :class: latex
-.. |image42| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image43| image:: https://2.gravatar.com/avatar/ed8df1b934fbb8259a5d1f369e168172?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image44| image:: https://2.gravatar.com/avatar/ef3ac5dd2108e05f505ff9ed04740196?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image45| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image46| image:: https://0.gravatar.com/avatar/90b33f49f6f5de5cf8e80f0a7aac6caa?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image47| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image48| image:: https://0.gravatar.com/avatar/9ccc8e38bbfb38b77d468bfc5d9e3307?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image49| image:: https://0.gravatar.com/avatar/ce17817b1139b9d248ff46805e263b8d?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image50| image:: https://0.gravatar.com/avatar/6996fe77db9f65db1834b998b5222f9b?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image51| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image58| image:: https://pixel.wp.com/b.gif?v=noscript
-

@@ -10,8 +10,8 @@ Categories for Programmers
     Bartosz Milewski
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: Part I
 
    preface
    01-category-the-essence-of-computation
@@ -23,6 +23,19 @@ Categories for Programmers
    07-functors
    08-functorality
    09-function-types
+   10-natural-transformations
+
+.. toctree::
+   :caption: Part II
+   :maxdepth: 1
+
+   part2-declarative-programming
+   12-limits-and-colimits
+
+.. toctree::
+   :caption: Part III
+   :maxdepth: 1
+
    30-lawvere-theories
 
 
