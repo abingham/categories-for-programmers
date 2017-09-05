@@ -1,92 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-4008 post type-post status-publish format-standard hentry category-c category-category-theory category-functional-programming category-haskell category-programming">
-
-February 3, 2015
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Functoriality
-   :name: functoriality
-   :class: post-title
-
-Posted by Bartosz Milewski under
-`C++ <https://bartoszmilewski.com/category/c/>`__, `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-`Functional
-Programming <https://bartoszmilewski.com/category/functional-programming/>`__,
-`Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-`Programming <https://bartoszmilewski.com/category/programming/>`__
-`[18]
-Comments <https://bartoszmilewski.com/2015/02/03/functoriality/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_4008" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 8 of Categories for Programmers. Previously: Functors.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+===============
+ Functoriality
+===============
 
 Now that you know what a functor is, and have seen a few examples, let’s
 see how we can build larger functors from smaller ones. In particular
@@ -94,8 +8,8 @@ it’s interesting to see which type constructors (which correspond to
 mappings between objects in a category) can be extended to functors
 (which include mappings between morphisms).
 
-.. rubric:: Bifunctors
-   :name: bifunctors
+Bifunctors
+==========
 
 Since functors are morphisms in *Cat* (the category of categories), a
 lot of intuitions about morphisms — and functions in particular — apply
@@ -118,7 +32,7 @@ as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
 way:
 
-::
+.. code-block:: haskell
 
     (f, g) ∘ (f', g') = (f ∘ f', g ∘ g')
 
@@ -141,7 +55,7 @@ constructor that takes two type arguments. Here’s the definition of the
 ``Bifunctor`` typeclass taken directly from the library
 ``Control.Bifunctor``:
 
-::
+.. code-block:: haskell
 
     class Bifunctor f where
         bimap :: (a -> c) -> (b -> d) -> f a b -> f c d
@@ -202,8 +116,8 @@ the default for ``bimap`` (of course, you may implement all three of
 them, but then it’s up to you to make sure they are related to each
 other in this manner).
 
-.. rubric:: Product and Coproduct Bifunctors
-   :name: product-and-coproduct-bifunctors
+Product and Coproduct Bifunctors
+================================
 
 An important example of a bifunctor is the categorical product — a
 product of two objects that is defined by a `universal
@@ -213,7 +127,7 @@ objects to the product is bifunctorial. This is true in general, and in
 Haskell in particular. Here’s the ``Bifunctor`` instance for a pair
 constructor — the simplest product type:
 
-::
+.. code-block:: haskell
 
     instance Bifunctor (,) where
         bimap f g (x, y) = (f x, g y)
@@ -222,14 +136,14 @@ There isn’t much choice: ``bimap`` simply applies the first function to
 the first component, and the second function to the second component of
 a pair. The code pretty much writes itself, given the types:
 
-::
+.. code-block:: haskell
 
     bimap :: (a -> c) -> (b -> d) -> (a, b) -> (c, d)
 
 The action of the bifunctor here is to make pairs of types, for
 instance:
 
-::
+.. code-block:: haskell
 
     (,) a b = (a, b)
 
@@ -237,7 +151,7 @@ By duality, a coproduct, if it’s defined for every pair of objects in a
 category, is also a bifunctor. In Haskell, this is exemplified by the
 ``Either`` type constructor being an instance of ``Bifunctor``:
 
-::
+.. code-block:: haskell
 
     instance Bifunctor Either where
         bimap f _ (Left x)  = Left (f x)
@@ -258,8 +172,8 @@ morphisms. We are now one step closer to the full definition of a
 monoidal category (we still need to learn about naturality, before we
 can get there).
 
-.. rubric:: Functorial Algebraic Data Types
-   :name: functorial-algebraic-data-types
+Functorial Algebraic Data Types
+===============================
 
 We’ve seen several examples of parameterized data types that turned out
 to be functors — we were able to define ``fmap`` for them. Complex data
@@ -282,11 +196,11 @@ functor. I mentioned the identity functor previously, as the identity
 morphism in *Cat*, but didn’t give its definition in Haskell. Here it
 is:
 
-::
+.. code-block:: haskell
 
     data Identity a = Identity a
 
-::
+.. code-block:: haskell
 
     instance Functor Identity where
         fmap f (Identity x) = Identity (f x)
@@ -300,7 +214,7 @@ two primitives using products and sums.
 With this new knowledge, let’s have a fresh look at the ``Maybe`` type
 constructor:
 
-::
+.. code-block:: haskell
 
     data Maybe a = Nothing | Just a
 
@@ -311,7 +225,7 @@ we’ll see more interesting uses of ``Const``). The second part is just a
 different name for the identity functor. We could have defined
 ``Maybe``, up to isomorphism, as:
 
-::
+.. code-block:: haskell
 
     type Maybe a = Either (Const () a) (Identity a)
 
@@ -333,7 +247,7 @@ is a type constructor that takes two types as arguments), two functors
 and two regular types ``a`` and ``b``. We apply ``fu`` to ``a`` and
 ``gu`` to ``b``, and then apply ``bf`` to the resulting two types:
 
-::
+.. code-block:: haskell
 
     newtype BiComp bf fu gu a b = BiComp (bf (fu a) (gu b))
 
@@ -353,7 +267,7 @@ of ``bimap`` available for ``bf``, and definitions of ``fmap`` for
 the instance declaration: a set of class constraints followed by a
 double arrow:
 
-::
+.. code-block:: haskell
 
     instance (Bifunctor bf, Functor fu, Functor gu) =>
       Bifunctor (BiComp bf fu gu) where
@@ -366,7 +280,7 @@ overloaded functions whenever ``BiComp`` is used.
 
 The ``x`` in the definition of ``bimap`` has the type:
 
-::
+.. code-block:: haskell
 
     bf (fu a) (gu b)
 
@@ -374,16 +288,16 @@ which is quite a mouthful. The outer ``bimap`` breaks through the outer
 ``bf`` layer, and the two ``fmap``\ s dig under ``fu`` and ``gu``,
 respectively. If the types of ``f1`` and ``f2`` are:
 
-::
+.. code-block:: haskell
 
     f1 :: a -> a'
     f2 :: b -> b'
 
 then the final result is of the type ``bf (fu a') (gu b')``:
 
-::
+.. code-block:: haskell
 
-    bimap (fu a -> fu a') -> (gu b -> gu b') 
+    bimap (fu a -> fu a') -> (gu b -> gu b')
       -> bf (fu a) (gu b) -> bf (fu a') (gu b')
 
 If you like jigsaw puzzles, these kinds of type manipulations can
@@ -399,13 +313,13 @@ be automated and performed by the compiler? Indeed, it can, and it is.
 You need to enable a particular Haskell extension by including this line
 at the top of your source file:
 
-::
+.. code-block:: haskell
 
     {-# LANGUAGE DeriveFunctor #-}
 
 and then add ``deriving Functor`` to your data structure:
 
-::
+.. code-block:: haskell
 
     data Maybe a = Nothing | Just a
       deriving Functor
@@ -420,8 +334,8 @@ typeclasses, but that’s a bit more advanced. The idea though is the
 same: You provide the behavior for the basic building blocks and sums
 and products, and let the compiler figure out the rest.
 
-.. rubric:: Functors in C++
-   :name: functors-in-c
+Functors in C++
+===============
 
 If you are a C++ programmer, you obviously are on your own as far as
 implementing functors goes. However, you should be able to recognize
@@ -432,7 +346,7 @@ is made into a generic template, you should be able to quickly implement
 Let’s have a look at a tree data structure, which we would define in
 Haskell as a recursive sum type:
 
-::
+.. code-block:: haskell
 
     data Tree a = Leaf a | Node (Tree a) (Tree a)
         deriving Functor
@@ -452,7 +366,7 @@ The base class must define at least one virtual function in order to
 support dynamic casting, so we’ll make the destructor virtual (which is
 a good idea in any case):
 
-::
+.. code-block:: c++
 
     template<class T>
     struct Tree {
@@ -461,7 +375,7 @@ a good idea in any case):
 
 The ``Leaf`` is just an ``Identity`` functor in disguise:
 
-::
+.. code-block:: c++
 
     template<class T>
     struct Leaf : public Tree<T> {
@@ -471,7 +385,7 @@ The ``Leaf`` is just an ``Identity`` functor in disguise:
 
 The ``Node`` is a product type:
 
-::
+.. code-block:: c++
 
     template<class T>
     struct Node : public Tree<T> {
@@ -487,7 +401,7 @@ composed with two copies of the ``Tree`` functor. As a C++ programmer,
 you’re probably not used to analyzing code in these terms, but it’s a
 good exercise in categorical thinking.
 
-::
+.. code-block:: c++
 
     template<class A, class B>
     Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t)
@@ -508,7 +422,7 @@ issues, but in production code you would probably use smart pointers
 
 Compare it with the Haskell implementation of ``fmap``:
 
-::
+.. code-block:: haskell
 
     instance Functor Tree where
         fmap f (Leaf a) = Leaf (f a)
@@ -516,15 +430,15 @@ Compare it with the Haskell implementation of ``fmap``:
 
 This implementation can also be automatically derived by the compiler.
 
-.. rubric:: The Writer Functor
-   :name: the-writer-functor
+The Writer Functor
+==================
 
 I promised that I would come back to the `Kleisli
 category <https://bartoszmilewski.com/2014/12/23/kleisli-categories/>`__
 I described earlier. Morphisms in that category were represented as
 “embellished” functions returning the ``Writer`` data structure.
 
-::
+.. code-block:: haskell
 
     type Writer a = (a, String)
 
@@ -538,17 +452,17 @@ general? A Kleisli category, being a category, defines composition and
 identity. Let’ me remind you that the composition is given by the fish
 operator:
 
-::
+.. code-block:: haskell
 
     (>=>) :: (a -> Writer b) -> (b -> Writer c) -> (a -> Writer c)
-    m1 >=> m2 = \x -> 
+    m1 >=> m2 = \x ->
         let (y, s1) = m1 x
             (z, s2) = m2 y
         in (z, s1 ++ s2)
 
 and the identity morphism by a function called ``return``:
 
-::
+.. code-block:: haskell
 
     return :: a -> Writer a
     return x = (x, "")
@@ -558,7 +472,7 @@ enough (and I mean, *long* enough), you can find a way to combine them
 to produce a function with the right type signature to serve as
 ``fmap``. Like this:
 
-::
+.. code-block:: haskell
 
     fmap f = id >=> (\x -> return (f x))
 
@@ -594,26 +508,26 @@ of those theorems says that, if there is an implementation of ``fmap``
 for a given type constructor, one that preserves identity, then it must
 be unique.
 
-.. rubric:: Covariant and Contravariant Functors
-   :name: covariant-and-contravariant-functors
+Covariant and Contravariant Functors
+====================================
 
 Now that we’ve reviewed the writer functor, let’s go back to the reader
 functor. It was based on the partially applied function-arrow type
 constructor:
 
-::
+.. code-block:: haskell
 
     (->) r
 
 We can rewrite it as a type synonym:
 
-::
+.. code-block:: haskell
 
     type Reader r a = r -> a
 
 for which the ``Functor`` instance, as we’ve seen before, reads:
 
-::
+.. code-block:: haskell
 
     instance Functor (Reader r) where
         fmap f g = f . g
@@ -627,7 +541,7 @@ Let’s try to make it functorial in the first argument. We’ll start with
 a type synonym — it’s just like the ``Reader`` but with the arguments
 flipped:
 
-::
+.. code-block:: haskell
 
     type Op r a = a -> r
 
@@ -635,7 +549,7 @@ This time we fix the return type, ``r``, and vary the argument type,
 ``a``. Let’s see if we can somehow match the types in order to implement
 ``fmap``, which would have the following type signature:
 
-::
+.. code-block:: haskell
 
     fmap :: (a -> b) -> (a -> r) -> (b -> r)
 
@@ -681,14 +595,14 @@ a → F b*.
 Here’s the typeclass defining a contravariant functor (really, a
 contravariant *endo*\ functor) in Haskell:
 
-::
+.. code-block:: haskell
 
     class Contravariant f where
         contramap :: (b -> a) -> (f a -> f b)
 
 Our type constructor ``Op`` is an instance of it:
 
-::
+.. code-block:: haskell
 
     instance Contravariant (Op r) where
         -- (b -> a) -> Op r a -> Op r b
@@ -702,19 +616,19 @@ you notice that it’s just the function composition operator with the
 arguments flipped. There is a special function for flipping arguments,
 called ``flip``:
 
-::
+.. code-block:: haskell
 
     flip :: (a -> b -> c) -> (b -> a -> c)
     flip f y x = f x y
 
 With it, we get:
 
-::
+.. code-block:: haskell
 
     contramap = flip (.)
 
-.. rubric:: Profunctors
-   :name: profunctors
+Profunctors
+===========
 
 | We’ve seen that the function-arrow operator is contravariant in its
   first argument and covariant in the second. Is there a name for such a
@@ -730,7 +644,7 @@ contra-functorial in the first argument and functorial in the second.
 Here’s the appropriate typeclass taken from the ``Data.Profunctor``
 library:
 
-::
+.. code-block:: haskell
 
     class Profunctor p where
       dimap :: (a -> b) -> (c -> d) -> p b c -> p a d
@@ -761,7 +675,7 @@ dimap
 Now we can assert that the function-arrow operator is an instance of a
 ``Profunctor``:
 
-::
+.. code-block:: haskell
 
     instance Profunctor (->) where
       dimap ab cd bc = cd . bc . ab
@@ -771,8 +685,8 @@ Now we can assert that the function-arrow operator is an instance of a
 Profunctors have their application in the Haskell lens library. We’ll
 see them again when we talk about ends and coends.
 
-.. rubric:: Challenges
-   :name: challenges
+Challenges
+==========
 
 #. Show that the data type:
 
@@ -838,1581 +752,10 @@ see them again when we talk about ends and coends.
 Next: `Function
 Types <https://bartoszmilewski.com/2015/03/13/function-types/>`__.
 
-.. rubric:: Acknowledgment
-   :name: acknowledgment
+Acknowledgment
+==============
 
-| As usual, big thanks go to Gershom Bazerman for reviewing this
-  article.
-| `Follow @BartoszMilewski <https://twitter.com/BartoszMilewski>`__
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1204545926" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1727841240" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2015/02/03/functoriality/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2015/02/03/functoriality/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2015/02/03/functoriality/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2015/02/03/functoriality/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2015/02/03/functoriality/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2015/02/03/functoriality/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2015/02/03/functoriality/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-4008-59ae3bd2be1ae"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=4008&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-4008-59ae3bd2be1ae"
-   data-name="like-post-frame-3549518-4008-59ae3bd2be1ae">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 18 Responses to “Functoriality”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-42375">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-42375">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image6| Jarek Przygódzki Says:
-
-   .. raw:: html
-
-      </div>
-
-   `February 23, 2015 at 8:04
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-42375>`__
-   Reblogged this on `Jarek Przygódzki. Blog
-   programisty <https://jarekprzygodzki.wordpress.com/2015/02/23/functoriality/>`__.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-43110">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-43110">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image7| Andrew Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 11, 2015 at 9:36
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-43110>`__
-   We are patiently waiting for next chunk of wisdom. I think it will be
-   natural transformations and monads from CT point of view.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-43186">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-43186">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   `Function Types \|   Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com/2015/03/13/function-types/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 13, 2015 at 1:08
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-43186>`__
-   […] given the mapping h from z' to z, is a mapping from z'×a to z×a.
-   And now, after discussing the functoriality of the product, we know
-   how to do it. Because the product itself is a functor (more precisely
-   an endo-bi-functor), […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-43962">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-43962">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image8| `Zheka Kozlov <http://www.facebook.com/100000209203366>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 29, 2015 at 7:04
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-43962>`__
-   Can be List rewritten in terms of Either like Maybe?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-43964">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-43964">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image9| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 29, 2015 at 9:29
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-43964>`__
-   List is a recursive data structure, so it’s a little more involved
-   than that. The usual way of defining recursive data structures is to
-   define a functor, in this case:
-
-   ::
-
-       ListF e a = Nil | Cons e a
-
-   which is not recursive but it has a free type parameter ``a``
-   inserted in place of recursion (here, in place of the tail). This
-   part can be rewritten in terms of ``Either``, etc. A recursive list
-   is then defined as a fixed point of this functor. See my posts about
-   algebras.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-44416">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-44416">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image10| `NN <http://www.nemerleweb.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 7, 2015 at 10:33
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-44416>`__
-   Can I say that a TriFunctor where (a -> x) -> (b -> y) -> (c -> z) ->
-   f a b c -> f x y z , is isomorphic to combination of Bifunctor with
-   Functor ?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-44466">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-44466">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image11| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 8, 2015 at 5:35
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-44466>`__
-   What do you mean by “combination”?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-44475">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-44475">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image12| `NN <http://www.nemerleweb.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 8, 2015 at 9:18
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-44475>`__
-   Is it correct to say that such TriFunctor is isomorphic to Functor
-   which receives a tuple of 3 values or a Bifunctor which receives a
-   tuple with 2 values as first argument and a single value as a second
-   argument ?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-44498">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-44498">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image13| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 9, 2015 at 10:27
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-44498>`__
-   I don’t have a formal proof but the intuition is that functors are
-   morphisms in the category of (small) categories **Cat** (see my blog
-   post on natural transformation for more details), which is cartesian
-   closed. It means that it supports products and currying. So a
-   trifunctor is just a functor that returns a bifunctor.
-
-   This is definitely true in Haskell, where type constructors are
-   curried, and ``trimap`` may be implemented in terms of map and bimap.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-47237">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-47237">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image14| `karkunow <http://karkunow.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 5, 2015 at 1:34
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-47237>`__
-   I’ve noticed small error in the declaration section of the
-   Contravariant instance of the Op type. So I guess it would be better
-   to:
-
-   | 1). Rename Op b to Op r in the first line.
-   | 2). Set correct concrete types in the comment.
-   | 3). (optional) Add one more comment with type, where Ops are
-     replaced with the ‘real’ function types (Op r a = a -> r).
-
-   Then this section will look like:
-
-   | instance Contravariant (Op r) where
-   | — (b -> a) -> Op r a -> Op r b =
-   | — = (b -> a) -> (a->r) -> (b->r)
-   | contramap f g = g . f
-
-   Now it looks more clearly to me, don’t it?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-47267">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-47267">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image15| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 5, 2015 at 6:21
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-47267>`__
-   @karkunov: Good catch! Fixed it!
-
-   The full Haskell example would use ``newtype`` and pattern matching,
-   but I didn’t want to obscure the simple point.
-
-   ::
-
-       newtype Op r a = Op (a -> r)
-
-       instance Contravariant (Op r) where
-           -- (b -> a) -> Op r a -> Op r b
-           contramap f (Op g) = Op (g . f)
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50123">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50123">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image16| `greg nwosu
-   (@buddistfist) <http://twitter.com/buddistfist>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 15, 2015 at 12:11
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-50123>`__
-   | you wrote : “If you’re getting a little lost, try applying BiComp
-     to Either, Const (), Identity, a, and b, in this order.” I found
-     const () to be the wrong type and had to bind instead to (
-     ``const`` ()). Thus:
-   | let x = BiComp (either (``const`` ()) id)
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50124">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50124">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image17| `greg nwosu
-   (@buddistfist) <http://twitter.com/buddistfist>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 15, 2015 at 12:12
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-50124>`__
-   imagine I have backticks around my const expression
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-50126">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-50126">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image18| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 15, 2015 at 1:16
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-50126>`__
-   What I meant is this:
-
-   ::
-
-       type Perhaps a b = BiComp Either (Const ()) Identity a b
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-53562">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-53562">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image19| Daniel Asher Says:
-
-   .. raw:: html
-
-      </div>
-
-   `September 16, 2015 at 1:50
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-53562>`__
-   thank you, Bartosz, for this masterpiece of clarity.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67978">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67978">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image20| `Gyula Csom <http://gravatar.com/csomgyula>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 10, 2016 at 5:06
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-67978>`__
-   It looks like that there’s a slight mistake in the definition of
-   ``Bifunctor``. The definition of the ``second`` function seems to be
-   a typo. If I understand well, then: instead of ``second = bimap id``
-   it should be ``second = bimap id h``.
-
-   The problem seems to appear in the original Haskell source as well
-   (ie. Control.Bifunctor v.0.44.4).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67981">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67981">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image21| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 10, 2016 at 10:04
-   am <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-67981>`__
-   @Gyula Csom: Notice that the original Haskell source compiles, so the
-   compiler understands it. You can look at ``bimap`` as a function of
-   three arguments, or a function of two arguments returning a function
-   of one argument, or a function of one argument returning a function
-   of two arguments:
-
-   ::
-
-       bimap :: (a -> c) -> ( (b -> d) -> f a b -> f c d )
-
-   It’s the latter interpretation that makes this code work. It’s just
-   currying.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67986">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67986">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image22| Csom Gyula Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 10, 2016 at 3:07
-   pm <https://bartoszmilewski.com/2015/02/03/functoriality/#comment-67986>`__
-   Thanks for your reply!
-
-   I’ve got it:-) Also I’ve caught my mistake. There’s no argument in
-   the declaration of ``second``. That is: this would be mistaken:
-   ``second h = bimap id``. But the declaration is different:
-   ``second = bimap id`` and this works through currying as you pointed.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2015/02/03/functoriality/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  February 3, 2015 at 5:39 pm
--  **Category :**
--  `C++ <https://bartoszmilewski.com/category/c/>`__, `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-   `Functional
-   Programming <https://bartoszmilewski.com/category/functional-programming/>`__,
-   `Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-   `Programming <https://bartoszmilewski.com/category/programming/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2015/02/03/functoriality/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Blog at WordPress.com. <https://wordpress.com/?ref=footer_blog>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-e9473adb752e81e6cd6279cf999df7a4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-a37d86b7d709785662decc035368ad8e">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c6e2d6eea25a87961ac3a6dfbfbe7805">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-52d445b3234e100bc93c9accfce29d98">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-6996fe77db9f65db1834b998b5222f9b">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-7347a01d99764b7f8f6f4baa5f385be4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-3e713a56c1bee057a6c7a608afa4be42">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-f19df03863d5f739a01dbb0bc9ba90b3">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-f19df03863d5f739a01dbb0bc9ba90b3">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image29|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+As usual, big thanks go to Gershom Bazerman for reviewing this article. |
 
 .. |Bifunctor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/bifunctor.jpg?w=300&h=286
    :class: aligncenter size-medium wp-image-4068
@@ -2444,93 +787,3 @@ Sorry, your blog cannot share posts by email.
    :width: 300px
    :height: 243px
    :target: https://bartoszmilewski.files.wordpress.com/2015/01/dimap.jpg
-.. |image6| image:: https://2.gravatar.com/avatar/e9473adb752e81e6cd6279cf999df7a4?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image7| image:: https://1.gravatar.com/avatar/a37d86b7d709785662decc035368ad8e?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image8| image:: https://i0.wp.com/graph.facebook.com/v2.2/100000209203366/picture?q=type%3Dlarge%26_md5%3Dc97e8650acfe44d837ddbb18a75d7399&resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image9| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image10| image:: https://2.gravatar.com/avatar/52d445b3234e100bc93c9accfce29d98?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image11| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image12| image:: https://2.gravatar.com/avatar/52d445b3234e100bc93c9accfce29d98?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image13| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image14| image:: https://0.gravatar.com/avatar/6996fe77db9f65db1834b998b5222f9b?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image15| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image16| image:: https://i2.wp.com/pbs.twimg.com/profile_images/378800000118625501/51860326faa5b01f8a6be8320b4aa27c_normal.jpeg?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image17| image:: https://i2.wp.com/pbs.twimg.com/profile_images/378800000118625501/51860326faa5b01f8a6be8320b4aa27c_normal.jpeg?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image18| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image19| image:: https://0.gravatar.com/avatar/3e713a56c1bee057a6c7a608afa4be42?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image20| image:: https://0.gravatar.com/avatar/f19df03863d5f739a01dbb0bc9ba90b3?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image21| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image22| image:: https://0.gravatar.com/avatar/f19df03863d5f739a01dbb0bc9ba90b3?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image29| image:: https://pixel.wp.com/b.gif?v=noscript
-

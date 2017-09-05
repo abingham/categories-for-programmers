@@ -21,6 +21,7 @@ Categories for Programmers
    05-products-and-coproducts
    06-simple-algebraic-data-types
    07-functors
+   08-functorality
    30-lawvere-theories
 
 
