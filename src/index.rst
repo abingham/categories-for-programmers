@@ -19,6 +19,7 @@ Categories for Programmers
    03-categories-great-and-small
    04-kleisli-categories
    05-products-and-coproducts
+   06-simple-algebraic-data-types
    30-lawvere-theories
 
 
