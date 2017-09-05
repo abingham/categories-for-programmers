@@ -1,5 +1,5 @@
 ================================
-Chapter 12 - Limits and Colimits
+Chapter 1 - Limits and Colimits
 ================================
 
 It seems like in category theory everything is related to everything and

@@ -1,5 +1,5 @@
 =============================
-Chapter 30 - Lawvere Theories
+Chapter 13 - Lawvere Theories
 =============================
 
 Nowadays you can’t talk about functional programming without mentioning

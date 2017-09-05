@@ -24,15 +24,16 @@ Categories for Programmers
 .. toctree::
    :caption: Part II
    :maxdepth: 1
+   :glob:
 
-   part2-declarative-programming
-   12-limits-and-colimits
+   part2/*
 
 .. toctree::
    :caption: Part III
    :maxdepth: 1
+   :glob:
 
-   30-lawvere-theories
+   part3/*
 
 
 Indices and tables
