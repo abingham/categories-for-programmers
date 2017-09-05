@@ -1,5 +1,5 @@
 ===================================
-Chapter 5 - Products and Coproducts
+Chapter 4 - Products and Coproducts
 ===================================
 
 Follow the Arrows

@@ -17,17 +17,9 @@ Categories for Programmers
 .. toctree::
    :maxdepth: 1
    :caption: Part I
+   :glob:
 
-   part1-category-the-essence-of-computing
-   02-types-and-functions
-   03-categories-great-and-small
-   04-kleisli-categories
-   05-products-and-coproducts
-   06-simple-algebraic-data-types
-   07-functors
-   08-functorality
-   09-function-types
-   10-natural-transformations
+   part1/*
 
 .. toctree::
    :caption: Part II

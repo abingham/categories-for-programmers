@@ -1,5 +1,5 @@
 ====================
-Chapter 7 - Functors
+Chapter 6 - Functors
 ====================
 
 At the risk of sounding like a broken record, I will say this about

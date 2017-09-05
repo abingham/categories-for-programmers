@@ -1,5 +1,5 @@
 ==============================
-Chapter 4 - Kleisli Categories
+Chapter 3 - Kleisli Categories
 ==============================
 
 Composition of Logs

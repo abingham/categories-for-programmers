@@ -1,5 +1,5 @@
 ==========================
-Chapter 9 - Function Types
+Chapter 8 - Function Types
 ==========================
 
 So far I’ve been glossing over the meaning of function types. A function

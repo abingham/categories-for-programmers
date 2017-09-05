@@ -1,5 +1,5 @@
 =======================================
-Chapter 6 - Simple Algebraic Data Types
+Chapter 5 - Simple Algebraic Data Types
 =======================================
 
 We’ve seen two basic ways of combining types: using a product and a

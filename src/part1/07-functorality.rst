@@ -1,6 +1,6 @@
-===============
- Functoriality
-===============
+=========================
+Chapter 7 - Functoriality
+=========================
 
 Now that you know what a functor is, and have seen a few examples, let’s
 see how we can build larger functors from smaller ones. In particular

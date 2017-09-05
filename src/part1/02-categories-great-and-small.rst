@@ -1,5 +1,5 @@
 ========================================
- Chapter 3 - Categories Great and Small
+ Chapter 2 - Categories Great and Small
 ========================================
 
 You can get real appreciation for categories by studying a variety of

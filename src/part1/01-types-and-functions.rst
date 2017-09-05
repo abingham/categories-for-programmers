@@ -1,5 +1,5 @@
 ===============================
-Chapter 2 - Types and Functions
+Chapter 1 - Types and Functions
 ===============================
 
 The category of types and functions plays an important role in
