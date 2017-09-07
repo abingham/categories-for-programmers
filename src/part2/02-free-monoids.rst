@@ -304,7 +304,3 @@ of posts.
    :width: 300px
    :height: 221px
    :target: ../images/2015/07/monoid-ranking.jpg
-.. |image3| image:: https://i1.wp.com/pbs.twimg.com/profile_images/617673762893201410/I9g8EyCy_normal.png?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px

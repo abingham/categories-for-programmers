@@ -867,7 +867,3 @@ grateful for his patience and insight.
    :width: 300px
    :height: 219px
    :target: ../images/2015/01/functormaybe.jpg
-.. |image4| image:: https://0.gravatar.com/avatar/65f16e220ad21f38035c67ba6ae67047?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px

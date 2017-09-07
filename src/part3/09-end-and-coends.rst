@@ -639,7 +639,3 @@ the arrow library.
    :width: 175px
    :height: 211px
    :target: ../images/2017/03/end-31.jpg
-.. |image6| image:: https://2.gravatar.com/avatar/b4a7426cee3700d21354b77b4a29fddd?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px

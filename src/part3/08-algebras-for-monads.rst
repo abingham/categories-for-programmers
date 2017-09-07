@@ -559,7 +559,3 @@ I’d like to thank Gershom Bazerman for helpful comments.
    :width: 449px
    :height: 130px
    :target: ../images/2017/03/talg5.png
-.. |image6| image:: https://2.gravatar.com/avatar/ba92310172279063117a93ff469b56b3?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
