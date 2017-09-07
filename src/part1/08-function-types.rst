@@ -417,7 +417,7 @@ product ``Int × Int`` or, being a little creative with notation,
 
 For another example, let’s look at the C++ type ``char``, which contains
 256 values (Haskell ``Char`` is larger, because Haskell uses Unicode).
-There are several functions in the ```` part of the C++ Standard Library
+There are several functions in the part of the C++ Standard Library
 that are usually implemented using lookups. Functions like ``isupper``
 or ``isspace`` are implemented using tables, which are equivalent to
 tuples of 256 Boolean values. A tuple is a product type, so we are

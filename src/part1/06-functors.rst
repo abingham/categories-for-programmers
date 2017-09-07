@@ -118,9 +118,9 @@ under ``Maybe`` is the function:
 
 .. code-block:: haskell
 
-    f’ :: Maybe a -> Maybe b
-    f’ Nothing = Nothing
-    f’ (Just x) = Just (f x)
+    f' :: Maybe a -> Maybe b
+    f' Nothing = Nothing
+    f' (Just x) = Just (f x)
 
 (By the way, in Haskell you can use apostrophes in variables names,
 which is very handy in cases like these.) In Haskell, we implement the
@@ -847,6 +847,7 @@ Acknowledgments
 
 Gershom Bazerman is kind enough to keep reviewing these posts. I’m
 grateful for his patience and insight.
+
 .. |Functor| image:: ../images/2015/01/functor.jpg
    :class: aligncenter wp-image-3944 size-medium
    :width: 300px
