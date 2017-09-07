@@ -416,13 +416,13 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts.
 
-.. |Hom-Set| image:: https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg
+.. |Hom-Set| image:: ../images/2015/07/hom-set.jpg
    :class: alignnone size-medium wp-image-4780
    :width: 300px
    :height: 181px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg
-.. |Hom Functor| image:: https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg
+   :target: ../images/2015/07/hom-set.jpg
+.. |Hom Functor| image:: ../images/2015/07/hom-functor.jpg
    :class: alignnone size-medium wp-image-4781
    :width: 300px
    :height: 189px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg
+   :target: ../images/2015/07/hom-functor.jpg

@@ -601,78 +601,78 @@ It’s easy to check that this is indeed a functor:
     instance Functor (FreeF f) where
       fmap g (FreeF r) = FreeF (\bi -> r (bi . g))
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan2.jpg
+.. |image0| image:: ../images/2017/04/kan2.jpg
    :class: alignnone wp-image-8641
    :width: 164px
    :height: 141px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan2.jpg
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan15.jpg
+   :target: ../images/2017/04/kan2.jpg
+.. |image1| image:: ../images/2017/04/kan15.jpg
    :class: alignnone size-medium wp-image-8689
    :width: 300px
    :height: 212px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan15.jpg
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan3-e1492120491591.jpg
+   :target: ../images/2017/04/kan15.jpg
+.. |image2| image:: ../images/2017/04/kan3-e1492120491591.jpg
    :class: alignnone wp-image-8642
    :width: 222px
    :height: 150px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan3-e1492120491591.jpg
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan31-e1492120512209.jpg
+   :target: ../images/2017/04/kan3-e1492120491591.jpg
+.. |image3| image:: ../images/2017/04/kan31-e1492120512209.jpg
    :class: alignnone wp-image-8663
    :width: 227px
    :height: 165px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan31-e1492120512209.jpg
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan5.jpg
+   :target: ../images/2017/04/kan31-e1492120512209.jpg
+.. |image4| image:: ../images/2017/04/kan5.jpg
    :class: alignnone wp-image-8644
    :width: 237px
    :height: 178px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan5.jpg
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan7.jpg
+   :target: ../images/2017/04/kan5.jpg
+.. |image5| image:: ../images/2017/04/kan7.jpg
    :class: alignnone wp-image-8646
    :width: 188px
    :height: 180px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan7.jpg
-.. |image6| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan6.jpg
+   :target: ../images/2017/04/kan7.jpg
+.. |image6| image:: ../images/2017/04/kan6.jpg
    :class: alignnone size-medium wp-image-8645
    :width: 300px
    :height: 168px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan6.jpg
-.. |image7| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan92.jpg
+   :target: ../images/2017/04/kan6.jpg
+.. |image7| image:: ../images/2017/04/kan92.jpg
    :class: alignnone size-medium wp-image-8700
    :width: 300px
    :height: 238px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan92.jpg
-.. |image8| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan81.jpg
+   :target: ../images/2017/04/kan92.jpg
+.. |image8| image:: ../images/2017/04/kan81.jpg
    :class: alignnone wp-image-8654
    :width: 183px
    :height: 138px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan81.jpg
-.. |image9| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan10a.jpg
+   :target: ../images/2017/04/kan81.jpg
+.. |image9| image:: ../images/2017/04/kan10a.jpg
    :class: alignnone wp-image-8679
    :width: 224px
    :height: 117px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan10a.jpg
-.. |image10| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan10b.jpg
+   :target: ../images/2017/04/kan10a.jpg
+.. |image10| image:: ../images/2017/04/kan10b.jpg
    :class: alignnone wp-image-8680
    :width: 231px
    :height: 120px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan10b.jpg
-.. |image11| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan14.jpg
+   :target: ../images/2017/04/kan10b.jpg
+.. |image11| image:: ../images/2017/04/kan14.jpg
    :class: alignnone wp-image-8656
    :width: 200px
    :height: 161px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan14.jpg
-.. |image12| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan112.jpg
+   :target: ../images/2017/04/kan14.jpg
+.. |image12| image:: ../images/2017/04/kan112.jpg
    :class: alignnone wp-image-8681
    :width: 211px
    :height: 164px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan112.jpg
-.. |image13| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan12.jpg
+   :target: ../images/2017/04/kan112.jpg
+.. |image13| image:: ../images/2017/04/kan12.jpg
    :class: alignnone wp-image-8651
    :width: 198px
    :height: 159px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan12.jpg
-.. |image14| image:: https://bartoszmilewski.files.wordpress.com/2017/04/kan13.jpg
+   :target: ../images/2017/04/kan12.jpg
+.. |image14| image:: ../images/2017/04/kan13.jpg
    :class: alignnone size-medium wp-image-8652
    :width: 300px
    :height: 183px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/04/kan13.jpg
+   :target: ../images/2017/04/kan13.jpg

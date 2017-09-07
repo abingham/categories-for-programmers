@@ -252,28 +252,28 @@ Challenges
 #. Show that the function ``f`` that is the pullback of ``true`` along
    the characteristic function must be injective.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/07/subsetinjection.jpg
+.. |image0| image:: ../images/2017/07/subsetinjection.jpg
    :class: alignnone wp-image-8934
    :width: 220px
    :height: 171px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/07/subsetinjection.jpg
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/07/monomorphism.jpg
+   :target: ../images/2017/07/subsetinjection.jpg
+.. |image1| image:: ../images/2017/07/monomorphism.jpg
    :class: alignnone size-medium wp-image-8931
    :width: 300px
    :height: 174px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/07/monomorphism.jpg
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/07/notmono.jpg
+   :target: ../images/2017/07/monomorphism.jpg
+.. |image2| image:: ../images/2017/07/notmono.jpg
    :class: alignnone size-medium wp-image-8932
    :width: 300px
    :height: 126px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/07/notmono.jpg
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/07/true.jpg
+   :target: ../images/2017/07/notmono.jpg
+.. |image3| image:: ../images/2017/07/true.jpg
    :class: alignnone wp-image-8935
    :width: 190px
    :height: 123px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/07/true.jpg
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/07/pullback.jpg
+   :target: ../images/2017/07/true.jpg
+.. |image4| image:: ../images/2017/07/pullback.jpg
    :class: alignnone wp-image-8933
    :width: 232px
    :height: 164px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/07/pullback.jpg
+   :target: ../images/2017/07/pullback.jpg

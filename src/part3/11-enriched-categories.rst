@@ -442,48 +442,48 @@ over **Set**, **Cat** can be treated as a category enriched over
 enriched over **Set**, every 2-category can be considered enriched over
 **Cat**.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/05/assoc.jpg
+.. |image0| image:: ../images/2017/05/assoc.jpg
    :class: alignnone wp-image-8745 size-large
    :width: 510px
    :height: 240px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/assoc.jpg
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/05/idcoherence.jpg
+   :target: ../images/2017/05/assoc.jpg
+.. |image1| image:: ../images/2017/05/idcoherence.jpg
    :class: alignnone wp-image-8751
    :width: 407px
    :height: 158px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/idcoherence.jpg
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/05/composition.jpg
+   :target: ../images/2017/05/idcoherence.jpg
+.. |image2| image:: ../images/2017/05/composition.jpg
    :class: alignnone wp-image-8747
    :width: 395px
    :height: 282px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/composition.jpg
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/05/id.jpg
+   :target: ../images/2017/05/composition.jpg
+.. |image3| image:: ../images/2017/05/id.jpg
    :class: alignnone wp-image-8750
    :width: 254px
    :height: 218px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/id.jpg
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/05/compcoherence.jpg
+   :target: ../images/2017/05/id.jpg
+.. |image4| image:: ../images/2017/05/compcoherence.jpg
    :class: alignnone wp-image-8746
    :width: 514px
    :height: 122px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/compcoherence.jpg
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/05/rightid.jpg
+   :target: ../images/2017/05/compcoherence.jpg
+.. |image5| image:: ../images/2017/05/rightid.jpg
    :class: alignnone wp-image-8753
    :width: 446px
    :height: 133px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/rightid.jpg
-.. |image6| image:: https://bartoszmilewski.files.wordpress.com/2017/05/leftid.jpg
+   :target: ../images/2017/05/rightid.jpg
+.. |image6| image:: ../images/2017/05/leftid.jpg
    :class: alignnone wp-image-8752
    :width: 447px
    :height: 136px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/leftid.jpg
-.. |image7| image:: https://bartoszmilewski.files.wordpress.com/2017/05/functorcomp.jpg
+   :target: ../images/2017/05/leftid.jpg
+.. |image7| image:: ../images/2017/05/functorcomp.jpg
    :class: alignnone size-large wp-image-8748
    :width: 510px
    :height: 208px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/functorcomp.jpg
-.. |image8| image:: https://bartoszmilewski.files.wordpress.com/2017/05/functorid.jpg
+   :target: ../images/2017/05/functorcomp.jpg
+.. |image8| image:: ../images/2017/05/functorid.jpg
    :class: alignnone wp-image-8749
    :width: 388px
    :height: 175px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/05/functorid.jpg
+   :target: ../images/2017/05/functorid.jpg

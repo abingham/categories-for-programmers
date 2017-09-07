@@ -529,36 +529,36 @@ Acknowledgment
 
 I’d like to thank Gershom Bazerman for helpful comments.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png
+.. |image0| image:: ../images/2017/03/pigalg.png
    :class: alignnone wp-image-8438
    :width: 122px
    :height: 133px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png
+   :target: ../images/2017/03/pigalg.png
+.. |image1| image:: ../images/2017/03/talg1.png
    :class: alignnone wp-image-8430
    :width: 174px
    :height: 128px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png
+   :target: ../images/2017/03/talg1.png
+.. |image2| image:: ../images/2017/03/talg2.png
    :class: alignnone wp-image-8431
    :width: 231px
    :height: 127px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png
+   :target: ../images/2017/03/talg2.png
+.. |image3| image:: ../images/2017/03/talg31.png
    :class: alignnone wp-image-8441
    :width: 247px
    :height: 153px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png
+   :target: ../images/2017/03/talg31.png
+.. |image4| image:: ../images/2017/03/talg4.png
    :class: alignnone wp-image-8433
    :width: 446px
    :height: 156px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png
+   :target: ../images/2017/03/talg4.png
+.. |image5| image:: ../images/2017/03/talg5.png
    :class: alignnone wp-image-8434
    :width: 449px
    :height: 130px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png
+   :target: ../images/2017/03/talg5.png
 .. |image6| image:: https://2.gravatar.com/avatar/ba92310172279063117a93ff469b56b3?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
    :class: avatar avatar-48
    :width: 48px

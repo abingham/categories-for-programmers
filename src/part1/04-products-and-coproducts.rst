@@ -709,48 +709,48 @@ Acknowledgements
 I’m grateful to Gershom Bazerman for reviewing this post before
 publication and for stimulating discussions.
 
-.. |Initial| image:: https://bartoszmilewski.files.wordpress.com/2014/12/initial.jpg
+.. |Initial| image:: ../images/2014/12/initial.jpg
    :class: aligncenter size-medium wp-image-3763
    :width: 285px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/initial.jpg
-.. |Final| image:: https://bartoszmilewski.files.wordpress.com/2014/12/final.jpg
+   :target: ../images/2014/12/initial.jpg
+.. |Final| image:: ../images/2014/12/final.jpg
    :class: aligncenter size-medium wp-image-3765
    :width: 300px
    :height: 298px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/final.jpg
-.. |All morphisms in this diagram are unique| image:: https://bartoszmilewski.files.wordpress.com/2014/12/uniqueness.jpg
+   :target: ../images/2014/12/final.jpg
+.. |All morphisms in this diagram are unique| image:: ../images/2014/12/uniqueness.jpg
    :class: size-thumbnail wp-image-3837
    :width: 150px
    :height: 94px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/uniqueness.jpg
-.. |ProductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
+   :target: ../images/2014/12/uniqueness.jpg
+.. |ProductPattern| image:: ../images/2014/12/productpattern.jpg
    :class: aligncenter wp-image-3767 size-thumbnail
    :width: 150px
    :height: 99px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
-.. |ProductCandidates| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productcandidates.jpg
+   :target: ../images/2014/12/productpattern.jpg
+.. |ProductCandidates| image:: ../images/2014/12/productcandidates.jpg
    :class: aligncenter size-thumbnail wp-image-3770
    :width: 150px
    :height: 76px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productcandidates.jpg
-.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
+   :target: ../images/2014/12/productcandidates.jpg
+.. |ProductRanking| image:: ../images/2014/12/productranking.jpg
    :class: aligncenter size-thumbnail wp-image-3772
    :width: 150px
    :height: 122px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
-.. |Not a product| image:: https://bartoszmilewski.files.wordpress.com/2015/01/not-a-product.jpg
+   :target: ../images/2014/12/productranking.jpg
+.. |Not a product| image:: ../images/2015/01/not-a-product.jpg
    :class: aligncenter wp-image-4863
    :width: 212px
    :height: 150px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/not-a-product.jpg
-.. |CoproductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductpattern.jpg
+   :target: ../images/2015/01/not-a-product.jpg
+.. |CoproductPattern| image:: ../images/2014/12/coproductpattern.jpg
    :class: aligncenter size-thumbnail wp-image-3774
    :width: 150px
    :height: 94px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/coproductpattern.jpg
-.. |CoproductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg
+   :target: ../images/2014/12/coproductpattern.jpg
+.. |CoproductRanking| image:: ../images/2014/12/coproductranking.jpg
    :class: aligncenter size-thumbnail wp-image-3775
    :width: 150px
    :height: 125px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg
+   :target: ../images/2014/12/coproductranking.jpg

@@ -754,33 +754,33 @@ Acknowledgments
 
 As usual, big thanks go to Gershom Bazerman for reviewing this article. |
 
-.. |Bifunctor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/bifunctor.jpg
+.. |Bifunctor| image:: ../images/2015/01/bifunctor.jpg
    :class: aligncenter size-medium wp-image-4068
    :width: 300px
    :height: 286px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/bifunctor.jpg
-.. |Bimap| image:: https://bartoszmilewski.files.wordpress.com/2015/01/bimap.jpg
+   :target: ../images/2015/01/bifunctor.jpg
+.. |Bimap| image:: ../images/2015/01/bimap.jpg
    :class: wp-image-4070 size-medium
    :width: 300px
    :height: 292px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/bimap.jpg
-.. |First| image:: https://bartoszmilewski.files.wordpress.com/2015/01/first.jpg
+   :target: ../images/2015/01/bimap.jpg
+.. |First| image:: ../images/2015/01/first.jpg
    :class: wp-image-4071 size-thumbnail
    :width: 150px
    :height: 124px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/first.jpg
-.. |Second| image:: https://bartoszmilewski.files.wordpress.com/2015/01/second.jpg
+   :target: ../images/2015/01/first.jpg
+.. |Second| image:: ../images/2015/01/second.jpg
    :class: wp-image-4072 size-thumbnail
    :width: 150px
    :height: 138px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/second.jpg
-.. |Contravariant| image:: https://bartoszmilewski.files.wordpress.com/2015/01/contravariant.jpg
+   :target: ../images/2015/01/second.jpg
+.. |Contravariant| image:: ../images/2015/01/contravariant.jpg
    :class: aligncenter size-medium wp-image-4077
    :width: 300px
    :height: 295px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/contravariant.jpg
-.. |dimap| image:: https://bartoszmilewski.files.wordpress.com/2015/01/dimap.jpg
+   :target: ../images/2015/01/contravariant.jpg
+.. |dimap| image:: ../images/2015/01/dimap.jpg
    :class: size-medium wp-image-4078
    :width: 300px
    :height: 243px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/dimap.jpg
+   :target: ../images/2015/01/dimap.jpg

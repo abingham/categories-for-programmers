@@ -701,33 +701,33 @@ Further Reading
    monads <http://homepages.inf.ed.ac.uk/gdp/publications/Comp_Eff_Monads.pdf>`__,
    Gordon Plotkin and John Power
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/08/lawvere1.png
+.. |image0| image:: ../images/2017/08/lawvere1.png
    :class: alignnone size-large wp-image-9070
    :width: 510px
    :height: 246px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/lawvere1.png
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/08/lawvere1.png
+   :target: ../images/2017/08/lawvere1.png
+.. |image1| image:: ../images/2017/08/lawvere1.png
    :class: wp-image-9070 size-large
    :width: 510px
    :height: 246px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/lawvere1.png
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/08/liftpower.png
+   :target: ../images/2017/08/lawvere1.png
+.. |image2| image:: ../images/2017/08/liftpower.png
    :class: alignnone size-medium wp-image-9065
    :width: 300px
    :height: 288px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/liftpower.png
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/08/liftl.png
+   :target: ../images/2017/08/liftpower.png
+.. |image3| image:: ../images/2017/08/liftl.png
    :class: alignnone size-medium wp-image-9064
    :width: 300px
    :height: 234px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/liftl.png
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/08/equalize1.png
+   :target: ../images/2017/08/liftl.png
+.. |image4| image:: ../images/2017/08/equalize1.png
    :class: alignnone size-medium wp-image-9061
    :width: 300px
    :height: 222px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/equalize1.png
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/08/equalize2.png
+   :target: ../images/2017/08/equalize1.png
+.. |image5| image:: ../images/2017/08/equalize2.png
    :class: alignnone size-medium wp-image-9062
    :width: 300px
    :height: 228px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/08/equalize2.png
+   :target: ../images/2017/08/equalize2.png

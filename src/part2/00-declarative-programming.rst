@@ -207,28 +207,28 @@ Acknowledgments
 I’d like to thank Gershom Bazerman for checking my math and logic, and André van
 Meulebrouck, who has been volunteering his editing help.
 
-.. |Asteroids| image:: https://bartoszmilewski.files.wordpress.com/2015/04/asteroids.png
+.. |Asteroids| image:: ../images/2015/04/asteroids.png
    :class: alignnone size-medium wp-image-4432
    :width: 300px
    :height: 225px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/asteroids.png
-.. |Snell| image:: https://bartoszmilewski.files.wordpress.com/2015/04/snell.jpg
+   :target: ../images/2015/04/asteroids.png
+.. |Snell| image:: ../images/2015/04/snell.jpg
    :class: alignnone size-medium wp-image-4437
    :width: 224px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/snell.jpg
-.. |Mortar| image:: https://bartoszmilewski.files.wordpress.com/2015/04/mortar.jpg
+   :target: ../images/2015/04/snell.jpg
+.. |Mortar| image:: ../images/2015/04/mortar.jpg
    :class: alignnone size-medium wp-image-4438
    :width: 300px
    :height: 158px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/mortar.jpg
-.. |Feynman| image:: https://bartoszmilewski.files.wordpress.com/2015/04/feynman.jpg
+   :target: ../images/2015/04/mortar.jpg
+.. |Feynman| image:: ../images/2015/04/feynman.jpg
    :class: alignnone size-medium wp-image-4439
    :width: 300px
    :height: 225px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/feynman.jpg
-.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
+   :target: ../images/2015/04/feynman.jpg
+.. |ProductRanking| image:: ../images/2014/12/productranking.jpg
    :class: alignnone size-medium wp-image-3772
    :width: 300px
    :height: 244px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
+   :target: ../images/2014/12/productranking.jpg

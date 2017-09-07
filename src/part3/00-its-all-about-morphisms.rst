@@ -237,16 +237,16 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts.
 
-.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
+.. |ProductRanking| image:: ../images/2014/12/productranking.jpg
    :class: alignnone wp-image-3772
    :width: 171px
    :height: 139px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
-.. |3\_Naturality| image:: https://bartoszmilewski.files.wordpress.com/2015/04/3_naturality.jpg
+   :target: ../images/2014/12/productranking.jpg
+.. |3\_Naturality| image:: ../images/2015/04/3_naturality.jpg
    :class: alignnone wp-image-4349
    :width: 216px
    :height: 179px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/3_naturality.jpg
-.. |Sheets| image:: https://bartoszmilewski.files.wordpress.com/2015/11/sheets.png
+   :target: ../images/2015/04/3_naturality.jpg
+.. |Sheets| image:: ../images/2015/11/sheets.png
    :class: alignnone size-full wp-image-5221
-   :target: https://bartoszmilewski.files.wordpress.com/2015/11/sheets.png
+   :target: ../images/2015/11/sheets.png

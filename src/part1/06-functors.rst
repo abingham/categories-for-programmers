@@ -847,26 +847,26 @@ Acknowledgments
 
 Gershom Bazerman is kind enough to keep reviewing these posts. I’m
 grateful for his patience and insight.
-.. |Functor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg
+.. |Functor| image:: ../images/2015/01/functor.jpg
    :class: aligncenter wp-image-3944 size-medium
    :width: 300px
    :height: 263px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg
-.. |FunctorCompos| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorcompos.jpg
+   :target: ../images/2015/01/functor.jpg
+.. |FunctorCompos| image:: ../images/2015/01/functorcompos.jpg
    :class: aligncenter size-medium wp-image-3947
    :width: 276px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/functorcompos.jpg
-.. |FunctorId| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorid.jpg
+   :target: ../images/2015/01/functorcompos.jpg
+.. |FunctorId| image:: ../images/2015/01/functorid.jpg
    :class: aligncenter size-medium wp-image-3949
    :width: 225px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/functorid.jpg
-.. |FunctorMaybe| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functormaybe.jpg
+   :target: ../images/2015/01/functorid.jpg
+.. |FunctorMaybe| image:: ../images/2015/01/functormaybe.jpg
    :class: aligncenter size-medium wp-image-3950
    :width: 300px
    :height: 219px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/01/functormaybe.jpg
+   :target: ../images/2015/01/functormaybe.jpg
 .. |image4| image:: https://0.gravatar.com/avatar/65f16e220ad21f38035c67ba6ae67047?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
    :class: avatar avatar-48
    :width: 48px

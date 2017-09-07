@@ -97,7 +97,7 @@ heating water, it will eventually start boiling. We are now in the
 position of a frog that must decide if it should continue swimming in
 increasingly hot water, or start looking for some alternatives.
 
-|IMG\_1299|
+|IMG_1299|
 
 One of the forces that are driving the big change is the multicore
 revolution. The prevailing programming paradigm, object oriented
@@ -143,8 +143,8 @@ And, frankly, they should, because we’ve done all this based on very
 flimsy theoretical foundations. We have to fix those foundations if we
 want to move forward.
 
-.. |IMG\_1299| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1299.jpg
+.. |IMG_1299| image:: images/2014/10/img_1299.jpg
    :class: aligncenter wp-image-3468 size-medium
    :width: 300px
    :height: 213px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/10/img_1299.jpg
+   :target: images/2014/10/img_1299.jpg

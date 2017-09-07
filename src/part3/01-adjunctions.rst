@@ -675,48 +675,48 @@ I’d like to thank Edward Kmett and Gershom Bazerman for checking my math and
 logic, and André van Meulebrouck, who has been volunteering his editing help
 throughout this series of posts.
 
-.. |Adj - 1| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-1.jpg
+.. |Adj - 1| image:: ../images/2016/04/adj-1.jpg
    :class: alignnone size-medium wp-image-5487
    :width: 300px
    :height: 160px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-1.jpg
-.. |Adj-Unit| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-unit.jpg
+   :target: ../images/2016/04/adj-1.jpg
+.. |Adj-Unit| image:: ../images/2016/04/adj-unit.jpg
    :class: alignnone size-medium wp-image-5489
    :width: 300px
    :height: 183px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-unit.jpg
-.. |Adj-Counit| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-counit.jpg
+   :target: ../images/2016/04/adj-unit.jpg
+.. |Adj-Counit| image:: ../images/2016/04/adj-counit.jpg
    :class: alignnone size-medium wp-image-5490
    :width: 300px
    :height: 181px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-counit.jpg
-.. |triangles| image:: https://bartoszmilewski.files.wordpress.com/2017/02/triangles.png
+   :target: ../images/2016/04/adj-counit.jpg
+.. |triangles| image:: ../images/2017/02/triangles.png
    :class: alignnone wp-image-8382
    :width: 209px
    :height: 151px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/02/triangles.png
-.. |triangles-2| image:: https://bartoszmilewski.files.wordpress.com/2017/02/triangles-2.png
+   :target: ../images/2017/02/triangles.png
+.. |triangles-2| image:: ../images/2017/02/triangles-2.png
    :class: alignnone wp-image-8381
    :width: 211px
    :height: 138px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/02/triangles-2.png
-.. |Adj-HomSets| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-homsets.jpg
+   :target: ../images/2017/02/triangles-2.png
+.. |Adj-HomSets| image:: ../images/2016/04/adj-homsets.jpg
    :class: alignnone size-medium wp-image-5491
    :width: 300px
    :height: 206px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-homsets.jpg
-.. |Adj-ProductCat| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-productcat.jpg
+   :target: ../images/2016/04/adj-homsets.jpg
+.. |Adj-ProductCat| image:: ../images/2016/04/adj-productcat.jpg
    :class: alignnone size-medium wp-image-5492
    :width: 300px
    :height: 223px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-productcat.jpg
-.. |Adj-Product| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-product.jpg
+   :target: ../images/2016/04/adj-productcat.jpg
+.. |Adj-Product| image:: ../images/2016/04/adj-product.jpg
    :class: alignnone size-medium wp-image-5493
    :width: 300px
    :height: 194px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-product.jpg
-.. |Adj-Expo| image:: https://bartoszmilewski.files.wordpress.com/2016/04/adj-expo.jpg
+   :target: ../images/2016/04/adj-product.jpg
+.. |Adj-Expo| image:: ../images/2016/04/adj-expo.jpg
    :class: alignnone size-medium wp-image-5494
    :width: 300px
    :height: 180px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/04/adj-expo.jpg
+   :target: ../images/2016/04/adj-expo.jpg

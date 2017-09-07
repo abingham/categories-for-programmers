@@ -749,33 +749,33 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts. | `Follow @BartoszMilewski <https://twitter.com/BartoszMilewski>`__
 
-.. |Hom-set in Set is just a set| image:: https://bartoszmilewski.files.wordpress.com/2015/03/set-hom-set.jpg
+.. |Hom-set in Set is just a set| image:: ../images/2015/03/set-hom-set.jpg
    :class: size-medium wp-image-4241
    :width: 268px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/set-hom-set.jpg
-.. |Hom-set in category C is an external set| image:: https://bartoszmilewski.files.wordpress.com/2015/03/hom-set.jpg
+   :target: ../images/2015/03/set-hom-set.jpg
+.. |Hom-set in category C is an external set| image:: ../images/2015/03/hom-set.jpg
    :class: size-medium wp-image-4242
    :width: 255px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/hom-set.jpg
-.. |In Set we can pick a function f from a set of functions z and we can pick an argument x from the set (type) a. We get an element f x in the set (type) b.| image:: https://bartoszmilewski.files.wordpress.com/2015/03/functionset.jpg
+   :target: ../images/2015/03/hom-set.jpg
+.. |In Set we can pick a function f from a set of functions z and we can pick an argument x from the set (type) a. We get an element f x in the set (type) b.| image:: ../images/2015/03/functionset.jpg
    :class: size-medium wp-image-4243
    :width: 300px
    :height: 263px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/functionset.jpg
-.. |A pattern of objects and morphisms that is the starting point of the universal construction| image:: https://bartoszmilewski.files.wordpress.com/2015/03/functionpattern.jpg
+   :target: ../images/2015/03/functionset.jpg
+.. |A pattern of objects and morphisms that is the starting point of the universal construction| image:: ../images/2015/03/functionpattern.jpg
    :class: size-medium wp-image-4244
    :width: 300px
    :height: 173px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/functionpattern.jpg
-.. |Establishing a ranking between candidates for the function object| image:: https://bartoszmilewski.files.wordpress.com/2015/03/functionranking.jpg
+   :target: ../images/2015/03/functionpattern.jpg
+.. |Establishing a ranking between candidates for the function object| image:: ../images/2015/03/functionranking.jpg
    :class: size-medium wp-image-4245
    :width: 300px
    :height: 241px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/functionranking.jpg
-.. |The definition of the universal function object| image:: https://bartoszmilewski.files.wordpress.com/2015/03/universalfunctionobject.jpg
+   :target: ../images/2015/03/functionranking.jpg
+.. |The definition of the universal function object| image:: ../images/2015/03/universalfunctionobject.jpg
    :class: size-medium wp-image-4246
    :width: 300px
    :height: 231px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/03/universalfunctionobject.jpg
+   :target: ../images/2015/03/universalfunctionobject.jpg

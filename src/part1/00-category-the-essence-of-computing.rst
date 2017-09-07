@@ -306,8 +306,8 @@ Challenges
    morphisms?
 #. When is a directed graph a category?
 
-.. |IMG_1330| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg
+.. |IMG_1330| image:: ../images/2014/10/img_1330.jpg
    :class: wp-image-3483 size-large
    :width: 510px
    :height: 218px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg
+   :target: ../images/2014/10/img_1330.jpg

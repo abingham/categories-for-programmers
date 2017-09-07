@@ -368,13 +368,13 @@ Challenges
    the morphisms and their rules of composition.
 #. Represent addition modulo 3 as a monoid category.
 
-.. |Monoid| image:: https://bartoszmilewski.files.wordpress.com/2014/12/monoid.jpg
+.. |Monoid| image:: ../images/2014/12/monoid.jpg
    :class: aligncenter wp-image-3683 size-medium
    :width: 236px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/monoid.jpg
-.. |Monoid hom-set seen as morphisms and as points in a set| image:: https://bartoszmilewski.files.wordpress.com/2014/12/monoidhomset.jpg
+   :target: ../images/2014/12/monoid.jpg
+.. |Monoid hom-set seen as morphisms and as points in a set| image:: ../images/2014/12/monoidhomset.jpg
    :class: wp-image-3681 size-medium
    :width: 300px
    :height: 197px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/monoidhomset.jpg
+   :target: ../images/2014/12/monoidhomset.jpg

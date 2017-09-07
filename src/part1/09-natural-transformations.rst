@@ -821,68 +821,68 @@ Acknowledgments
 I’d like to thank Gershom Bazerman for checking my math and logic, and André van
 Meulebrouck, who has been volunteering his editing help.
 
-.. |1_Functors| image:: https://bartoszmilewski.files.wordpress.com/2015/04/1_functors.jpg
+.. |1_Functors| image:: ../images/2015/04/1_functors.jpg
    :class: alignnone size-large wp-image-4346
    :width: 510px
    :height: 502px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/1_functors.jpg
-.. |2_NatComp| image:: https://bartoszmilewski.files.wordpress.com/2015/04/2_natcomp.jpg
+   :target: ../images/2015/04/1_functors.jpg
+.. |2_NatComp| image:: ../images/2015/04/2_natcomp.jpg
    :class: alignnone wp-image-4348 size-medium
    :width: 300px
    :height: 255px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/2_natcomp.jpg
-.. |3_Naturality| image:: https://bartoszmilewski.files.wordpress.com/2015/04/3_naturality.jpg
+   :target: ../images/2015/04/2_natcomp.jpg
+.. |3_Naturality| image:: ../images/2015/04/3_naturality.jpg
    :class: alignnone wp-image-4349 size-medium
    :width: 300px
    :height: 248px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/3_naturality.jpg
-.. |4_Transport| image:: https://bartoszmilewski.files.wordpress.com/2015/04/4_transport.jpg
+   :target: ../images/2015/04/3_naturality.jpg
+.. |4_Transport| image:: ../images/2015/04/4_transport.jpg
    :class: alignnone wp-image-4350 size-medium
    :width: 300px
    :height: 211px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/4_transport.jpg
-.. |Naturality| image:: https://bartoszmilewski.files.wordpress.com/2015/04/naturality.jpg
+   :target: ../images/2015/04/4_transport.jpg
+.. |Naturality| image:: ../images/2015/04/naturality.jpg
    :class: alignnone size-medium wp-image-4374
    :width: 300px
    :height: 159px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/naturality.jpg
-.. |5_Vertical| image:: https://bartoszmilewski.files.wordpress.com/2015/04/5_vertical.jpg
+   :target: ../images/2015/04/naturality.jpg
+.. |5_Vertical| image:: ../images/2015/04/5_vertical.jpg
    :class: alignnone wp-image-4351 size-medium
    :width: 300px
    :height: 203px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/5_vertical.jpg
-.. |6_VerticalNaturality| image:: https://bartoszmilewski.files.wordpress.com/2015/04/6_verticalnaturality.jpg
+   :target: ../images/2015/04/5_vertical.jpg
+.. |6_VerticalNaturality| image:: ../images/2015/04/6_verticalnaturality.jpg
    :class: alignnone wp-image-4352 size-medium
    :width: 300px
    :height: 291px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/6_verticalnaturality.jpg
-.. |6a_Vertical| image:: https://bartoszmilewski.files.wordpress.com/2015/04/6a_vertical.jpg
+   :target: ../images/2015/04/6_verticalnaturality.jpg
+.. |6a_Vertical| image:: ../images/2015/04/6a_vertical.jpg
    :class: alignnone wp-image-4353
    :width: 220px
    :height: 145px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/6a_vertical.jpg
-.. |7_CatHomSet| image:: https://bartoszmilewski.files.wordpress.com/2015/04/7_cathomset.jpg
+   :target: ../images/2015/04/6a_vertical.jpg
+.. |7_CatHomSet| image:: ../images/2015/04/7_cathomset.jpg
    :class: alignnone wp-image-4354
    :width: 215px
    :height: 211px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/7_cathomset.jpg
-.. |8_Cat-2-Cat| image:: https://bartoszmilewski.files.wordpress.com/2015/04/8_cat-2-cat.jpg
+   :target: ../images/2015/04/7_cathomset.jpg
+.. |8_Cat-2-Cat| image:: ../images/2015/04/8_cat-2-cat.jpg
    :class: alignnone wp-image-4355
    :width: 216px
    :height: 172px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/8_cat-2-cat.jpg
-.. |10_Horizontal| image:: https://bartoszmilewski.files.wordpress.com/2015/04/10_horizontal.jpg
+   :target: ../images/2015/04/8_cat-2-cat.jpg
+.. |10_Horizontal| image:: ../images/2015/04/10_horizontal.jpg
    :class: alignnone wp-image-4357 size-medium
    :width: 300px
    :height: 166px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/10_horizontal.jpg
-.. |9_Horizontal| image:: https://bartoszmilewski.files.wordpress.com/2015/04/9_horizontal.jpg
+   :target: ../images/2015/04/10_horizontal.jpg
+.. |9_Horizontal| image:: ../images/2015/04/9_horizontal.jpg
    :class: alignnone wp-image-4356
    :width: 369px
    :height: 268px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/9_horizontal.jpg
-.. |Sideways| image:: https://bartoszmilewski.files.wordpress.com/2015/04/sideways.jpg
+   :target: ../images/2015/04/9_horizontal.jpg
+.. |Sideways| image:: ../images/2015/04/sideways.jpg
    :class: alignnone size-medium wp-image-4375
    :width: 300px
    :height: 87px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/sideways.jpg
+   :target: ../images/2015/04/sideways.jpg

@@ -711,91 +711,91 @@ Acknowledgments
 I’d like to thank Gershom Bazerman for checking my math and logic, and André van
 Meulebrouck, who has been volunteering his editing help.
 
-.. |ProductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
+.. |ProductPattern| image:: ../images/2014/12/productpattern.jpg
    :class: alignnone wp-image-3767 size-thumbnail
    :width: 150px
    :height: 99px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
-.. |Two| image:: https://bartoszmilewski.files.wordpress.com/2015/04/two.jpg
+   :target: ../images/2014/12/productpattern.jpg
+.. |Two| image:: ../images/2015/04/two.jpg
    :class: alignnone wp-image-4482 size-medium
    :width: 300px
    :height: 220px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/two.jpg
-.. |TwoDelta| image:: https://bartoszmilewski.files.wordpress.com/2015/04/twodelta.jpg
+   :target: ../images/2015/04/two.jpg
+.. |TwoDelta| image:: ../images/2015/04/twodelta.jpg
    :class: alignnone size-medium wp-image-4483
    :width: 300px
    :height: 212px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/twodelta.jpg
-.. |ProductCone| image:: https://bartoszmilewski.files.wordpress.com/2015/04/productcone.jpg
+   :target: ../images/2015/04/twodelta.jpg
+.. |ProductCone| image:: ../images/2015/04/productcone.jpg
    :class: alignnone size-medium wp-image-4498
    :width: 300px
    :height: 203px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/productcone.jpg
-.. |Cone| image:: https://bartoszmilewski.files.wordpress.com/2015/04/cone.jpg
+   :target: ../images/2015/04/productcone.jpg
+.. |Cone| image:: ../images/2015/04/cone.jpg
    :class: alignnone size-medium wp-image-4485
    :width: 300px
    :height: 216px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/cone.jpg
-.. |ConeNaturality| image:: https://bartoszmilewski.files.wordpress.com/2015/04/conenaturality.jpg
+   :target: ../images/2015/04/cone.jpg
+.. |ConeNaturality| image:: ../images/2015/04/conenaturality.jpg
    :class: alignnone size-medium wp-image-4486
    :width: 300px
    :height: 232px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/conenaturality.jpg
-.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
+   :target: ../images/2015/04/conenaturality.jpg
+.. |ProductRanking| image:: ../images/2014/12/productranking.jpg
    :class: alignnone wp-image-3772
    :width: 205px
    :height: 167px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
-.. |Cone Commutativity| image:: https://bartoszmilewski.files.wordpress.com/2015/04/conecommutativity.jpg
+   :target: ../images/2014/12/productranking.jpg
+.. |Cone Commutativity| image:: ../images/2015/04/conecommutativity.jpg
    :class: wp-image-4487
    :width: 239px
    :height: 214px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/conecommutativity.jpg
-.. |HomSetMapping| image:: https://bartoszmilewski.files.wordpress.com/2015/04/homsetmapping.jpg
+   :target: ../images/2015/04/conecommutativity.jpg
+.. |HomSetMapping| image:: ../images/2015/04/homsetmapping.jpg
    :class: alignnone wp-image-4488
    :width: 249px
    :height: 200px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/homsetmapping.jpg
-.. |NatMapping| image:: https://bartoszmilewski.files.wordpress.com/2015/04/natmapping.jpg
+   :target: ../images/2015/04/homsetmapping.jpg
+.. |NatMapping| image:: ../images/2015/04/natmapping.jpg
    :class: alignnone size-medium wp-image-4489
    :width: 300px
    :height: 194px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/natmapping.jpg
-.. |EqualizerCone| image:: https://bartoszmilewski.files.wordpress.com/2015/04/equalizercone.jpg
+   :target: ../images/2015/04/natmapping.jpg
+.. |EqualizerCone| image:: ../images/2015/04/equalizercone.jpg
    :class: alignnone wp-image-4490
    :width: 218px
    :height: 201px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/equalizercone.jpg
-.. |EquilizerLimit| image:: https://bartoszmilewski.files.wordpress.com/2015/04/equilizerlimit.jpg
+   :target: ../images/2015/04/equalizercone.jpg
+.. |EquilizerLimit| image:: ../images/2015/04/equilizerlimit.jpg
    :class: alignnone wp-image-4491
    :width: 211px
    :height: 223px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/equilizerlimit.jpg
-.. |PullbackCone| image:: https://bartoszmilewski.files.wordpress.com/2015/04/pullbackcone.jpg
+   :target: ../images/2015/04/equilizerlimit.jpg
+.. |PullbackCone| image:: ../images/2015/04/pullbackcone.jpg
    :class: alignnone wp-image-4492
    :width: 238px
    :height: 172px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/pullbackcone.jpg
-.. |PullbackLimit| image:: https://bartoszmilewski.files.wordpress.com/2015/04/pullbacklimit.jpg
+   :target: ../images/2015/04/pullbackcone.jpg
+.. |PullbackLimit| image:: ../images/2015/04/pullbacklimit.jpg
    :class: alignnone wp-image-4493
    :width: 204px
    :height: 227px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/pullbacklimit.jpg
-.. |Classes| image:: https://bartoszmilewski.files.wordpress.com/2015/04/classes.jpg
+   :target: ../images/2015/04/pullbacklimit.jpg
+.. |Classes| image:: ../images/2015/04/classes.jpg
    :class: alignnone wp-image-4500
    :width: 155px
    :height: 222px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/classes.jpg
-.. |Colimit| image:: https://bartoszmilewski.files.wordpress.com/2015/04/colimit.jpg
+   :target: ../images/2015/04/classes.jpg
+.. |Colimit| image:: ../images/2015/04/colimit.jpg
    :class: wp-image-4494 size-thumbnail
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/colimit.jpg
-.. |CoproductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg
+   :target: ../images/2015/04/colimit.jpg
+.. |CoproductRanking| image:: ../images/2014/12/coproductranking.jpg
    :class: alignnone wp-image-3775 size-thumbnail
    :width: 150px
    :height: 125px
-   :target: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg
-.. |Continuity| image:: https://bartoszmilewski.files.wordpress.com/2015/04/continuity.jpg
+   :target: ../images/2014/12/coproductranking.jpg
+.. |Continuity| image:: ../images/2015/04/continuity.jpg
    :class: alignnone wp-image-4495 size-medium
    :width: 300px
    :height: 86px
-   :target: https://bartoszmilewski.files.wordpress.com/2015/04/continuity.jpg
+   :target: ../images/2015/04/continuity.jpg

@@ -640,63 +640,63 @@ though.
 
 We’ll talk about the other endofunctor ``L ∘ R`` in the next section.
 
-.. |exptree| image:: https://bartoszmilewski.files.wordpress.com/2016/12/exptree.png
+.. |exptree| image:: ../images/2016/12/exptree.png
    :class: alignnone wp-image-8000
    :width: 175px
    :height: 180px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/exptree.png
-.. |assoc1| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assoc1.png
+   :target: ../images/2016/12/exptree.png
+.. |assoc1| image:: ../images/2016/12/assoc1.png
    :class: alignnone wp-image-7996
    :width: 248px
    :height: 151px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assoc1.png
-.. |assoc2| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assoc2.png
+   :target: ../images/2016/12/assoc1.png
+.. |assoc2| image:: ../images/2016/12/assoc2.png
    :class: alignnone wp-image-7997
    :width: 167px
    :height: 149px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assoc2.png
-.. |assoc| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assoc.png
+   :target: ../images/2016/12/assoc2.png
+.. |assoc| image:: ../images/2016/12/assoc.png
    :class: alignnone wp-image-7995
    :width: 208px
    :height: 165px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assoc.png
-.. |unitlawcomp-1| image:: https://bartoszmilewski.files.wordpress.com/2016/12/unitlawcomp-1.png
+   :target: ../images/2016/12/assoc.png
+.. |unitlawcomp-1| image:: ../images/2016/12/unitlawcomp-1.png
    :class: alignnone size-medium wp-image-8002
    :width: 300px
    :height: 124px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/unitlawcomp-1.png
-.. |assocmon| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assocmon.png
+   :target: ../images/2016/12/unitlawcomp-1.png
+.. |assocmon| image:: ../images/2016/12/assocmon.png
    :class: alignnone size-medium wp-image-7998
    :width: 300px
    :height: 149px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assocmon.png
-.. |monoid-1| image:: https://bartoszmilewski.files.wordpress.com/2016/12/monoid-1.jpg
+   :target: ../images/2016/12/assocmon.png
+.. |monoid-1| image:: ../images/2016/12/monoid-1.jpg
    :class: alignnone size-medium wp-image-7982
    :width: 300px
    :height: 268px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/monoid-1.jpg
-.. |assoctensor| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assoctensor.jpg
+   :target: ../images/2016/12/monoid-1.jpg
+.. |assoctensor| image:: ../images/2016/12/assoctensor.jpg
    :class: alignnone size-medium wp-image-8065
    :width: 300px
    :height: 145px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assoctensor.jpg
-.. |unitmon| image:: https://bartoszmilewski.files.wordpress.com/2016/12/unitmon.jpg
+   :target: ../images/2016/12/assoctensor.jpg
+.. |unitmon| image:: ../images/2016/12/unitmon.jpg
    :class: alignnone size-medium wp-image-8038
    :width: 300px
    :height: 121px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/unitmon.jpg
-.. |horizcomp| image:: https://bartoszmilewski.files.wordpress.com/2016/12/horizcomp.png
+   :target: ../images/2016/12/unitmon.jpg
+.. |horizcomp| image:: ../images/2016/12/horizcomp.png
    :class: alignnone wp-image-8001
    :width: 255px
    :height: 124px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/horizcomp.png
-.. |assoc| image:: https://bartoszmilewski.files.wordpress.com/2016/12/assoc.png
+   :target: ../images/2016/12/horizcomp.png
+.. |assoc| image:: ../images/2016/12/assoc.png
    :class: alignnone wp-image-7995
    :width: 183px
    :height: 145px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/assoc.png
-.. |unitlawcomp| image:: https://bartoszmilewski.files.wordpress.com/2016/12/unitlawcomp.png
+   :target: ../images/2016/12/assoc.png
+.. |unitlawcomp| image:: ../images/2016/12/unitlawcomp.png
    :class: wp-image-8003 alignnone
    :width: 275px
    :height: 121px
-   :target: https://bartoszmilewski.files.wordpress.com/2016/12/unitlawcomp.png
+   :target: ../images/2016/12/unitlawcomp.png

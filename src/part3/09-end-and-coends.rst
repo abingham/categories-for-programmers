@@ -609,36 +609,36 @@ morphisms is called a double category.
 Profunctors play an important role in the Haskell lens library and in
 the arrow library.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg
+.. |image0| image:: ../images/2017/03/end.jpg
    :class: alignnone size-medium wp-image-8521
    :width: 266px
    :height: 300px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg
+   :target: ../images/2017/03/end.jpg
+.. |image1| image:: ../images/2017/03/end-1.jpg
    :class: alignnone wp-image-8518
    :width: 323px
    :height: 347px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg
+   :target: ../images/2017/03/end-1.jpg
+.. |image2| image:: ../images/2017/03/end-2.jpg
    :class: alignnone wp-image-8519
    :width: 259px
    :height: 211px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg
+   :target: ../images/2017/03/end-2.jpg
+.. |image3| image:: ../images/2017/03/end-21.jpg
    :class: alignnone wp-image-8532
    :width: 263px
    :height: 231px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg
+   :target: ../images/2017/03/end-21.jpg
+.. |image4| image:: ../images/2017/03/end1.jpg
    :class: alignnone size-medium wp-image-8534
    :width: 300px
    :height: 264px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg
+   :target: ../images/2017/03/end1.jpg
+.. |image5| image:: ../images/2017/03/end-31.jpg
    :class: wp-image-8533
    :width: 175px
    :height: 211px
-   :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg
+   :target: ../images/2017/03/end-31.jpg
 .. |image6| image:: https://2.gravatar.com/avatar/b4a7426cee3700d21354b77b4a29fddd?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
    :class: avatar avatar-48
    :width: 48px
