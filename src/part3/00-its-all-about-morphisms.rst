@@ -1,5 +1,5 @@
 ==========================
- It’s All About Morphisms
+ It’s All About Morphisms
 ==========================
 
 If I haven’t convinced you yet that category theory is all about

@@ -282,7 +282,7 @@ right Kan extension is the right adjoint of the postcomposition with
 Just like the right Kan extension of the identity functor could be used
 to calculate the left adjoint of ``K``, the left Kan extension of the
 identity functor turns out to be the right adjoint of ``K`` (with ``η``
-being the unit of  the adjunction):
+being the unit of the adjunction):
 
 .. code-block:: haskell
 
