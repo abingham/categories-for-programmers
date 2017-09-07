@@ -8,7 +8,10 @@ on e-readers.
 
 ## Just want to read the book?
 
-The most recent build of the book is in the `latest` directory.
+The most recent build of the book is in the `latest` directory. You
+can
+[download it with this link](https://github.com/abingham/categories-for-programmers/raw/master/latest/CategoriesforProgrammers.epub).
+
 
 ## Building the EPUB
 
