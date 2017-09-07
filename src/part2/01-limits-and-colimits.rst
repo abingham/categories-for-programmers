@@ -299,7 +299,7 @@ between them. So without further ado, here’s the conclusion: A functor
 ``D`` from *I* to *C* has a limit ``Lim D`` if and only if there is a
 natural isomorphism between the two functors I have just defined:
 
-.. code-block:: haskell
+::
 
     C(c, Lim D) ≃ Nat(Δc, D)
 
@@ -638,7 +638,7 @@ A hom-functor is an example of a continuous functor. Recall that the
 hom-functor, ``C(a, b)``, is contravariant in the first variable and
 covariant in the second. In other words, it’s a functor:
 
-.. code-block:: haskell
+::
 
     Cop × C -> Set
 

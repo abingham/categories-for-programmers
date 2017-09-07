@@ -132,7 +132,7 @@ the way they compose with other morphisms (from abutting hom-sets). If
 there is a morphism ``h`` whose composition (either pre- or post-) with
 ``f`` is different than that with ``g``, for instance:
 
-.. code-block:: haskell
+::
 
     h ∘ f ≠ h ∘ g
 
@@ -141,14 +141,14 @@ But even if the difference is not directly observable, we might use
 functors to zoom in on the hom-set. A functor ``F`` may map the two
 morphisms to distinct morphisms:
 
-.. code-block:: haskell
+::
 
     F f ≠ F g
 
 in a richer category, where the abutting hom-sets provide more
 resolution, e.g.,
 
-.. code-block:: haskell
+::
 
     h' ∘ F f ≠ h' ∘ F g
 
@@ -184,7 +184,7 @@ other maps objects to sets of natural transformations between hom-sets.
 The definition of a limit is also a natural isomorphism between hom-sets
 (the second one, again, in the functor category):
 
-.. code-block:: haskell
+::
 
     C(c, Lim D) ≃ Nat(Δc, D)
 

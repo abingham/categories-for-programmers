@@ -45,13 +45,13 @@ functor ``I``. There are two possible compositions, ``R ∘ L`` and
 But here’s the tricky part: What does it mean for two functors to be
 *equal*? What do we mean by this equality:
 
-.. code-block:: haskell
+::
 
     R ∘ L = ID
 
 or this one:
 
-.. code-block:: haskell
+::
 
     L ∘ R = IC
 
@@ -90,7 +90,7 @@ functor. Instead it stipulates the existence of a *one way* natural
 transformation from ``ID`` to ``R∘L``, and another from ``L∘R`` to
 ``IC``. Here are the signatures of these two natural transformations:
 
-.. code-block:: haskell
+::
 
     η :: ID -> R ∘ L
     ε :: L ∘ R -> IC
@@ -100,7 +100,7 @@ transformation from ``ID`` to ``R∘L``, and another from ``L∘R`` to
 Notice the asymmetry between these two definitions. In general, we don’t
 have the two remaining mappings:
 
-.. code-block:: haskell
+::
 
     R ∘ L -> ID -- not necessarily
     IC -> L ∘ R -- not necessarily
@@ -112,7 +112,7 @@ your diagrams one particular way.)
 
 The compact notation for the adjunction is:
 
-.. code-block:: haskell
+::
 
     L ⊣ R
 
@@ -126,7 +126,7 @@ family of morphisms. Given an object ``d`` in *D*, the component of η is
 a morphism between ``I d``, which is equal to ``d``, and ``(R ∘ L) d``;
 which, in the picture, is called ``d'``:
 
-.. code-block:: haskell
+::
 
     ηd :: d -> (R ∘ L) d
 
@@ -141,7 +141,7 @@ our target.
 
 By the same token, the component of of the counit ε can be described as:
 
-.. code-block:: haskell
+::
 
     εc' :: (L ∘ R) c -> c
 
@@ -157,11 +157,11 @@ identity functor on *D*; and counit lets us *eliminate* the composition
 “obvious” consistency conditions, which make sure that introduction
 followed by elimination doesn’t change anything:
 
-.. code-block:: haskell
+::
 
     L = L ∘ ID -> L ∘ R ∘ L -> IC ∘ L  = L
 
-.. code-block:: haskell
+::
 
     R = ID ∘ R -> R ∘ L ∘ R -> R ∘ IC = R
 
@@ -175,7 +175,7 @@ diagrams commute:
   transformations, and their composition is the horizontal composition
   of natural transformations. In components, these identities become:
 
-.. code-block:: haskell
+::
 
     ε L d ∘ L η d = id L d
     R ε c ∘ η R c = id R c
@@ -284,7 +284,7 @@ two objects in *D*, ``d`` and ``R c``. They, too, define a hom set:
 We say that ``L`` is left adjoint to ``R`` iff there is an isomorphism
 of hom sets:
 
-.. code-block:: haskell
+::
 
     C(L d, c) ≅ D(d, R c)
 
@@ -314,14 +314,14 @@ It’s easy to show that the two definitions of the adjunction are
 equivalent. For instance, let’s derive the unit transformation starting
 from the isomorphism of hom-sets:
 
-.. code-block:: haskell
+::
 
     C(L d, c) ≅ D(d, R c)
 
 Since this isomorphism works for any object ``c``, it must also work for
 ``c = L d``:
 
-.. code-block:: haskell
+::
 
     C(L d, L d) ≅ D(d, (R ∘ L) d)
 
@@ -330,7 +330,7 @@ identity. The natural transformation will map this morphism to an
 element of ``D(d, (R ∘ L) d)`` or, inserting the identity functor ``I``,
 a morphism in:
 
-.. code-block:: haskell
+::
 
     D(I d, (R ∘ L) d)
 
@@ -352,7 +352,7 @@ What we need for a component of ``φ``, is a morphism from ``d`` to
 ``R c``. That’s not a problem, since we can use a component of ``ηd`` to
 get from ``d`` to ``(R ∘ L) d``. We get:
 
-.. code-block:: haskell
+::
 
     φf = R f ∘ ηd
 
@@ -405,7 +405,7 @@ exists — it’s the image of the singleton set ``()`` under ``L``:
 Indeed, the adjunction tells us that the following two hom-sets are
 naturally isomorphic:
 
-.. code-block:: haskell
+::
 
     C(L (), c) ≅ Set((), R c)
 
@@ -414,7 +414,7 @@ singleton set ``()`` to ``R c``. We’ve seen earlier that each such
 function picks one element from the set ``R c``. The set of such
 functions is isomorphic to the set ``R c``. So we have:
 
-.. code-block:: haskell
+::
 
     C(L (), -) ≅ R
 
@@ -514,7 +514,7 @@ action on objects is:
 
 The left-hand side hom-set in our adjunction should thus be:
 
-.. code-block:: haskell
+::
 
     (C×C)(Δ c, <a, b>)
 
@@ -543,7 +543,7 @@ between hom-sets. The inverse of the ``factorizer`` should start from a
 morphism ``m`` — a morphism from some object ``c`` to the product object
 ``a×b``. In other words, ``m`` should be an element of:
 
-.. code-block:: haskell
+::
 
     C(c, a×b)
 
@@ -551,7 +551,7 @@ The inverse factorizer should map ``m`` to a morphism ``<p, q>`` in
 *C×C* that goes from ``<c, c>`` to ``<a, b>``; in other words, a
 morphism that’s an element of:
 
-.. code-block:: haskell
+::
 
     (C×C)(Δ c, <a, b>)
 
@@ -561,7 +561,7 @@ to the diagonal functor. That functor defines a product.
 In Haskell, we can always construct the inverse of the ``factorizer`` by
 composing ``m`` with, respectively, ``fst`` and ``snd``.
 
-.. code-block:: haskell
+::
 
     p = fst ∘ m
     q = snd ∘ m
@@ -574,7 +574,7 @@ the dedicated reader.
 To summarize what we have done: A categorical product may be defined
 globally as the *right adjoint* of the diagonal functor:
 
-.. code-block:: haskell
+::
 
     (C × C)(Δ c, <a, b>) ≅ C(c, a×b)
 
@@ -599,13 +599,13 @@ an adjunction. Again, the trick is to concentrate on the statement:
 
     For any other object ``z`` with a morphism
 
-    .. code-block:: haskell
+    ::
 
         g :: z × a -> b
 
     there is a unique morphism
 
-    .. code-block:: haskell
+    ::
 
         h :: z -> (a⇒b)
 
@@ -620,7 +620,7 @@ The right (endo-)functor ``R``, when acting on ``b`` produces the
 function object ``a⇒b`` (or ``ba``). Again, ``a`` is fixed. The
 adjunction between these two functors is often written as:
 
-.. code-block:: haskell
+::
 
     - × a ⊣ (-)a
 
@@ -632,13 +632,13 @@ redrawing the diagram that we used in the universal construction.
 Notice that the ``eval`` morphism is nothing else but the counit of this
 adjunction:
 
-.. code-block:: haskell
+::
 
     (a⇒b) × a -> b
 
 where:
 
-.. code-block:: haskell
+::
 
     (a⇒b) × a = (L ∘ R) b
 

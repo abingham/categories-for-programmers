@@ -32,7 +32,7 @@ as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
 way:
 
-.. code-block:: haskell
+::
 
     (f, g) ∘ (f', g') = (f ∘ f', g ∘ g')
 

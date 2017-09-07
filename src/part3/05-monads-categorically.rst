@@ -97,7 +97,7 @@ the endofunctor ``T``. Remember that a Kleisli arrow between ``a`` and
 arrows (I’ll write it as a circle with the subscript ``T``) can be
 implemented using μ:
 
-.. code-block:: haskell
+::
 
     g ∘T f = μc ∘ (T g) ∘ f
 
@@ -142,7 +142,7 @@ composition is in order. For instance, ``T3`` can be seen as a
 composition of ``T`` after ``T2``. We can apply to it the horizontal
 composition of two natural transformations:
 
-.. code-block:: haskell
+::
 
     IT ∘ μ
 
@@ -224,7 +224,7 @@ the cartesian product with categorical product. We could start with a
 category where products are globally defined, pick an object ``m``
 there, and define multiplication as a morphism:
 
-.. code-block:: haskell
+::
 
     μ :: m × m -> m
 
@@ -378,7 +378,7 @@ tensor product, again, up to isomorphism. Let’s put it all together:
 A monoidal category is a category *C* equipped with a bifunctor called
 the tensor product:
 
-.. code-block:: haskell
+::
 
     ⊗ :: C × C -> C
 
@@ -386,7 +386,7 @@ and a distinct object ``i`` called the unit object, together with three
 natural isomorphisms called, respectively, the associator and the left
 and right unitors:
 
-.. code-block:: haskell
+::
 
     αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c)
     λa :: i ⊗ a -> a
@@ -412,7 +412,7 @@ through the associator. Similarly for higher powers of ``m`` (that’s
 where we need the coherence conditions). To form a monoid we need to
 pick two morphisms:
 
-.. code-block:: haskell
+::
 
     μ :: m ⊗ m -> m
     η :: i -> m
@@ -457,14 +457,14 @@ pair of morphisms — here, natural transformations? The signature of the
 analog of ``bimap`` for the tensor product would look something like
 this:
 
-.. code-block:: haskell
+::
 
     bimap :: (a -> b) -> (c -> d) -> (a ⊗ c -> b ⊗ d)
 
 If you replace objects by endofunctors, arrows by natural
 transformations, and tensor products by composition, you get:
 
-.. code-block:: haskell
+::
 
     (F -> F') -> (G -> G') -> (F ∘ G -> F' ∘ G')
 
@@ -482,7 +482,7 @@ category with functor composition as tensor product.
 What’s a monoid in this category? It’s an object — that is an
 endofunctor ``T``; and two morphisms — that is natural transformations:
 
-.. code-block:: haskell
+::
 
     μ :: T ∘ T -> T
     η :: I -> T
@@ -511,7 +511,7 @@ to two endofunctors, ``R ∘ L`` and ``L ∘ R``. As per an adjunction,
 these endofunctors are related to identity functors through two natural
 transformations called unit and counit:
 
-.. code-block:: haskell
+::
 
     η :: ID -> R ∘ L
     ε :: L ∘ R -> IC
@@ -522,14 +522,14 @@ monad. All we need is to define the appropriate μ to go with the η.
 That’s a natural transformation between the square of our endofunctor
 and the endofunctor itself or, in terms of the adjoint functors:
 
-.. code-block:: haskell
+::
 
     R ∘ L ∘ R ∘ L -> R ∘ L
 
 And, indeed, we can use the counit to collapse the ``L ∘ R`` in the
 middle. The exact formula for μ is given by the horizontal composition:
 
-.. code-block:: haskell
+::
 
     μ = R ∘ ε ∘ L
 
@@ -541,14 +541,14 @@ because an adjunction usually involves two categories. However, the
 definitions of an exponential, or a function object, is an exception.
 Here are the two endofunctors that form this adjunction:
 
-.. code-block:: haskell
+::
 
     L z = z × s
     R b = s ⇒ b
 
 You may recognize their composition as the familiar state monad:
 
-.. code-block:: haskell
+::
 
     R (L z) = s ⇒ (z × s)
 
@@ -603,7 +603,7 @@ We can now define ``join`` for the state monad as a component of the
 natural transformation μ. For that we need a horizontal composition of
 three natural transformations:
 
-.. code-block:: haskell
+::
 
     μ = R ∘ ε ∘ L
 

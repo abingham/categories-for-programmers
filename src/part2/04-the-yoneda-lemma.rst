@@ -65,7 +65,7 @@ key observation: Every point in the set ``C(a, x)`` is also a morphism
 
 So the naturality square for ``α``:
 
-.. code-block:: haskell
+::
 
     αy ∘ C(a, f) = F f ∘ αx
 
@@ -79,13 +79,13 @@ You might recall from the previous section that the action of the
 hom-functor ``C(a,-)`` on a morphism ``f`` was defined as
 precomposition:
 
-.. code-block:: haskell
+::
 
     C(a, f) h = f ∘ h
 
 which leads to:
 
-.. code-block:: haskell
+::
 
     αy (f ∘ h) = (F f) (αx h)
 
@@ -118,7 +118,7 @@ from ``C(a, -)`` to ``F`` and elements of ``F a``.
 
 in other words,
 
-.. code-block:: haskell
+::
 
     Nat(C(a, -), F) ≅ F a
 
@@ -126,7 +126,7 @@ Or, if we use the notation ``[C, Set]`` for the functor category between
 *C* and **Set**, the set of natural transformation is just a hom-set in
 that category, and we can write:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(a, -), F) ≅ F a
 
@@ -257,7 +257,7 @@ emphasize parametric polymorphism of natural transformations.
 The Yoneda lemma tells us that these natural transformations are in
 one-to-one correspondence with the elements of ``F a``:
 
-.. code-block:: haskell
+::
 
     forall x . (a -> x) -> F x ≅ F a
 
@@ -307,7 +307,7 @@ that is often used in compiler construction: the continuation passing
 style or CPS. It’s the simplest application of the Yoneda lemma to the
 identity functor. Replacing ``F`` with identity produces:
 
-.. code-block:: haskell
+::
 
     forall r . (a -> r) -> r ≅ a
 
@@ -340,13 +340,13 @@ contravariant version of the Yoneda lemma establishes one-to-one
 correspondence between natural transformations from this functor to any
 other contravariant functor ``F`` and the elements of the set ``F a``:
 
-.. code-block:: haskell
+::
 
     Nat(C(-, a), F) ≅ F a
 
 Here’s the Haskell version of the co-Yoneda lemma:
 
-.. code-block:: haskell
+::
 
     forall x . (x -> a) -> F x ≅ F a
 

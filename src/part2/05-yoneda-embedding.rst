@@ -45,13 +45,13 @@ need a natural transformation between those two functors.
 
 And here’s the trick: we use the Yoneda lemma:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(a, -), F) ≅ F a
 
 and replace the generic ``F`` with the hom-functor ``C(b, -)``. We get:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(a, -), C(b, -)) ≅ C(b, a)
 
@@ -116,7 +116,7 @@ Colimits <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/>`__).
 The co-Yoneda embedding defines the embedding of a category *C* in the
 category of presheaves. Its action on morphisms is given by:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(-, a), C(-, b)) ≅ C(a, b)
 
@@ -130,7 +130,7 @@ In Haskell, the Yoneda embedding can be represented as the isomorphism
 between natural transformations amongst reader functors on the one hand,
 and functions (going in the opposite direction) on the other hand:
 
-.. code-block:: haskell
+::
 
     forall x. (a -> x) -> (b -> x) ≅ b -> a
 
@@ -200,7 +200,7 @@ to itself (reflexivity of the underlying relation).
 We can now apply the co-Yoneda embedding to a preorder category. In
 particular, we’re interested in its action on morphisms:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(-, a), C(-, b)) ≅ C(a, b)
 
@@ -230,7 +230,7 @@ means that ``x`` is less or equal to ``b``. So the existence of the
 natural transformation in question requires that, for every ``x``, if
 ``x <= a`` then ``x <= b``.
 
-.. code-block:: haskell
+::
 
     for all x, x ≤ a ⇒ x ≤ b
 
@@ -238,7 +238,7 @@ On the other hand, co-Yoneda tells us that the existence of this natural
 transformation is equivalent to ``C(a, b)`` being non-empty, or to
 ``a <= b``. Together, we get:
 
-.. code-block:: haskell
+::
 
     a ≤ b if and only if for all x, x ≤ a ⇒ x ≤ b
 
@@ -257,7 +257,7 @@ morphisms in the functor category ``[C, Set]``. The set of natural
 transformation between any two functors is a hom-set in that category.
 The Yoneda lemma is the isomorphism:
 
-.. code-block:: haskell
+::
 
     [C, Set](C(a, -), F) ≅ F a
 
@@ -287,13 +287,13 @@ function between two sets, ``F a`` and ``G b``. We can easily construct
 such a function from the component of ``Φ`` at ``a`` (which maps ``F a``
 to ``G a``) and the morphism ``f`` lifted by ``G``:
 
-.. code-block:: haskell
+::
 
     (G f) ∘ Φa
 
 Notice that, because of naturality of ``Φ``, this is the same as:
 
-.. code-block:: haskell
+::
 
     Φb ∘ (F f)
 

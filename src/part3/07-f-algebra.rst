@@ -9,7 +9,7 @@ more juice can we squeeze out of this simple concept?
 Let’s try. Take this definition of a monoid as a set ``m`` with a pair
 of functions:
 
-.. code-block:: haskell
+::
 
     μ :: m × m -> m
     η :: 1 -> m
@@ -24,28 +24,28 @@ laws. But let’s forget about that for a moment and just consider
 product of two sets of functions. We know that these sets may be
 represented as exponential objects:
 
-.. code-block:: haskell
+::
 
     μ ∈ m m×m
     η ∈ m1
 
 The cartesian product of these two sets is:
 
-.. code-block:: haskell
+::
 
     m m×m × m1
 
 Using some high-school algebra (which works in every cartesian closed
 category), we can rewrite it as:
 
-.. code-block:: haskell
+::
 
     m m×m + 1
 
 The plus sign stands for the coproduct in **Set**. We have just replaced
 a pair of functions with a single function — an element of the set:
 
-.. code-block:: haskell
+::
 
     m × m + 1 -> m
 
@@ -59,7 +59,7 @@ the inverse to every element. The latter is a function of the type
 operation, zero as the unit, and negation as the inverse. To define a
 group we would start with a triple of functions:
 
-.. code-block:: haskell
+::
 
     m × m -> m
     m -> m
@@ -67,7 +67,7 @@ group we would start with a triple of functions:
 
 As before, we can combine all these triples into one set of functions:
 
-.. code-block:: haskell
+::
 
     m × m + m + 1 -> m
 
@@ -294,7 +294,7 @@ we can then follow it with ``g`` to get to ``b``. Equivalently, we can
 use ``f`` to go from ``F a`` to ``a`` and then follow it with ``m``. We
 want the two paths to be equal:
 
-.. code-block:: haskell
+::
 
     g ∘ F m = m ∘ f
 
@@ -350,7 +350,7 @@ diagram we can prove that ``m ∘ j = idFi``. This shows that ``m`` is the
 inverse of ``j`` and therefore ``j`` is an isomorphism between ``F i``
 and ``i``:
 
-.. code-block:: haskell
+::
 
     F i ≅ i
 
@@ -555,7 +555,7 @@ A terminal colagebra is a fixed point of the functor, in the sense that
 the morphism ``u :: t -> F t`` is an isomorphism (Lambek’s theorem for
 coalgebras):
 
-.. code-block:: haskell
+::
 
     F t ≅ t
 

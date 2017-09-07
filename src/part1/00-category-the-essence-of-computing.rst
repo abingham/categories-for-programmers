@@ -93,13 +93,13 @@ straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
 
-.. code-block:: haskell
+::
 
     g ∘ f
 
 You can even use Unicode double colons and arrows:
 
-.. code-block:: haskell
+::
 
     f ∷ A → B
 
@@ -121,7 +121,7 @@ If you have three morphisms, f, g, and h, that can be composed (that is, their
 objects match end-to-end), you don’t need parentheses to compose them. In math
 notation this is expressed as:
 
-.. code-block:: haskell
+::
 
     h∘(g∘f) = (h∘g)∘f = h∘g∘f
 
@@ -148,13 +148,13 @@ at A, respectively, it gives back the same arrow. The unit arrow for
 object A is called id\ :sub:`A` (identity on A). In math notation, if f
 goes from A to B then
 
-.. code-block:: haskell
+::
 
     f∘idA = f
 
 and
 
-.. code-block:: haskell
+::
 
     idB∘f = f
 

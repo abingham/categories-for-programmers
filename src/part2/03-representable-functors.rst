@@ -86,7 +86,7 @@ separately. For the argument we should pick an arbitrary element of
 match end to end. It so happens that the target of ``h`` matches the
 source of ``f``, so their composition:
 
-.. code-block:: haskell
+::
 
     f ∘ h :: a -> y
 
@@ -105,7 +105,7 @@ we’ll write this lifted function as:
 
 and its action on a morphism ``h`` as:
 
-.. code-block:: haskell
+::
 
     C(a, f) h = f ∘ h
 
@@ -165,7 +165,7 @@ mapping of objects to hom-sets is functorial. Since contravariance is
 equivalent to a mapping from the opposite category, we can state this
 fact succintly as:
 
-.. code-block:: haskell
+::
 
     C(-, =) :: Cop × C -> Set
 
@@ -219,7 +219,7 @@ in **Set**:
 The naturality condition for this transformation tells us that, for any
 morphism ``f`` from ``x`` to ``y``, the following diagram commutes:
 
-.. code-block:: haskell
+::
 
     F f ∘ αx = αy ∘ C(a, f)
 
@@ -256,7 +256,7 @@ The other transformation, ``beta``, goes the opposite way:
 
 It must respect naturality conditions, and it must be the inverse of α:
 
-.. code-block:: haskell
+::
 
     α ∘ β = id = β ∘ α
 

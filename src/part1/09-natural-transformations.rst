@@ -74,7 +74,7 @@ Now we have two ways of getting from ``F a`` to ``G b``. To make sure
 that they are equal, we must impose the *naturality condition* that
 holds for any ``f``:
 
-.. code-block:: haskell
+::
 
     G f ∘ αa = αb ∘ F f
 
@@ -82,7 +82,7 @@ The naturality condition is a pretty stringent requirement. For
 instance, if the morphism ``F f`` is invertible, naturality determines
 ``αb`` in terms of ``αa``. It *transports* ``αa`` along ``f``:
 
-.. code-block:: haskell
+::
 
     αb = (G f) ∘ αa ∘ (F f)-1
 
@@ -187,7 +187,7 @@ where ``F`` and ``G`` are functors, automatically satisfies the
 naturality condition. Here it is in categorical notation (``f`` is a
 function ``f::a->b``):
 
-.. code-block:: haskell
+::
 
     G f ∘ αa = αb ∘ F f
 
@@ -487,14 +487,14 @@ functor G to H. The component of β at ``a`` is a morphism:
 These morphisms are composable and their composition is another
 morphism:
 
-.. code-block:: haskell
+::
 
     βa ∘ αa :: F a -> H a
 
 We will use this morphism as the component of the natural transformation
 β ⋅ α — the composition of two natural transformations β after α:
 
-.. code-block:: haskell
+::
 
     (β ⋅ α)a = βa ∘ αa
 
@@ -503,7 +503,7 @@ We will use this morphism as the component of the natural transformation
 One (long) look at a diagram convinces us that the result of this
 composition is indeed a natural transformation from F to H:
 
-.. code-block:: haskell
+::
 
     H f ∘ (β ⋅ α)a = (β ⋅ α)b ∘ F f
 
@@ -614,7 +614,7 @@ Let’s pick two functors, or 1-morphisms, in **Cat**:
 
 and their composition:
 
-.. code-block:: haskell
+::
 
     G ∘ F :: C -> E
 
@@ -677,7 +677,7 @@ transformation connecting the two functors G ∘ F and G’∘ F’. In fact
 there’s not one but two paths we can take from ``G (F a)`` to
 ``G'(F'a)``:
 
-.. code-block:: haskell
+::
 
     G'αa ∘ βF a
     βF'a ∘ G αa
@@ -692,7 +692,7 @@ straightforward, provided you have enough patience.
 We call this natural transformation the *horizontal composition* of α
 and β:
 
-.. code-block:: haskell
+::
 
     β ∘ α :: G ∘ F -> G'∘ F'
 
@@ -726,7 +726,7 @@ for vertical composition, but not vice versa.
 
 Finally, the two compositions satisfy the interchange law:
 
-.. code-block:: haskell
+::
 
     (β' ⋅ α') ∘ (β ⋅ α) = (β' ∘ β) ⋅ (α' ∘ α)
 
@@ -741,7 +741,7 @@ as a special kind of natural transformation: the identity natural
 transformation acting on this functor. So you’ll often see this
 notation:
 
-.. code-block:: haskell
+::
 
     F ∘ α
 
@@ -753,7 +753,7 @@ horizontal composition of the identity natural transformation
 
 Similarly:
 
-.. code-block:: haskell
+::
 
     α ∘ F
 
