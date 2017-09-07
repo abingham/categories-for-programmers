@@ -690,11 +690,6 @@ We’ll talk about the other endofunctor ``L ∘ R`` in the next section.
    :width: 255px
    :height: 124px
    :target: ../images/2016/12/horizcomp.png
-.. |assoc| image:: ../images/2016/12/assoc.png
-   :class: alignnone wp-image-7995
-   :width: 183px
-   :height: 145px
-   :target: ../images/2016/12/assoc.png
 .. |unitlawcomp| image:: ../images/2016/12/unitlawcomp.png
    :class: wp-image-8003 alignnone
    :width: 275px

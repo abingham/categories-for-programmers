@@ -59,7 +59,7 @@ naturality square are the mappings of some morphism ``f`` under two
 functors ``F`` and ``G``. The other sides are the components of the
 natural transformation (which are also morphisms).
 
-|3\_Naturality|
+|3_Naturality|
 
 Naturality means that when you move to the “neighboring” component (by
 neighboring I mean connected by a morphism), you’re not going against
@@ -242,7 +242,7 @@ of posts.
    :width: 171px
    :height: 139px
    :target: ../images/2014/12/productranking.jpg
-.. |3\_Naturality| image:: ../images/2015/04/3_naturality.jpg
+.. |3_Naturality| image:: ../images/2015/04/3_naturality.jpg
    :class: alignnone wp-image-4349
    :width: 216px
    :height: 179px
