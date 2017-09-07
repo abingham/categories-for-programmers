@@ -33,16 +33,6 @@ Once this is done, the output will be in `_build/epub`.
 
 ## Contributing
 
-I'd love any help people want to give! My basic approach is pretty simple. I run pandoc over a single chapter (blog post), converting it to reStructuredText. For example, to convert the first chapter I used this command:
-
-```
-pandoc -o 01-category-the-essence-of-computation.rst https://bartoszmilewski.com/2014/11/04/category-the-essence-of-composition/
-```
-
-The output goes into the `rst` directory. I do a few small edits to the file:
-
-1. Remove the comments
-2. Remove the image links for comment avatars
-3. Turn section rubrics into RST section headers
-
-And then I link the new file into `index.rst`.
+At this point the bulk of the conversion work is done. There are some open
+issues in the tracker that you could look at. Or basic editorial work would
+probably be useful as well.
