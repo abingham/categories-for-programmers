@@ -609,32 +609,32 @@ morphisms is called a double category.
 Profunctors play an important role in the Haskell lens library and in
 the arrow library.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=266&h=300
+.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg
    :class: alignnone size-medium wp-image-8521
    :width: 266px
    :height: 300px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=323&h=347
+.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg
    :class: alignnone wp-image-8518
    :width: 323px
    :height: 347px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=259&h=211
+.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg
    :class: alignnone wp-image-8519
    :width: 259px
    :height: 211px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=263&h=231
+.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg
    :class: alignnone wp-image-8532
    :width: 263px
    :height: 231px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=300&h=264
+.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg
    :class: alignnone size-medium wp-image-8534
    :width: 300px
    :height: 264px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=175&h=211
+.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg
    :class: wp-image-8533
    :width: 175px
    :height: 211px

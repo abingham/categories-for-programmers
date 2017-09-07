@@ -289,17 +289,17 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts.
 
-.. |Bunnies| image:: https://bartoszmilewski.files.wordpress.com/2015/07/bunnies.jpg?w=436&h=201
+.. |Bunnies| image:: https://bartoszmilewski.files.wordpress.com/2015/07/bunnies.jpg
    :class: alignnone wp-image-4840
    :width: 436px
    :height: 201px
    :target: https://bartoszmilewski.files.wordpress.com/2015/07/bunnies.jpg
-.. |Monoid Pattern| image:: https://bartoszmilewski.files.wordpress.com/2015/07/monoid-pattern.jpg?w=300&h=185
+.. |Monoid Pattern| image:: https://bartoszmilewski.files.wordpress.com/2015/07/monoid-pattern.jpg
    :class: alignnone size-medium wp-image-4841
    :width: 300px
    :height: 185px
    :target: https://bartoszmilewski.files.wordpress.com/2015/07/monoid-pattern.jpg
-.. |Monoid Ranking| image:: https://bartoszmilewski.files.wordpress.com/2015/07/monoid-ranking.jpg?w=300&h=221
+.. |Monoid Ranking| image:: https://bartoszmilewski.files.wordpress.com/2015/07/monoid-ranking.jpg
    :class: alignnone size-medium wp-image-4842
    :width: 300px
    :height: 221px

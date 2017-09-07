@@ -390,22 +390,22 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts.
 
-.. |Yoneda1| image:: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda1-e1440290035365.png?w=263&h=259
+.. |Yoneda1| image:: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda1-e1440290035365.png
    :class: alignnone wp-image-4983
    :width: 263px
    :height: 259px
    :target: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda1.png
-.. |Yoneda2| image:: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda2.png?w=300&h=275
+.. |Yoneda2| image:: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda2.png
    :class: alignnone size-medium wp-image-4987
    :width: 300px
    :height: 275px
    :target: https://bartoszmilewski.files.wordpress.com/2015/08/yoneda2.png
-.. |Yoneda3| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda3.png?w=510
+.. |Yoneda3| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda3.png
    :class: alignnone wp-image-5217 size-full
    :target: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda3.png
-.. |Yoneda4| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda4.png?w=510
+.. |Yoneda4| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda4.png
    :class: alignnone wp-image-5218 size-full
    :target: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda4.png
-.. |Yoneda5| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda5.png?w=510
+.. |Yoneda5| image:: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda5.png
    :class: alignnone wp-image-5219 size-full
    :target: https://bartoszmilewski.files.wordpress.com/2015/09/yoneda5.png

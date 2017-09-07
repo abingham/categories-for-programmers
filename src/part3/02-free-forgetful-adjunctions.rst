@@ -236,22 +236,22 @@ I’d like to thank Gershom Bazerman for checking my math and logic, and André 
 Meulebrouck, who has been volunteering his editing help throughout this series
 of posts.
 
-.. |Forgetful| image:: https://bartoszmilewski.files.wordpress.com/2016/05/forgetful.jpg?w=377&h=234
+.. |Forgetful| image:: https://bartoszmilewski.files.wordpress.com/2016/05/forgetful.jpg
    :class: wp-image-5532
    :width: 377px
    :height: 234px
    :target: https://bartoszmilewski.files.wordpress.com/2016/05/forgetful.jpg
-.. |FreeMonAdjunction| image:: https://bartoszmilewski.files.wordpress.com/2016/05/freemonadjunction.jpg?w=512&h=203
+.. |FreeMonAdjunction| image:: https://bartoszmilewski.files.wordpress.com/2016/05/freemonadjunction.jpg
    :class: alignnone wp-image-5534
    :width: 512px
    :height: 203px
    :target: https://bartoszmilewski.files.wordpress.com/2016/05/freemonadjunction.jpg
-.. |ForgettingMorphisms| image:: https://bartoszmilewski.files.wordpress.com/2016/05/forgettingmorphisms.jpg?w=413&h=219
+.. |ForgettingMorphisms| image:: https://bartoszmilewski.files.wordpress.com/2016/05/forgettingmorphisms.jpg
    :class: alignnone wp-image-5536
    :width: 413px
    :height: 219px
    :target: https://bartoszmilewski.files.wordpress.com/2016/05/forgettingmorphisms.jpg
-.. |FreeImage| image:: https://bartoszmilewski.files.wordpress.com/2016/05/freeimage.jpg?w=422&h=249
+.. |FreeImage| image:: https://bartoszmilewski.files.wordpress.com/2016/05/freeimage.jpg
    :class: alignnone wp-image-5537
    :width: 422px
    :height: 249px

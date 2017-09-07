@@ -847,22 +847,22 @@ Acknowledgments
 
 Gershom Bazerman is kind enough to keep reviewing these posts. I’m
 grateful for his patience and insight.
-.. |Functor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg?w=300&h=263
+.. |Functor| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg
    :class: aligncenter wp-image-3944 size-medium
    :width: 300px
    :height: 263px
    :target: https://bartoszmilewski.files.wordpress.com/2015/01/functor.jpg
-.. |FunctorCompos| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorcompos.jpg?w=276&h=300
+.. |FunctorCompos| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorcompos.jpg
    :class: aligncenter size-medium wp-image-3947
    :width: 276px
    :height: 300px
    :target: https://bartoszmilewski.files.wordpress.com/2015/01/functorcompos.jpg
-.. |FunctorId| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorid.jpg?w=225&h=300
+.. |FunctorId| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functorid.jpg
    :class: aligncenter size-medium wp-image-3949
    :width: 225px
    :height: 300px
    :target: https://bartoszmilewski.files.wordpress.com/2015/01/functorid.jpg
-.. |FunctorMaybe| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functormaybe.jpg?w=300&h=219
+.. |FunctorMaybe| image:: https://bartoszmilewski.files.wordpress.com/2015/01/functormaybe.jpg
    :class: aligncenter size-medium wp-image-3950
    :width: 300px
    :height: 219px

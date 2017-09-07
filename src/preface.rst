@@ -143,7 +143,7 @@ And, frankly, they should, because we’ve done all this based on very
 flimsy theoretical foundations. We have to fix those foundations if we
 want to move forward.
 
-.. |IMG\_1299| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1299.jpg?w=300&h=213
+.. |IMG\_1299| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1299.jpg
    :class: aligncenter wp-image-3468 size-medium
    :width: 300px
    :height: 213px

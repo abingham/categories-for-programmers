@@ -694,31 +694,31 @@ Challenges
    natural numbers.
 #. Use ``unfoldr`` to generate a list of the first ``n`` primes.
 
-.. |alg| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg.png?w=201&h=139
+.. |alg| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg.png
    :class: alignnone wp-image-8351
    :width: 201px
    :height: 139px
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg.png
-.. |alg2| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg2.png?w=510
+.. |alg2| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg2.png
    :class: alignnone size-full wp-image-8343
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg2.png
-.. |alg3a| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg3a.png?w=510
+.. |alg3a| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg3a.png
    :class: alignnone size-full wp-image-8356
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg3a.png
-.. |alg3| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg3.png?w=510
+.. |alg3| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg3.png
    :class: alignnone size-full wp-image-8344
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg3.png
-.. |alg4| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg4.png?w=300&h=132
+.. |alg4| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg4.png
    :class: alignnone size-medium wp-image-8345
    :width: 300px
    :height: 132px
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg4.png
-.. |alg5| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg5.png?w=510
+.. |alg5| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg5.png
    :class: alignnone size-full wp-image-8346
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg5.png
-.. |alg6| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg6.png?w=510
+.. |alg6| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg6.png
    :class: alignnone size-full wp-image-8347
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg6.png
-.. |alg7| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg7.png?w=510
+.. |alg7| image:: https://bartoszmilewski.files.wordpress.com/2017/02/alg7.png
    :class: alignnone size-full wp-image-8348
    :target: https://bartoszmilewski.files.wordpress.com/2017/02/alg7.png

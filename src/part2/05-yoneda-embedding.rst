@@ -324,12 +324,12 @@ Acknowledgments
 
 I’d like to thank Gershom Bazerman for checking my math and logic.
 
-.. |Yoneda Embedding| image:: https://bartoszmilewski.files.wordpress.com/2015/07/yoneda-embedding.jpg?w=372&h=180
+.. |Yoneda Embedding| image:: https://bartoszmilewski.files.wordpress.com/2015/07/yoneda-embedding.jpg
    :class: alignnone wp-image-4782
    :width: 372px
    :height: 180px
    :target: https://bartoszmilewski.files.wordpress.com/2015/07/yoneda-embedding.jpg
-.. |Yoneda Embedding 2| image:: https://bartoszmilewski.files.wordpress.com/2015/07/yoneda-embedding-2.jpg?w=433&h=157
+.. |Yoneda Embedding 2| image:: https://bartoszmilewski.files.wordpress.com/2015/07/yoneda-embedding-2.jpg
    :class: alignnone wp-image-4783
    :width: 433px
    :height: 157px

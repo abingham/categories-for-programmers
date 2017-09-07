@@ -649,7 +649,7 @@ Acknowledgments
 Thanks go to Gershom Bazerman for reviewing this post and helpful
 comments.
 
-.. |Pair| image:: https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg?w=150&h=102
+.. |Pair| image:: https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg
    :class: aligncenter size-thumbnail wp-image-3942
    :width: 150px
    :height: 102px

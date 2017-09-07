@@ -530,7 +530,7 @@ Bibliography
    This paper provides justification for ignoring bottoms in most
    contexts.
 
-.. |IMG_1329| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1329.jpg?w=258&h=300
+.. |IMG_1329| image:: https://bartoszmilewski.files.wordpress.com/2014/10/img_1329.jpg
    :class: aligncenter wp-image-3485 size-medium
    :width: 258px
    :height: 300px

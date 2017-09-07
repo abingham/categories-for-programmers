@@ -709,47 +709,47 @@ Acknowledgements
 I’m grateful to Gershom Bazerman for reviewing this post before
 publication and for stimulating discussions.
 
-.. |Initial| image:: https://bartoszmilewski.files.wordpress.com/2014/12/initial.jpg?w=285&h=300
+.. |Initial| image:: https://bartoszmilewski.files.wordpress.com/2014/12/initial.jpg
    :class: aligncenter size-medium wp-image-3763
    :width: 285px
    :height: 300px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/initial.jpg
-.. |Final| image:: https://bartoszmilewski.files.wordpress.com/2014/12/final.jpg?w=300&h=298
+.. |Final| image:: https://bartoszmilewski.files.wordpress.com/2014/12/final.jpg
    :class: aligncenter size-medium wp-image-3765
    :width: 300px
    :height: 298px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/final.jpg
-.. |All morphisms in this diagram are unique| image:: https://bartoszmilewski.files.wordpress.com/2014/12/uniqueness.jpg?w=150&h=94
+.. |All morphisms in this diagram are unique| image:: https://bartoszmilewski.files.wordpress.com/2014/12/uniqueness.jpg
    :class: size-thumbnail wp-image-3837
    :width: 150px
    :height: 94px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/uniqueness.jpg
-.. |ProductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg?w=150&h=99
+.. |ProductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
    :class: aligncenter wp-image-3767 size-thumbnail
    :width: 150px
    :height: 99px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/productpattern.jpg
-.. |ProductCandidates| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productcandidates.jpg?w=150&h=76
+.. |ProductCandidates| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productcandidates.jpg
    :class: aligncenter size-thumbnail wp-image-3770
    :width: 150px
    :height: 76px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/productcandidates.jpg
-.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg?w=150&h=122
+.. |ProductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
    :class: aligncenter size-thumbnail wp-image-3772
    :width: 150px
    :height: 122px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/productranking.jpg
-.. |Not a product| image:: https://bartoszmilewski.files.wordpress.com/2015/01/not-a-product.jpg?w=212&h=150
+.. |Not a product| image:: https://bartoszmilewski.files.wordpress.com/2015/01/not-a-product.jpg
    :class: aligncenter wp-image-4863
    :width: 212px
    :height: 150px
    :target: https://bartoszmilewski.files.wordpress.com/2015/01/not-a-product.jpg
-.. |CoproductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductpattern.jpg?w=150&h=94
+.. |CoproductPattern| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductpattern.jpg
    :class: aligncenter size-thumbnail wp-image-3774
    :width: 150px
    :height: 94px
    :target: https://bartoszmilewski.files.wordpress.com/2014/12/coproductpattern.jpg
-.. |CoproductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg?w=150&h=125
+.. |CoproductRanking| image:: https://bartoszmilewski.files.wordpress.com/2014/12/coproductranking.jpg
    :class: aligncenter size-thumbnail wp-image-3775
    :width: 150px
    :height: 125px

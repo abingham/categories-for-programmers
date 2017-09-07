@@ -490,7 +490,7 @@ old fashioned template magic that did the same thing using type traits.
 Good riddance! I’m also grateful to Gershom Bazerman for useful comments
 that helped me clarify some important points.
 
-.. |PiggyBack| image:: https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=176&h=188
+.. |PiggyBack| image:: https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg
    :class: alignright wp-image-3712
    :width: 176px
    :height: 188px

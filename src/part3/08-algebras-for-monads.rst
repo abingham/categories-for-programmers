@@ -529,32 +529,32 @@ Acknowledgment
 
 I’d like to thank Gershom Bazerman for helpful comments.
 
-.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=122&h=133
+.. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png
    :class: alignnone wp-image-8438
    :width: 122px
    :height: 133px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png
-.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=174&h=128
+.. |image1| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png
    :class: alignnone wp-image-8430
    :width: 174px
    :height: 128px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png
-.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=231&h=127
+.. |image2| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png
    :class: alignnone wp-image-8431
    :width: 231px
    :height: 127px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png
-.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=247&h=153
+.. |image3| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png
    :class: alignnone wp-image-8441
    :width: 247px
    :height: 153px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png
-.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=446&h=156
+.. |image4| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png
    :class: alignnone wp-image-8433
    :width: 446px
    :height: 156px
    :target: https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png
-.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=449&h=130
+.. |image5| image:: https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png
    :class: alignnone wp-image-8434
    :width: 449px
    :height: 130px
