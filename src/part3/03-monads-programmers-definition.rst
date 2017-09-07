@@ -1,93 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-5226 post type-post status-publish format-standard hentry category-category-theory category-functional-programming category-haskell category-monads">
-
-November 21, 2016
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Monads: Programmer’s Definition
-   :name: monads-programmers-definition
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-`Functional
-Programming <https://bartoszmilewski.com/category/functional-programming/>`__,
-`Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-`Monads <https://bartoszmilewski.com/category/monads/>`__
-`[12]
-Comments <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_5226" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 20 of Categories for Programmers. Previously:
-    `Free/Forgetful
-    Adjunctions <https://bartoszmilewski.com/2016/06/15/freeforgetful-adjunctions/>`__.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+=================================
+ Monads: Programmer’s Definition
+=================================
 
 Programmers have developed a whole mythology around monads. It’s
 supposed to be one of the most abstract and difficult concepts in
@@ -132,7 +45,7 @@ directly from function to function. We also inline short segments of
 glue code rather than abstract them into helper functions. Here’s an
 imperative-style implementation of the vector-length function in C:
 
-::
+.. code-block:: c++
 
     double vlen(double * v) {
       double d = 0.0;
@@ -145,7 +58,7 @@ imperative-style implementation of the vector-length function in C:
 Compare this with the (stylized) Haskell version that makes function
 composition explicit:
 
-::
+.. code-block:: haskell
 
     vlen = sqrt . sum . fmap  (flip (^) 2)
 
@@ -161,8 +74,8 @@ called the ``do`` notation for monadic composition. We’ll see its use
 later. But first, let me explain why we need monadic composition in the
 first place.
 
-.. rubric:: The Kleisli Category
-   :name: the-kleisli-category
+The Kleisli Category
+====================
 
 We have previously arrived at the `writer
 monad <https://bartoszmilewski.com/2014/12/23/kleisli-categories/>`__ by
@@ -171,7 +84,7 @@ pairing their return values with strings or, more generally, with
 elements of a monoid. We can now recognize that such embellishment is a
 functor:
 
-::
+.. code-block:: haskell
 
     newtype Writer w a = Writer (a, w)
 
@@ -181,7 +94,7 @@ functor:
 We have subsequently found a way of composing embellished functions, or
 Kleisli arrows, which are functions of the form:
 
-::
+.. code-block:: haskell
 
     a -> Writer w b
 
@@ -194,7 +107,7 @@ Kleisli category *K* has the same objects as *C*, but its morphisms are
 different. A morphism between two objects ``a`` and ``b`` in *K* is
 implemented as a morphism:
 
-::
+.. code-block:: haskell
 
     a -> m b
 
@@ -214,7 +127,7 @@ In Haskell, Kleisli composition is defined using the fish operator
 ``>=>``, and the identity arrrow is a polymorphic function called
 ``return``. Here’s the definition of a monad using Kleisli composition:
 
-::
+.. code-block:: haskell
 
     class Monad m where
       (>=>) :: (a -> m b) -> (b -> m c) -> (a -> m c)
@@ -230,7 +143,7 @@ In this formulation, monad laws are very easy to express. They cannot be
 enforced in Haskell, but they can be used for equational reasoning. They
 are simply the standard composition laws for the Kleisli category:
 
-::
+.. code-block:: haskell
 
     (f >=> g) >=> h = f >=> (g >=> h) -- associativity
     return >=> f = f                  -- left unit
@@ -248,10 +161,10 @@ Going back to our ``Writer`` example: The logging functions (the Kleisli
 arrows for the ``Writer`` functor) form a category because ``Writer`` is
 a monad:
 
-::
+.. code-block:: haskell
 
     instance Monoid w => Monad (Writer w) where
-        f >=> g = \a -> 
+        f >=> g = \a ->
             let Writer (b, s)  = f a
                 Writer (c, s') = g b
             in Writer (c, s `mappend` s')
@@ -263,15 +176,15 @@ Monad laws for ``Writer w`` are satisfied as long as monoid laws for
 There’s a useful Kleisli arrow defined for the ``Writer`` monad called
 ``tell``. It’s sole purpose is to add its argument to the log:
 
-::
+.. code-block:: haskell
 
     tell :: w -> Writer w ()
     tell s = Writer ((), s)
 
 We’ll use it later as a building block for other monadic functions.
 
-.. rubric:: Fish Anatomy
-   :name: fish-anatomy
+Fish Anatomy
+============
 
 When implementing the fish operator for different monads you quickly
 realize that a lot of code is repeated and can be easily factored out.
@@ -279,14 +192,14 @@ To begin with, the Kleisli composition of two functions must return a
 function, so its implementation may as well start with a lambda taking
 an argument of type ``a``:
 
-::
+.. code-block:: haskell
 
     (>=>) :: (a -> m b) -> (b -> m c) -> (a -> m c)
     f >=> g = \a -> ...
 
 The only thing we can do with this argument is to pass it to ``f``:
 
-::
+.. code-block:: haskell
 
     f >=> g = \a -> let mb = f a
                     in ...
@@ -296,7 +209,7 @@ our disposal an object of type ``m b`` and a function ``g :: b -> m c``.
 Let’s define a function that does that for us. This function is called
 bind and is usually written in the form of an infix operator:
 
-::
+.. code-block:: haskell
 
     (>>=) :: m a -> (a -> m b) -> m b
 
@@ -304,7 +217,7 @@ For every monad, instead of defining the fish operator, we may instead
 define bind. In fact the standard Haskell definition of a monad uses
 bind:
 
-::
+.. code-block:: haskell
 
     class Monad m where
         (>>=) :: m a -> (a -> m b) -> m b
@@ -312,7 +225,7 @@ bind:
 
 Here’s the definition of bind for the ``Writer`` monad:
 
-::
+.. code-block:: haskell
 
     (Writer (a, w)) >>= f = let Writer (b, w') = f a
                             in  Writer (b, w `mappend` w')
@@ -327,19 +240,19 @@ This is not exactly what we want — we need the result of type ``m b`` —
 but we’re close. All we need is a function that collapses or flattens
 the double application of ``m``. Such function is called ``join``:
 
-::
+.. code-block:: haskell
 
     join :: m (m a) -> m a
 
 Using ``join``, we can rewrite bind as:
 
-::
+.. code-block:: haskell
 
     ma >>= f = join (fmap f ma)
 
 That leads us to the third option for defining a monad:
 
-::
+.. code-block:: haskell
 
     class Functor m => Monad m where
         join :: m (m a) -> m a
@@ -351,19 +264,19 @@ because any type constructor ``m`` that either supports the fish or bind
 operator is automatically a functor. For instance, it’s possible to
 define ``fmap`` in terms of bind and ``return``:
 
-::
+.. code-block:: haskell
 
     fmap f ma = ma >>= \a -> return (f a)
 
 For completeness, here’s ``join`` for the ``Writer`` monad:
 
-::
+.. code-block:: haskell
 
     join :: Monoid w => Writer w (Writer w a) -> Writer w a
     join (Writer ((Writer (a, w')), w)) = Writer (a, w `mappend` w')
 
-.. rubric:: The ``do`` Notation
-   :name: the-do-notation
+The ``do`` Notation
+===================
 
 One way of writing code using monads is to work with Kleisli arrows —
 composing them using the fish operator. This mode of programming is the
@@ -397,7 +310,7 @@ For instance, take the example we used previously to illustrate the
 composition of Kleisli arrows in the ``Writer`` monad. Using our current
 definitions, it could be rewritten as:
 
-::
+.. code-block:: haskell
 
     process :: String -> Writer String [String]
     process = upCase >=> toWords
@@ -407,7 +320,7 @@ splits it into words, all the while producing a log of its actions.
 
 In the ``do`` notation it would look like this:
 
-::
+.. code-block:: haskell
 
     process s = do
         upStr <- upCase s
@@ -416,16 +329,16 @@ In the ``do`` notation it would look like this:
 Here, ``upStr`` is just a ``String``, even though ``upCase`` produces a
 ``Writer``:
 
-::
+.. code-block:: haskell
 
     upCase :: String -> Writer String String
     upCase s = Writer (map toUpper s, "upCase ")
 
 This is because the ``do`` block is desugared by the compiler to:
 
-::
+.. code-block:: haskell
 
-    process s = 
+    process s =
        upCase s >>= \ upStr ->
            toWords upStr
 
@@ -433,7 +346,7 @@ The monadic result of ``upCase`` is bound to a lambda that takes a
 ``String``. It’s the name of this string that shows up in the ``do``
 block. When reading the line:
 
-::
+.. code-block:: haskell
 
     upStr <- upCase s
 
@@ -445,7 +358,7 @@ string ``"toWords "``, followed by the call to ``return`` with the
 result of splitting the string ``upStr`` using ``words``. Notice that
 ``words`` is a regular function working on strings.
 
-::
+.. code-block:: haskell
 
     process s = do
         upStr <- upStr s
@@ -455,9 +368,9 @@ result of splitting the string ``upStr`` using ``words``. Notice that
 Here, each line in the do block introduces a new nested bind in the
 desugared code:
 
-::
+.. code-block:: haskell
 
-    process s = 
+    process s =
         upCase s >>= \upStr ->
           tell "toWords " >>= \() ->
             return (words upStr)
@@ -467,16 +380,16 @@ passed to the following lambda. Ignoring the contents of a monadic
 result (but not its effect — here, the contribution to the log) is quite
 common, so there is a special operator to replace bind in that case:
 
-::
+.. code-block:: haskell
 
     (>>) :: m a -> m b -> m b
     m >> k = m >>= (\_ -> k)
 
 The actual desugaring of our code looks like this:
 
-::
+.. code-block:: haskell
 
-    process s = 
+    process s =
         upCase s >>= \upStr ->
           tell "toWords " >>
             return (words upStr)
@@ -513,1322 +426,3 @@ into list comprehensions or “generators,” which are essentially the
 the monad, each of these problems is typically addressed by providing
 custom extensions to the language. In Haskell, this is all dealt with
 through libraries.
-
-Next: `Monads and
-Effects <https://bartoszmilewski.com/2016/11/30/monads-and-effects/>`__.
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1446018714" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-946171744" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-5226-59ae3cc4aef72"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=5226&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-5226-59ae3cc4aef72"
-   data-name="like-post-frame-3549518-5226-59ae3cc4aef72">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 12 Responses to “Monads: Programmer’s Definition”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67718">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67718">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image0| Tom Shacham Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 22, 2016 at 6:08
-   am <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67718>`__
-   This is a particularly illuminating post, thanks Bartosz!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67725">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67725">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image1| `lambda
-   functions <http://dobegin.com/lambda-functions-everywhere/>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 22, 2016 at 1:28
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67725>`__
-   “sugared” “do” examples with “upStr” are broken. plz fix
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67726">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67726">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image2| `Adam nemini <http://gmail.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 22, 2016 at 3:09
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67726>`__
-   Just fine right up to here, then off the cliff: “pairing their return
-   values with strings or, more generally, with elements of a monoid. We
-   can now recognize that such embellishment is a functor”
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67733">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67733">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image3| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 22, 2016 at 9:20
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67733>`__
-   @Adam I’m assuming the reader is familiar with the previous
-   discussion of Kleisli categories.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67734">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67734">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image4| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 22, 2016 at 9:29
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67734>`__
-   @lambda functions: Damn WordPress silently eating less-than signs and
-   everything that follows. Fixed!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67817">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67817">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image5| `datalligator <http://datalligator.org>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 28, 2016 at 8:21
-   am <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67817>`__
-   Love your thinking and development of this; indeed it is a motivating
-   example to follow all the definitions that lead to it. Are you
-   thinking of turning this series into a book: categories for the
-   working programmer?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67840">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67840">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image6| `dmitri14 <http://zaitsev77.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 29, 2016 at 3:25
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67840>`__
-   “That’s because any type constructor m that either supports the fish
-   or bind operator is automatically a functor. For instance, it’s
-   possible to define fmap in terms of bind and return:”
-
-   | I can see the case of bind, but how can you use the fish to get the
-     functor
-   | ``fmap:: (a -> b) -> ma -> mb`` ? The fish returns ``a -> mc``, so
-     how to get a morphism starting at ``ma`` is not clear.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67848">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67848">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image7| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `November 30, 2016 at 12:53
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67848>`__
-   @dmitri14: I was tempted to provide code for all possible
-   translations between definitions, but then I would have to explain
-   them. So here are some, without explanations. It’s pretty much an
-   exercise in matching types. It’s sometimes called “type tetris.”
-
-   ::
-
-       fmap f = id >=> \a -> return (f a)
-
-   ::
-
-       join = id >=> id
-
-   ::
-
-       ma >>= f = (id >=> f) ma
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-67874">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-67874">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image8| `dmitri14 <http://zaitsev77.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 1, 2016 at 1:46
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-67874>`__
-   Thank you! It is remarkable that ``id`` is always the 1st argument of
-   the fish in these relations. Does it mean, only part of the fish is
-   used and a more general Kleisli product may not come from a monad
-   (contrary to what is said without proof in
-   https://ncatlab.org/nlab/show/monad+%28in+computer+science%29)?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68390">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68390">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image9| Randall Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 11, 2017 at 9:26
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-68390>`__
-   Lovely, thanks!
-
-   | Suggestion: ‘vlen = sqrt . sum . fmap (^ 2)’
-   | (a bit briefer by avoiding ‘flip’)
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-70627">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-70627">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image10| `karkunow <http://karkunow.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 14, 2017 at 5:53
-   pm <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-70627>`__
-   @dmitry14, what do you mean exactly by “a more general Kleisli
-   product may not come from a monad”, ‘multiplication’ on n-Cat? Can’t
-   see any contrary info there.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-74188">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-74188">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image11| thomas Says:
-
-   .. raw:: html
-
-      </div>
-
-   `August 29, 2017 at 8:40
-   am <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/#comment-74188>`__
-   | this is by far the best explaination I may ever have heard.
-   | I am struggeling with monads and the surrounding concepts for about
-     one week now… and this really helped me.
-   | thank you very much
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2016/11/21/monads-programmers-definition/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  November 21, 2016 at 11:29 pm
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-   `Functional
-   Programming <https://bartoszmilewski.com/category/functional-programming/>`__,
-   `Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-   `Monads <https://bartoszmilewski.com/category/monads/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Create a free website or blog at
-WordPress.com. <https://wordpress.com/?ref=footer_website>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-2cf44ff0b32311d9453701e027ae0778">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-aeac14b009a7f6f2418f8737e61ad5b8">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c6dffa98706669f858c82f6de9242fec">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-da9c721223da7980bded23529ca22e90">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-2f5283cc7b85e352c0f86ad8581ff371">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-fad78be0d39573f5b05e459624ac10bf">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-6996fe77db9f65db1834b998b5222f9b">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-8b24f1139471d1de56f7fc083eb90dc4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image18|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. |image0| image:: https://2.gravatar.com/avatar/2cf44ff0b32311d9453701e027ae0778?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image1| image:: https://1.gravatar.com/avatar/aeac14b009a7f6f2418f8737e61ad5b8?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image2| image:: https://0.gravatar.com/avatar/c6dffa98706669f858c82f6de9242fec?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image3| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image4| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image5| image:: https://1.gravatar.com/avatar/da9c721223da7980bded23529ca22e90?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image6| image:: https://2.gravatar.com/avatar/2f5283cc7b85e352c0f86ad8581ff371?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image7| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image8| image:: https://2.gravatar.com/avatar/2f5283cc7b85e352c0f86ad8581ff371?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image9| image:: https://0.gravatar.com/avatar/fad78be0d39573f5b05e459624ac10bf?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image10| image:: https://0.gravatar.com/avatar/6996fe77db9f65db1834b998b5222f9b?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image11| image:: https://2.gravatar.com/avatar/8b24f1139471d1de56f7fc083eb90dc4?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image18| image:: https://pixel.wp.com/b.gif?v=noscript
-

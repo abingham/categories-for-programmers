@@ -1,86 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-8733 post type-post status-publish format-standard hentry category-category-theory">
-
-July 22, 2017
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Topoi
-   :name: topoi
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__
-`1 Comment <https://bartoszmilewski.com/2017/07/22/topoi/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_8733" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 29 of Categories for Programmers. Previously: Enriched
-    Categories. See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+=======
+ Topoi
+=======
 
 I realize that we might be getting away from programming and diving into
 hard-core math. But you never know what the next big revolution in
@@ -113,8 +33,8 @@ category that has just the right properties to serve as a replacement
 for set theory is called a *topos* (plural: topoi), and it provides,
 among other things, a generalized notion of a subset.
 
-.. rubric:: Subobject Classifier
-   :name: subobject-classifier
+Subobject Classifier
+====================
 
 Let’s start by trying to express the idea of a subset using functions
 rather than elements. Any function ``f`` from some set ``a`` to ``b``
@@ -133,20 +53,20 @@ to be isomorphic to ``a``. We can use this fact to define a subset as a
 family of injective functions that are related by isomorphisms of their
 domains. More precisely, we say that two injective functions:
 
-::
+.. code-block:: haskell
 
     f :: a -> b
     f':: a'-> b
 
 are equivalent if there is an isomorphism:
 
-::
+.. code-block:: haskell
 
     h :: a -> a'
 
 such that:
 
-::
+.. code-block:: haskell
 
     f = f' . h
 
@@ -159,14 +79,14 @@ injective functions with monomorphism. Just to remind you, a
 monomorphism ``m`` from ``a`` to ``b`` is defined by its universal
 property. For any object ``c`` and any pair of morphisms:
 
-::
+.. code-block:: haskell
 
     g :: c -> a
     g':: c -> a
 
 such that:
 
-::
+.. code-block:: haskell
 
     m . g = m . g'
 
@@ -194,7 +114,7 @@ It remains to specify what it means to designate an element of ``Ω`` as
 “true.” We can use the standard trick: use a function from a singleton
 set to ``Ω``. We’ll call this function ``true``:
 
-::
+.. code-block:: haskell
 
     true :: 1 -> Ω
 
@@ -220,7 +140,7 @@ embeds it in ``b``. Here’s the pullback diagram:
 
 Let’s analyze this diagram. The pullback equation is:
 
-::
+.. code-block:: haskell
 
     true . unit = χ . f
 
@@ -265,7 +185,7 @@ We can thus define a set of subobjects of ``b``, ``Sub(b)``, as a family
 of monomorphisms, and see that it is isomorphic to the set of morphisms
 from ``b`` to ``Ω``:
 
-::
+.. code-block:: haskell
 
     Sub(b) ≅ C(b, Ω)
 
@@ -273,8 +193,8 @@ This happens to be a natural isomorphism of two functors. In other
 words, ``Sub(-)`` is a representable (contravariant) functor whose
 representation is the object Ω.
 
-.. rubric:: Topos
-   :name: topos
+Topos
+=====
 
 A topos is a category that:
 
@@ -293,8 +213,8 @@ It would be tempting to define the subobject classifier as a coproduct
 **Set**— but we want to be more general than that. Topoi in which this
 is true are called Boolean.
 
-.. rubric:: Topoi and Logic
-   :name: topoi-and-logic
+Topoi and Logic
+===============
 
 In set theory, a characteristic function may be interpreted as defining
 a property of the elements of a set — a *predicate* that is true for
@@ -326,734 +246,11 @@ provides a more general framework for modeling interesting logics.
 Next: `Lawvere
 Theories <https://bartoszmilewski.com/2017/08/26/lawvere-theories/>`__.
 
-.. rubric:: Challenges
-   :name: challenges
+Challenges
+==========
 
 #. Show that the function ``f`` that is the pullback of ``true`` along
    the characteristic function must be injective.
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1609208728" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-43132715" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2017/07/22/topoi/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2017/07/22/topoi/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2017/07/22/topoi/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2017/07/22/topoi/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2017/07/22/topoi/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2017/07/22/topoi/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2017/07/22/topoi/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-8733-59ae3d305314d"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=8733&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-8733-59ae3d305314d"
-   data-name="like-post-frame-3549518-8733-59ae3d305314d">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: One Response to “Topoi”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-73004">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-73004">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image5| `HenryChern <http://henrychern.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 23, 2017 at 8:25
-   am <https://bartoszmilewski.com/2017/07/22/topoi/#comment-73004>`__
-   Thank you for the compact and clear exposition of a complex concept.
-   Translation into Russian is available on the website.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel reply </2017/07/22/topoi/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  July 22, 2017 at 10:15 am
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2017/07/22/topoi/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Create a free website or blog at
-WordPress.com. <https://wordpress.com/?ref=footer_website>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-d42dd46c69476ea0478111fa098ef4a4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image12|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/07/subsetinjection.jpg?w=220&h=171
    :class: alignnone wp-image-8934
@@ -1080,29 +277,3 @@ Sorry, your blog cannot share posts by email.
    :width: 232px
    :height: 164px
    :target: https://bartoszmilewski.files.wordpress.com/2017/07/pullback.jpg
-.. |image5| image:: https://1.gravatar.com/avatar/d42dd46c69476ea0478111fa098ef4a4?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image12| image:: https://pixel.wp.com/b.gif?v=noscript
-

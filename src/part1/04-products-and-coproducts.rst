@@ -697,9 +697,6 @@ Challenges
    ``bool`` that cannot be better than ``Either`` because it allows
    multiple acceptable morphisms from it to ``Either``.
 
-Next: `Simple Algebraic Data
-Types <https://bartoszmilewski.com/2015/01/13/simple-algebraic-data-types/>`__.
-
 Bibliography
 ============
 

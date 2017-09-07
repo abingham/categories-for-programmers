@@ -409,9 +409,6 @@ Bibliography
 #. The Catsters video about `representable
    functors <https://www.youtube.com/watch?v=4QgjKUzyrhM>`__.
 
-Next: `The Yoneda
-Lemma <https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/>`__.
-
 Acknowledgments
 ===============
 

@@ -815,9 +815,6 @@ Challenges
        f :: String -> Int
        f x = read x
 
-Next: `Declarative
-Programming <https://bartoszmilewski.com/2015/04/15/category-theory-and-declarative-programming/>`__.
-
 Acknowledgments
 ===============
 

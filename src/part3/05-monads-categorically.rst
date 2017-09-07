@@ -1,92 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-7805 post type-post status-publish format-standard hentry category-category-theory category-haskell category-monads category-programming">
-
-December 27, 2016
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Monads Categorically
-   :name: monads-categorically
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-`Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-`Monads <https://bartoszmilewski.com/category/monads/>`__,
-`Programming <https://bartoszmilewski.com/category/programming/>`__
-`[9]
-Comments <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_7805" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 22 of Categories for Programmers. Previously: `Monads
-    and
-    Effects <https://bartoszmilewski.com/2016/11/30/monads-and-effects/>`__.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+======================
+ Monads Categorically
+======================
 
 If you mention monads to a programmer, you’ll probably end up talking
 about effects. To a mathematician, monads are about algebras. We’ll talk
@@ -127,7 +41,7 @@ a transformation of type ``a -> m b`` (``b`` represents the type of
 ``y``). The result is an expression of type ``m b``. Let me spell it
 out:
 
-::
+.. code-block:: haskell
 
     m a -> (a -> m b) -> m b
 
@@ -147,14 +61,14 @@ Therefore, in category theory, a monad is defined as an endofunctor
 to ``T``. The square is simply the functor composed with itself,
 ``T ∘ T`` (we can only do this kind of squaring for endofunctors).
 
-::
+.. code-block:: haskell
 
     μ :: T2 -> T
 
 The component of this natural transformation at an object ``a`` is the
 morphism:
 
-::
+.. code-block:: haskell
 
     μa :: T (T a) -> T a
 
@@ -163,14 +77,14 @@ which, in *Hask*, translates directly to our definition of ``join``.
 η is a natural transformation between the identity functor ``I`` and
 ``T``:
 
-::
+.. code-block:: haskell
 
     η :: I -> T
 
 Considering that the action of ``I`` on the object ``a`` is just ``a``,
 the component of η is given by the morphism:
 
-::
+.. code-block:: haskell
 
     ηa :: a -> T a
 
@@ -183,13 +97,13 @@ the endofunctor ``T``. Remember that a Kleisli arrow between ``a`` and
 arrows (I’ll write it as a circle with the subscript ``T``) can be
 implemented using μ:
 
-::
+.. code-block:: haskell
 
     g ∘T f = μc ∘ (T g) ∘ f
 
 where
 
-::
+.. code-block:: haskell
 
     f :: a -> T b
     g :: b -> T c
@@ -197,13 +111,13 @@ where
 Here ``T``, being a functor, can be applied to the morphism ``g``. It
 might be easier to recognize this formula in Haskell notation:
 
-::
+.. code-block:: haskell
 
     f >=> g = join . fmap g . f
 
 or, in components:
 
-::
+.. code-block:: haskell
 
     (f >=> g) a = join (fmap g (f a))
 
@@ -228,7 +142,7 @@ composition is in order. For instance, ``T3`` can be seen as a
 composition of ``T`` after ``T2``. We can apply to it the horizontal
 composition of two natural transformations:
 
-::
+.. code-block:: haskell
 
     IT ∘ μ
 
@@ -269,14 +183,14 @@ multiplication μ, unit η, associativity, and unit laws. But our
 definition of a monoid is too narrow to describe a monad as a monoid. So
 let’s generalize the notion of a monoid.
 
-.. rubric:: Monoidal Categories
-   :name: monoidal-categories
+Monoidal Categories
+===================
 
 Let’s go back to the conventional definition of a monoid. It’s a set
 with a binary operation and a special element called unit. In Haskell,
 this can be expressed as a typeclass:
 
-::
+.. code-block:: haskell
 
     class Monoid m where
         mappend :: m -> m -> m
@@ -288,7 +202,7 @@ multiplication by the unit ``mempty`` is a no-op).
 Notice that, in Haskell, the definition of ``mappend`` is curried. It
 can be interpreted as mapping every element of ``m`` to a function:
 
-::
+.. code-block:: haskell
 
     mappend :: m -> (m -> m)
 
@@ -298,7 +212,7 @@ the elements of the monoid. But because currying is built into Haskell,
 we could as well have started with a different definition of
 multiplication:
 
-::
+.. code-block:: haskell
 
     mu :: (m, m) -> m
 
@@ -310,7 +224,7 @@ the cartesian product with categorical product. We could start with a
 category where products are globally defined, pick an object ``m``
 there, and define multiplication as a morphism:
 
-::
+.. code-block:: haskell
 
     μ :: m × m -> m
 
@@ -320,7 +234,7 @@ to it. Remember how element selection is equivalent to a function from
 the singleton set? In Haskell, we could replace the definition of
 ``mempty`` with a function:
 
-::
+.. code-block:: haskell
 
     eta :: () -> m
 
@@ -328,7 +242,7 @@ The singleton is the terminal object in **Set**, so it’s natural to
 generalize this definition to any category that has a terminal object
 ``t``:
 
-::
+.. code-block:: haskell
 
     η :: t -> m
 
@@ -344,7 +258,7 @@ recall how monoidal structure works in Haskell first.
 We start with associativity. In Haskell, the corresponding equational
 law is:
 
-::
+.. code-block:: haskell
 
     mu x (mu y z) = mu (mu x y) z
 
@@ -354,13 +268,13 @@ from its action on individual variables — in other words, we have to use
 point-free notation. Knowning that the cartesian product is a bifunctor,
 we can write the left hand side as:
 
-::
+.. code-block:: haskell
 
     (mu . bimap id mu)(x, (y, z))
 
 and the right hand side as:
 
-::
+.. code-block:: haskell
 
     (mu . bimap mu id)((x, y), z)
 
@@ -368,14 +282,14 @@ This is almost what we want. Unfortunately, the cartesian product is not
 strictly associative — ``(x, (y, z))`` is not the same as
 ``((x, y), z)`` — so we can’t just write point-free:
 
-::
+.. code-block:: haskell
 
     mu . bimap id mu = mu . bimap mu id
 
 On the other hand, the two nestings of pairs are isomorphic. There is an
 invertible function called the associator that converts between them:
 
-::
+.. code-block:: haskell
 
     alpha :: ((a, b), c) -> (a, (b, c))
     alpha ((x, y), z) = (x, (y, z))
@@ -383,21 +297,21 @@ invertible function called the associator that converts between them:
 With the help of the associator, we can write the point-free
 associativity law for ``mu``:
 
-::
+.. code-block:: haskell
 
     mu . bimap id mu . alpha = mu . bimap mu id
 
 We can apply a similar trick to unit laws which, in the new notation,
 take the form:
 
-::
+.. code-block:: haskell
 
     mu (eta (), x) = x
     mu (x, eta ()) = x
 
 They can be rewritten as:
 
-::
+.. code-block:: haskell
 
     (mu . bimap eta id) ((), x) = lambda ((), x)
     (mu . bimap id eta) (x, ()) = rho (x, ())
@@ -406,19 +320,19 @@ The isomorphisms ``lambda`` and ``rho`` are called the left and right
 unitor, respectively. They witness the fact that the unit ``()`` is the
 identity of the cartesian product up to isomorphism:
 
-::
+.. code-block:: haskell
 
     lambda :: ((), a) -> a
     lambda ((), x) = x
 
-::
+.. code-block:: haskell
 
     rho :: (a, ()) -> a
     rho (x, ()) = x
 
 The point-free versions of the unit laws are therefore:
 
-::
+.. code-block:: haskell
 
     mu . bimap id eta = lambda
     mu . bimap eta id = rho
@@ -464,7 +378,7 @@ tensor product, again, up to isomorphism. Let’s put it all together:
 A monoidal category is a category *C* equipped with a bifunctor called
 the tensor product:
 
-::
+.. code-block:: haskell
 
     ⊗ :: C × C -> C
 
@@ -472,7 +386,7 @@ and a distinct object ``i`` called the unit object, together with three
 natural isomorphisms called, respectively, the associator and the left
 and right unitors:
 
-::
+.. code-block:: haskell
 
     αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c)
     λa :: i ⊗ a -> a
@@ -487,8 +401,8 @@ we’ll see shortly, for the composition of endofunctors (and also for
 some more esoteric products like Day convolution). Monoidal categories
 will play an essential role in the formulation of enriched categories.
 
-.. rubric:: Monoid in a Monoidal Category
-   :name: monoid-in-a-monoidal-category
+Monoid in a Monoidal Category
+=============================
 
 We are now ready to define a monoid in a more general setting of a
 monoidal category. We start by picking an object ``m``. Using the tensor
@@ -498,7 +412,7 @@ through the associator. Similarly for higher powers of ``m`` (that’s
 where we need the coherence conditions). To form a monoid we need to
 pick two morphisms:
 
-::
+.. code-block:: haskell
 
     μ :: m ⊗ m -> m
     η :: i -> m
@@ -519,8 +433,8 @@ because we need to lift pairs of morphisms to form products such as
 ``μ ⊗ id`` or ``η ⊗ id``. These diagrams are just a straightforward
 generalization of our previous results for categorical products.
 
-.. rubric:: Monads as Monoids
-   :name: monads-as-monoids
+Monads as Monoids
+=================
 
 Monoidal structures pop up in unexpected places. One such place is the
 functor category. If you squint a little, you might be able to see
@@ -543,14 +457,14 @@ pair of morphisms — here, natural transformations? The signature of the
 analog of ``bimap`` for the tensor product would look something like
 this:
 
-::
+.. code-block:: haskell
 
     bimap :: (a -> b) -> (c -> d) -> (a ⊗ c -> b ⊗ d)
 
 If you replace objects by endofunctors, arrows by natural
 transformations, and tensor products by composition, you get:
 
-::
+.. code-block:: haskell
 
     (F -> F') -> (G -> G') -> (F ∘ G -> F' ∘ G')
 
@@ -568,7 +482,7 @@ category with functor composition as tensor product.
 What’s a monoid in this category? It’s an object — that is an
 endofunctor ``T``; and two morphisms — that is natural transformations:
 
-::
+.. code-block:: haskell
 
     μ :: T ∘ T -> T
     η :: I -> T
@@ -587,8 +501,8 @@ All told, monad is just a monoid in the category of endofunctors.
 You might have seen it emblazoned on some t-shirts at functional
 programming conferences.
 
-.. rubric:: Monads from Adjunctions
-   :name: monads-from-adjunctions
+Monads from Adjunctions
+=======================
 
 An `adjunction <https://bartoszmilewski.com/2016/04/18/adjunctions/>`__,
 ``L ⊣ R``, is a pair of functors going back and forth between two
@@ -597,7 +511,7 @@ to two endofunctors, ``R ∘ L`` and ``L ∘ R``. As per an adjunction,
 these endofunctors are related to identity functors through two natural
 transformations called unit and counit:
 
-::
+.. code-block:: haskell
 
     η :: ID -> R ∘ L
     ε :: L ∘ R -> IC
@@ -608,14 +522,14 @@ monad. All we need is to define the appropriate μ to go with the η.
 That’s a natural transformation between the square of our endofunctor
 and the endofunctor itself or, in terms of the adjoint functors:
 
-::
+.. code-block:: haskell
 
     R ∘ L ∘ R ∘ L -> R ∘ L
 
 And, indeed, we can use the counit to collapse the ``L ∘ R`` in the
 middle. The exact formula for μ is given by the horizontal composition:
 
-::
+.. code-block:: haskell
 
     μ = R ∘ ε ∘ L
 
@@ -627,39 +541,39 @@ because an adjunction usually involves two categories. However, the
 definitions of an exponential, or a function object, is an exception.
 Here are the two endofunctors that form this adjunction:
 
-::
+.. code-block:: haskell
 
     L z = z × s
     R b = s ⇒ b
 
 You may recognize their composition as the familiar state monad:
 
-::
+.. code-block:: haskell
 
     R (L z) = s ⇒ (z × s)
 
 We’ve seen this monad before in Haskell:
 
-::
+.. code-block:: haskell
 
     newtype State s a = State (s -> (a, s))
 
 Let’s also translate the adjunction to Haskell. The left functor is the
 product functor:
 
-::
+.. code-block:: haskell
 
     newtype Prod s a = Prod (a, s)
 
 and the right functor is the reader functor:
 
-::
+.. code-block:: haskell
 
     newtype Reader s a = Reader (s -> a)
 
 They form the adjunction:
 
-::
+.. code-block:: haskell
 
     instance Adjunction (Prod s) (Reader s) where
       counit (Prod (Reader f, s)) = f s
@@ -669,7 +583,7 @@ You can easily convince yourself that the composition of the reader
 functor after the product functor is indeed equivalent to the state
 functor:
 
-::
+.. code-block:: haskell
 
     newtype State s a = State (s -> (a, s))
 
@@ -678,7 +592,7 @@ As expected, the ``unit`` of the adjunction is equivalent to the
 evaluating a function acting on its argument. This is recognizable as
 the uncurried version of the function ``runState``:
 
-::
+.. code-block:: haskell
 
     runState :: State s a -> s -> (a, s)
     runState (State f) s = f s
@@ -689,7 +603,7 @@ We can now define ``join`` for the state monad as a component of the
 natural transformation μ. For that we need a horizontal composition of
 three natural transformations:
 
-::
+.. code-block:: haskell
 
     μ = R ∘ ε ∘ L
 
@@ -703,7 +617,7 @@ directly.
 We have to first peel off the data constructor ``State`` to expose the
 function inside the ``State`` functor. This is done using ``runState``:
 
-::
+.. code-block:: haskell
 
     ssa :: State s (State s a)
     runState ssa :: s -> (State s a, s)
@@ -712,7 +626,7 @@ Then we left-compose it with the counit, which is defined by
 ``uncurry runState``. Finally, we clothe it back in the ``State`` data
 constructor:
 
-::
+.. code-block:: haskell
 
     join :: State s (State s a) -> State s a
     join ssa = State (uncurry runState . runState ssa)
@@ -725,1133 +639,6 @@ composition of two adjoint functors. Such factorization is not unique
 though.
 
 We’ll talk about the other endofunctor ``L ∘ R`` in the next section.
-
-Next: `Comonads <https://bartoszmilewski.com/2017/01/02/comonads/>`__.
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-863814257" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1609512800" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2016/12/27/monads-categorically/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-7805-59ae3cdc43faf"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=7805&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-7805-59ae3cdc43faf"
-   data-name="like-post-frame-3549518-7805-59ae3cdc43faf">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 9 Responses to “Monads Categorically”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68197">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68197">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image12| `Existential Type <http://existentialtype.wordpress.com>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 27, 2016 at 6:53
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68197>`__
-   I assume by “Hask” you mean the category of cppo’s and continuous
-   functions? If so, this has nothing much to do with Haskell, because
-   it is not fully abstract with respect to the operational meaning of
-   Haskell programs. It should be called CPPO, like everyone else does,
-   and not the pretentious “Hask”, which serves only to mislead. In
-   fact, Haskell has no semantics, which is pretty embarrassing for a
-   supposedly mathematical language.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68209">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68209">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image13| allan j cooper Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 28, 2016 at 4:20
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68209>`__
-   The mapping a -> m b deserves a picture! I can see in my mind’s eye
-   that you’ve taken the 3 node expression tree +(y (-1)) and spliced it
-   over each of the three occurrences of x to obtain the new tree of
-   type m b. All that’s missing is a color y to represent what happens
-   to the pretty pink of x, and you’ve reached in and drawn the result
-   of this monadic bind!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68215">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68215">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image14| `Juan Manuel (@babui\_) <http://twitter.com/babui_>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 29, 2016 at 3:53
-   am <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68215>`__
-   In the commuting diagram about unit laws in section “Monoid in a
-   Monoidal Category”, the rightmost object should be the tensor product
-   between m and i (not between m and id as it is shown).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68220">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68220">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image15| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `December 29, 2016 at 11:18
-   am <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68220>`__
-   @Juan Manuel: You’re right. I can’t even call it a “typo” since it’s
-   hand-written. I’ll fix it at some point.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68285">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68285">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image16| `jd823592 <http://gravatar.com/jd823592>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 3, 2017 at 4:12
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68285>`__
-   I actually thought the “typo” was in having “id x m” rather than “id
-   x mu”
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-68287">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-68287">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image17| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `January 3, 2017 at 6:00
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-68287>`__
-   @jd823592: oops!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-69683">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-69683">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image18| `BM Category Theory 10: Monad & Monoid \| Math Online Tom
-   Circle <https://tomcircle.wordpress.com/2017/03/21/bm-category-theory-10-1-monads/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `March 21, 2017 at 10:41
-   am <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-69683>`__
-   […] 10. 2 Monoidal Categories (read text) […]
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-69925">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-69925">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image19| `Robert
-   Peszek <https://www.facebook.com/app_scoped_user_id/100004670593545/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 8, 2017 at 2:16
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-69925>`__
-   | Thank you for writing this series! It is by far the most intuitive
-     and programmer friendly into to category theory out there.
-   | I only wish I found it earlier. I very much hope you find energy
-     and time to continue writing.
-
-   | I have a question about the definition of mu/join natural
-     transformation for R.L adjunction (mu = R . epsilon . L).
-   | To me, a more straightforward definition is simply one that uses:
-   | R (epsilon)
-   | with epsilon viewed as a family of morphism and R fmaps them to act
-     on D. This approach is actually what you have ended up using in
-     your State monad example.
-   | Interestingly, this approach does not use L. Is this somehow
-     equivalent to the horizontal composition R . epsilon . L you are
-     using in your definition?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-69938">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-69938">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image20| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `April 9, 2017 at 1:31
-   pm <https://bartoszmilewski.com/2016/12/27/monads-categorically/#comment-69938>`__
-   The L on the right is necessary to “shift” epsilon — to pick the
-   right morphism from the family of morphisms. This is invisible in
-   Haskell code because of type inference. The compiler figures out what
-   component to pick by analyzing types. I tried to explain horizontal
-   composition in more detail in this video:
-   https://www.youtube.com/watch?v=zkDVCQiveEo .
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2016/12/27/monads-categorically/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  December 27, 2016 at 10:49 am
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__,
-   `Haskell <https://bartoszmilewski.com/category/haskell/>`__,
-   `Monads <https://bartoszmilewski.com/category/monads/>`__,
-   `Programming <https://bartoszmilewski.com/category/programming/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2016/12/27/monads-categorically/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Blog at WordPress.com. <https://wordpress.com/?ref=footer_blog>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-9c67c24c8638f53306aac5322f0fc3f7">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-0e18ef5d3859fcb7537ac36ce691a9c9">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-b4a7426cee3700d21354b77b4a29fddd">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-8e53773d91e4e81f93ef8679df58aa00">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-3eb51fc4b2b8c2abfa8210387c478092">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image27|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. |exptree| image:: https://bartoszmilewski.files.wordpress.com/2016/12/exptree.png?w=175&h=180
    :class: alignnone wp-image-8000
@@ -1913,61 +700,3 @@ Sorry, your blog cannot share posts by email.
    :width: 275px
    :height: 121px
    :target: https://bartoszmilewski.files.wordpress.com/2016/12/unitlawcomp.png
-.. |image12| image:: https://0.gravatar.com/avatar/9c67c24c8638f53306aac5322f0fc3f7?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image13| image:: https://0.gravatar.com/avatar/0e18ef5d3859fcb7537ac36ce691a9c9?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image14| image:: https://i1.wp.com/pbs.twimg.com/profile_images/452017421855907841/W65GNlUV_normal.jpeg?resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image15| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image16| image:: https://2.gravatar.com/avatar/8e53773d91e4e81f93ef8679df58aa00?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image17| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image18| image:: https://secure.gravatar.com/blavatar/f1511c29baf2f48c9c1a093731d0317b?s=48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image19| image:: https://i1.wp.com/graph.facebook.com/v2.2/100004670593545/picture?q=type%3Dlarge%26_md5%3D0fea0480cf64b8dc570a9af26020cb85&resize=48%2C48
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image20| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image27| image:: https://pixel.wp.com/b.gif?v=noscript
-

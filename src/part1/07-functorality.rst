@@ -749,11 +749,8 @@ Challenges
    two template arguments ``Key`` and ``T``? How would you redesign this
    data type to make it so?
 
-Next: `Function
-Types <https://bartoszmilewski.com/2015/03/13/function-types/>`__.
-
-Acknowledgment
-==============
+Acknowledgments
+===============
 
 As usual, big thanks go to Gershom Bazerman for reviewing this article. |
 

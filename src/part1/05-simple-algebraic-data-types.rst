@@ -643,11 +643,8 @@ Challenges
    Remember that ``2`` corresponds to ``Bool``, according to our
    translation table.
 
-`Follow @BartoszMilewski <https://twitter.com/BartoszMilewski>`__
-Next: `Functors <https://bartoszmilewski.com/2015/01/20/functors/>`__.
-
-Acknowledments
-==============
+Acknowledgments
+===============
 
 Thanks go to Gershom Bazerman for reviewing this post and helpful
 comments.

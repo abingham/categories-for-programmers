@@ -742,9 +742,6 @@ Bibliography
    This paper contains proofs of all those high-school algebraic
    identities in category theory that I mentioned in this chapter.
 
-Next: `Natural
-Transformations <https://bartoszmilewski.com/2015/04/07/natural-transformations/>`__.
-
 Acknowledgments
 ===============
 

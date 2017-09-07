@@ -705,9 +705,6 @@ Challenges
 #. Similarly, show that a pushout from an initial object (if one exists)
    is the coproduct.
 
-Next: `Free
-Monoids <https://bartoszmilewski.com/2015/07/21/free-monoids/>`__.
-
 Acknowledgments
 ===============
 

@@ -1,88 +1,6 @@
-.. raw:: html
-
-   <div id="rap">
-
-.. raw:: html
-
-   <div id="header">
-
--  `Home <https://bartoszmilewski.com>`__
--  `About <https://bartoszmilewski.com/about/>`__
-
-.. raw:: html
-
-   <div id="headimg">
-
-.. rubric:: `  Bartosz Milewski's Programming
-   Cafe <https://bartoszmilewski.com>`__
-   :name: bartosz-milewskis-programming-cafe
-
-.. raw:: html
-
-   <div id="desc">
-
-Concurrency, C++, Haskell, Category Theory
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="main">
-
-.. raw:: html
-
-   <div id="content">
-
-.. raw:: html
-
-   <div
-   class="post-8703 post type-post status-publish format-standard hentry category-category-theory">
-
-May 13, 2017
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. rubric:: Enriched Categories
-   :name: enriched-categories
-   :class: post-title
-
-Posted by Bartosz Milewski under `Category
-Theory <https://bartoszmilewski.com/category/category-theory/>`__
-`[9]
-Comments <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comments>`__ 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-content">
-
-.. raw:: html
-
-   <div id="pd_rating_holder_2203687_post_8703" class="pd-rating">
-
-.. raw:: html
-
-   </div>
-
-    This is part 28 of Categories for Programmers. Previously: `Kan
-    Extensions <https://bartoszmilewski.com/2017/04/17/kan-extensions/>`__.
-    See the `Table of
-    Contents <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`__.
+=====================
+ Enriched Categories
+=====================
 
 A category is *small* if its objects form a set. But we know that there
 are things larger than sets. Famously, a set of all sets cannot be
@@ -120,8 +38,8 @@ enriched categories, and that’s because a very useful online source of
 categorical knowledge, the `nLab <https://ncatlab.org>`__, is written
 mostly in terms of enriched categories.
 
-.. rubric:: Why Monoidal Category?
-   :name: why-monoidal-category
+Why Monoidal Category?
+======================
 
 When constructing an enriched category we have to keep in mind that we
 should be able to recover the usual definitions when we replace the
@@ -134,7 +52,7 @@ Let’s start with the definition of composition. Normally, it takes a
 pair of morphisms, one from ``C(b, c)`` and one from ``C(a, b)`` and
 maps it to a morphism from ``C(a, c)``. In other words it’s a mapping:
 
-::
+.. code-block:: haskell
 
     C(b, c) × C(a, b) -> C(a, c)
 
@@ -148,7 +66,7 @@ Next come the identity morphisms. Instead of picking individual elements
 from hom-sets, we can define them using functions from the singleton set
 **1**:
 
-::
+.. code-block:: haskell
 
     ja :: 1 -> C(a, a)
 
@@ -159,14 +77,14 @@ product.
 As you can see, objects taken from some monoidal category *V* are good
 candidates for hom-set replacement.
 
-.. rubric:: Monoidal Category
-   :name: monoidal-category
+Monoidal Category
+=================
 
 We’ve talked about monoidal categories before, but it’s worth restating
 the definition. A monoidal category defines a tensor product that is a
 bifunctor:
 
-::
+.. code-block:: haskell
 
     ⊗ :: V × V -> V
 
@@ -174,7 +92,7 @@ We want the tensor product to be associative, but it’s enough to satisfy
 associativity up to natural isomorphism. This isomorphism is called the
 associator. Its components are:
 
-::
+.. code-block:: haskell
 
     αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c)
 
@@ -185,7 +103,7 @@ serves as the unit of the tensor product; again, up to natural
 isomorphism. The two isomorphisms are called, respectively, the left and
 the right unitor, and their components are:
 
-::
+.. code-block:: haskell
 
     λa :: i ⊗ a -> a
     ρa :: a ⊗ i -> a
@@ -199,13 +117,13 @@ The associator and the unitors must satisfy coherence conditions:
 A monoidal category is called *symmetric* if there is a natural
 isomorphism with components:
 
-::
+.. code-block:: haskell
 
     γa b :: a ⊗ b -> b ⊗ a
 
 whose “square is one”:
 
-::
+.. code-block:: haskell
 
     γb a ∘ γa b = ida⊗b
 
@@ -219,7 +137,7 @@ the categorical product. A category in which such an object existed for
 any pair of objects was called cartesian closed. Here is the adjunction
 that defines the internal hom in a monoidal category:
 
-::
+.. code-block:: haskell
 
     V(a ⊗ b, c) ~ V(a, [b, c])
 
@@ -229,7 +147,7 @@ using the notation ``[b, c]`` for the internal hom. The counit of this
 adjunction is the natural transformation whose components are called
 evaluation morphisms:
 
-::
+.. code-block:: haskell
 
     εa b :: ([a, b] ⊗ a) -> b
 
@@ -237,7 +155,7 @@ Notice that, if the tensor product is not symmetric, we may define
 another internal hom, denoted by ``[[a, c]]``, using the following
 adjunction:
 
-::
+.. code-block:: haskell
 
     V(a ⊗ b, c) ~ V(b, [[a, c]])
 
@@ -246,8 +164,8 @@ example of a category that is not biclosed is the category of
 endofunctors in **Set**, with functor composition serving as tensor
 product. That’s the category we used to define monads.
 
-.. rubric:: Enriched Category
-   :name: enriched-category
+Enriched Category
+=================
 
 A category *C* enriched over a monoidal category *V* replaces hom-sets
 with hom-objects. To every pair of objects ``a`` and ``b`` in *C* we
@@ -260,7 +178,7 @@ entirely rid of sets — we just swept them under the rug.
 Since we cannot talk about individual morphisms in *C*, composition of
 morphisms is replaced by a family of morphisms in *V*:
 
-::
+.. code-block:: haskell
 
     ∘ :: C(b, c) ⊗ C(a, b) -> C(a, c)
 
@@ -268,7 +186,7 @@ morphisms is replaced by a family of morphisms in *V*:
 | Similarly, identity morphisms are replaced by a family of morphisms in
   *V*:
 
-::
+.. code-block:: haskell
 
     ja :: i -> C(a, a)
 
@@ -287,8 +205,8 @@ Unit laws are likewise expressed in terms of unitors:
 
 |image6|
 
-.. rubric:: Preorders
-   :name: preorders
+Preorders
+=========
 
 A preorder is defined as a thin category, one in which every hom-set is
 either empty or a singleton. We interpret a non-empty set ``C(a, b)`` as
@@ -324,8 +242,8 @@ reflexivity law for a preorder. So both transitivity and reflexivity are
 automatically enforced, if we implement a preorder as an enriched
 category.
 
-.. rubric:: Metric Spaces
-   :name: metric-spaces
+Metric Spaces
+=============
 
 An interesting example is due to `William
 Lawvere <http://www.tac.mta.ca/tac/reprints/articles/1/tr1.pdf>`__. He
@@ -365,7 +283,7 @@ category.
 By our definitions, a morphism from the tensorial unit, which is the
 number zero, to a hom-object ``C(a, a)`` is the relation:
 
-::
+.. code-block:: haskell
 
     0 >= C(a, a)
 
@@ -384,8 +302,8 @@ triangle inequality. Check!
 By re-casting the metric space in terms of an enriched category, we get
 the triangle inequality and the zero self-distance “for free.”
 
-.. rubric:: Enriched Functors
-   :name: enriched-functors
+Enriched Functors
+=================
 
 The definition of a functor involves the mapping of morphisms. In the
 enriched setting, we don’t have the notion of individual morphisms, so
@@ -400,7 +318,7 @@ An *enriched functor* ``F`` between two categories *C* and *D*, besides
 mapping objects to objects, also assigns, to every pair of objects in
 *C*, a morphism in *V*:
 
-::
+.. code-block:: haskell
 
     Fa b :: C(a, b) -> D(F a, F b)
 
@@ -415,15 +333,15 @@ morphisms in *V* that “select” the identity:
 
 |image8|
 
-.. rubric:: Self Enrichment
-   :name: self-enrichment
+Self Enrichment
+===============
 
 A closed symmetric monoidal category may be self-enriched by replacing
 hom-sets with internal homs (see the definition above). To make this
 work, we have to define the composition law for internal homs. In other
 words, we have to implement a morphism with the following signature:
 
-::
+.. code-block:: haskell
 
     [b, c] ⊗ [a, b] -> [a, c]
 
@@ -432,13 +350,13 @@ in category theory, we usually use point free implementations. We start
 by specifying the set whose element it’s supposed to be. In this case,
 it’s a member of the hom-set:
 
-::
+.. code-block:: haskell
 
     V([b, c] ⊗ [a, b], [a, c])
 
 This hom-set is isomorphic to:
 
-::
+.. code-block:: haskell
 
     V(([b, c] ⊗ [a, b]) ⊗ a, c)
 
@@ -449,26 +367,26 @@ We construct this morphism by composing several morphisms that are at
 our disposal. To begin with, we can use the associator
 ``α[b, c] [a, b] a`` to reassociate the expression on the left:
 
-::
+.. code-block:: haskell
 
     ([b, c] ⊗ [a, b]) ⊗ a -> [b, c] ⊗ ([a, b] ⊗ a)
 
 We can follow it with the co-unit of the adjunction ``εa b``:
 
-::
+.. code-block:: haskell
 
     [b, c] ⊗ ([a, b] ⊗ a) -> [b, c] ⊗ b
 
 And use the counit ``εb c`` again to get to ``c``. We have thus
 constructed a morphism:
 
-::
+.. code-block:: haskell
 
     εb c . (id[b, c] ⊗ εa b) . α[b, c] [a, b] a
 
 that is an element of the hom-set:
 
-::
+.. code-block:: haskell
 
     V(([b, c] ⊗ [a, b]) ⊗ a, c)
 
@@ -476,19 +394,19 @@ The adjunction will give us the composition law we were looking for.
 
 Similarly, the identity:
 
-::
+.. code-block:: haskell
 
     ja :: i -> [a, a]
 
 is a member of the following hom-set:
 
-::
+.. code-block:: haskell
 
     V(i, [a, a])
 
 which is isomorphic, through adjunction, to:
 
-::
+.. code-block:: haskell
 
      V(i ⊗ a, a)
 
@@ -505,8 +423,8 @@ Now we also know that, through self-enrichment, we can use the
 exponential set as the hom-object and express composition in terms of
 cartesian products of exponential objects.
 
-.. rubric:: Relation to 2-Categories
-   :name: relation-to-2-categories
+Relation to 2-Categories
+========================
 
 I talked about 2-categories in the context of **Cat**, the category of
 (small) categories. The morphisms between categories are functors, but
@@ -523,1186 +441,6 @@ over **Set**, **Cat** can be treated as a category enriched over
 **Cat**. Even more generally, just like every category can be treated as
 enriched over **Set**, every 2-category can be considered enriched over
 **Cat**.
-
-Next: `Topoi <https://bartoszmilewski.com/2017/07/22/topoi/>`__.
-
-.. raw:: html
-
-   <div class="wpcnt">
-
-.. raw:: html
-
-   <div class="wpa wpmrec wpmrec2x">
-
-Advertisements
-
-.. raw:: html
-
-   <div class="u">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-1869491585" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="crt-55562728" style="width:300px;height:250px;">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-post-flair"
-   class="sharedaddy sd-rating-enabled sd-like-enabled sd-sharing-enabled">
-
-.. raw:: html
-
-   <div class="sharedaddy sd-sharing-enabled">
-
-.. raw:: html
-
-   <div
-   class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-
-.. rubric:: Share this:
-   :name: share-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="sd-content">
-
--  `Reddit <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=reddit>`__
--  `More <#>`__
--  
-
-.. raw:: html
-
-   <div class="sharing-hidden">
-
-.. raw:: html
-
-   <div class="inner" style="display: none;">
-
--  `Twitter <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=twitter>`__
--  `LinkedIn <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=linkedin>`__
--  
--  `Google <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=google-plus-1>`__
--  `Pocket <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=pocket>`__
--  
--  `Facebook <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=facebook>`__
--  `Email <https://bartoszmilewski.com/2017/05/13/enriched-categories/?share=email>`__
--  
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="like-post-wrapper-3549518-8703-59ae3d24094cc"
-   class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded"
-   data-src="//widgets.wp.com/likes/#blog_id=3549518&amp;post_id=8703&amp;origin=bartoszmilewski.wordpress.com&amp;obj_id=3549518-8703-59ae3d24094cc"
-   data-name="like-post-frame-3549518-8703-59ae3d24094cc">
-
-.. rubric:: Like this:
-   :name: like-this
-   :class: sd-title
-
-.. raw:: html
-
-   <div class="likes-widget-placeholder post-likes-widget-placeholder"
-   style="height: 55px;">
-
-Like Loading...
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="jp-relatedposts" class="jp-relatedposts">
-
-.. rubric:: *Related*
-   :name: related
-   :class: jp-relatedposts-headline
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-info">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="post-footer">
-
- 
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 9 Responses to “Enriched Categories”
-   :name: comments
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-70581">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-70581">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image9| `John Armstrong <http://drmathochist.wordpress.com/>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 13, 2017 at 6:35
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-70581>`__
-   A little tweak: the swap in a symmetric m.c. needs to satisfy a
-   coherence condition: $s\_{BA}\\circ s\_{AB} = 1\_{A\\otimes B}$.
-   Without that condition what you have is a “braided” m.c. which gives
-   rise to representations of the braid category (and is particularly
-   interesting in terms of anyons and topological QFTs).
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-70612">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-70612">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image10| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `May 14, 2017 at 3:25
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-70612>`__
-   You’re right. I tried to sweep it under the rug of “consistent with
-   monoidal structure,” but braiding is also consistent.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-71400">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-71400">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image11| `Juan Manuel (@babui\_) <http://twitter.com/babui_>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 1, 2017 at 8:25
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-71400>`__
-   “If they don’t form a set, we have to rethink a few definitions. In
-   particular, what does it mean to compose morphisms if we can’t even
-   pick them from a set?”
-
-   What do you mean by ‘pick them’ in this context? Or, why can’t you
-   pick them from things that are larger than sets?
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-71403">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-71403">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image12| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 1, 2017 at 9:17
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-71403>`__
-   A set is pretty much defined as something that has elements. Picking
-   an element means defining an x to be an element of X. But if X is not
-   a set, what does it mean to be an element of X? It all depends on
-   what theory you use to define the entities that are larger than sets
-   (classes, collections?). The beauty of category theory is that it
-   doesn’t force you to commit to a particular foundation.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-71420">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-71420">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image13| `Juan Manuel (@babui\_) <http://twitter.com/babui_>`__
-   Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 1, 2017 at 11:09
-   pm <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-71420>`__
-   Ok, I see it. So instead of generalising via “picking elements for
-   things greater than sets”, we generalise substituting sets by objects
-   in another category and “redefining” the idea of picking an element.
-
-   Thanks !!!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-71628">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-71628">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image14| Nikolaj Says:
-
-   .. raw:: html
-
-      </div>
-
-   `June 8, 2017 at 5:27
-   pm <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-71628>`__
-   | Thanks for the series, Bartosz. The first paragraph is a little
-     bumpy. Maybe the following comments help.
-   | Given the setup and examples, you want speak of categories where
-     you first define objects (the sets) in some way and then consider
-     such sets as the type of objects for the category you look at. Now
-     whether a set can be proven to exist depends entirely on the theory
-     you choose to use, a collection of axioms written down in some
-     logic. In Kripke–Platek set theory, you can’t proof that for every
-     set X, the a set PX (“the power set of X”) exists. In ZFC you do
-     can show existence of such sets. In ZFC you can’t show the
-     existence of large cardinals or e.g. Grothendieck universes, but
-     they are consistent with it, and so it’s consistent to add the
-     stronger axioms to the theory, respectively. ZFC can be speaking of
-     those notions of set universes too, if none of its axioms is in
-     constradictions with them. So there are e.g. cardinally speaking
-     bigger and smaller models for ZFC. Demanding existence of larger
-     sets in the axioms means choosing stronger conditions and thus
-     restricting what your theory talks about (just like talking about
-     commutative groups only restricts your theory of groups, but makes
-     more theorems possible). In that case your new theory of sets is
-     one only talking about quite cardinally large objects. Passing from
-     ZFC to a stronger theory where there provable exist sets called
-     Grothendieck universes is not a trick to speak of objects “larger
-     than sets”, it merely empowers you to prove the existence of
-     different (or “more”) “sets” (taking the theory “of sets” to
-     something which is further away from the most naive theory of
-     sets). There are also (so called non-wellfounded) set theories with
-     axioms that e.g. say the set with the property x={x} exists, some
-     infinite loop of inheritance. ZFC actually disproves the existence
-     of the latter fairly directly by one of it’s axioms, but my point
-     here is that this is also an object that you may naively specify,
-     but which is not a set, and not because it’s cardinally too large.
-     Although mostly the sets that you can’t prove in ZFC to exist are
-     really just “too large”, cardinally speaking. I.e. you can’t
-     surjectively map the cardinally speaking smaller into the larger
-     one.
-   | Okay, I hope that wasn’t too long winded. You start “A category is
-     small if its objects form a set” and later you use “large”, which I
-     guess shall mean non-small here (not a priori of larger
-     cardinality, even if that’s what it’s mostly about). You then go on
-     with “But we know that there are things larger than sets.” Well,
-     you may choose to be somewhat dogmatic about ZFC as is and say all
-     the objects I can prove there are sets and when I can embed a model
-     of them into a class of things with extra terms (that are out of
-     reach of provability of ZFC) then those other things aren’t sets.
-     In that case the sentence merely means that there are axioms that
-     let you write down a theory of sets which goes far beyond taking
-     powersets. But then you have just created another stronger theory
-     of “sets”, and in turn the claim there’s something “larger than
-     sets” (in either of the two ways of reading the word) lost it’s
-     footing.
-   | If you take a set theory with big Grothendieck universes and take
-     such a universe as your type of objects, your cateogry is not
-     ZFC-small, but it’s a set in another theory. The class “trick” is
-     just to get an object that you can’t get inside the model, i.e. one
-     that can’t be an element. The topoi abstract common features of set
-     theories and thus end up sharing models with them.
-   | All that being said, I don’t think wanting to be able to speak
-     about extra large categories is a relevant motivator for your type
-     theory centered needs anyway.
-   | Keep up the good work.
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-72374">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-72374">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image15| J. Jan Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 2, 2017 at 2:19
-   pm <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-72374>`__
-   | Przepraszam, ze tu piszę, ale obejrzałem sobie twój filmik na
-     Youtube gdzie mowisz o tkategorii dla programistów.
-   | wydaje mi sie, ze warto bylo by powiedziec, ze strzałki moga być z
-     zewnątrz (ze sceny) oraz zamiast id chyba lepiej mówić o
-     niezmiennikach
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-72907">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-72907">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image16| `HenryChern <http://henrychern.wordpress.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 20, 2017 at 12:11
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-72907>`__
-   Thank you for your work and the material presented. I translate the
-   chapters of your book into Russian, and now I’m waiting for the next
-   chapter about topoi. I posted the translation of all the chapters to
-   WordPress at
-   “\ `henrychern.wordpress.com <http://henrychern.wordpress.com>`__\ “.
-   I dared to make the text coloring, trying to pick out separately
-   mathematical expressions and separately program fragments. Is it
-   interesting to see such a representation? (I can all lead to your
-   text style.)
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-#. 
-
-   .. raw:: html
-
-      <div id="comment-72913">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div id="div-comment-72913">
-
-   .. raw:: html
-
-      <div class="comment-author vcard">
-
-   |image17| `Bartosz Milewski <http://BartoszMilewski.com>`__ Says:
-
-   .. raw:: html
-
-      </div>
-
-   `July 20, 2017 at 2:43
-   am <https://bartoszmilewski.com/2017/05/13/enriched-categories/#comment-72913>`__
-   @HenryChern: Wow, your translation looks better than the original.
-   Great job!
-
-   .. raw:: html
-
-      <div class="reply">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-.. raw:: html
-
-   <div class="navigation">
-
-.. raw:: html
-
-   <div class="alignleft">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="alignright">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="respond" class="comment-respond">
-
-.. rubric:: Leave a Reply `Cancel
-   reply </2017/05/13/enriched-categories/#respond>`__
-   :name: reply-title
-   :class: comment-reply-title
-
-.. raw:: html
-
-   <div class="comment-form-field comment-textarea">
-
-Enter your comment here...
-
-.. raw:: html
-
-   <div id="comment-form-comment">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-identity">
-
-.. raw:: html
-
-   <div id="comment-form-nascar">
-
-Fill in your details below or click an icon to log in:
-
--  ` <#comment-form-guest>`__
--  ` <#comment-form-load-service:WordPress.com>`__
--  ` <#comment-form-load-service:Twitter>`__
--  ` <#comment-form-load-service:Facebook>`__
--  
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-guest" class="comment-form-service selected">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Gravatar|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-email">
-
-Email (required) (Address never made public)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-author">
-
-Name (required)
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-field comment-form-url">
-
-Website
-
-.. raw:: html
-
-   <div class="comment-form-input">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-wordpress" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|WordPress.com Logo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your WordPress.com account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-twitter" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Twitter picture|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Twitter account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-facebook" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Facebook photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Facebook account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-googleplus" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-padder">
-
-.. raw:: html
-
-   <div class="comment-form-avatar">
-
-|Google+ photo|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="comment-form-fields">
-
-**** You are commenting using your Google+ account.
-( `Log Out <javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);>`__ / `Change <#>`__ )
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-load-service" class="comment-form-service">
-
-.. raw:: html
-
-   <div class="comment-form-posting-as-cancel">
-
-`Cancel <javascript:HighlanderComments.cancelExternalWindow();>`__
-
-.. raw:: html
-
-   </div>
-
-Connecting to %s
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="comment-form-subscribe">
-
-Notify me of new comments via email.
-
-Notify me of new posts via email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sidebar">
-
-.. rubric:: Archived Entry
-   :name: archived-entry
-
--  **Post Date :**
--  May 13, 2017 at 5:15 am
--  **Category :**
--  `Category
-   Theory <https://bartoszmilewski.com/category/category-theory/>`__
--  **Do More :**
--  You can `leave a response <#respond>`__, or
-   `trackback <https://bartoszmilewski.com/2017/05/13/enriched-categories/trackback/>`__
-   from your own site.
-
-.. raw:: html
-
-   </div>
-
-`Create a free website or blog at
-WordPress.com. <https://wordpress.com/?ref=footer_website>`__
-
-.. raw:: html
-
-   <div style="display:none">
-
-.. raw:: html
-
-   <div class="grofile-hash-map-ed8df1b934fbb8259a5d1f369e168172">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-c018f213204496b4bbf481e7c8e6c15c">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-b4a7426cee3700d21354b77b4a29fddd">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-cdd238c033f64cf484a76802ebc06522">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-812d1ddd63af9f53a7936c580487ed3d">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="grofile-hash-map-d42dd46c69476ea0478111fa098ef4a4">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="carousel-reblog-box">
-
-Post to
-
-.. raw:: html
-
-   <div class="submit">
-
-`Cancel <#>`__
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="arrow">
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="sharing_email" style="display: none;">
-
-Send to Email Address Your Name Your Email Address
-
-.. raw:: html
-
-   <div id="sharing_recaptcha" class="recaptcha">
-
-.. raw:: html
-
-   </div>
-
-|loading| `Cancel <#cancel>`__
-
-.. raw:: html
-
-   <div class="errors errors-1" style="display: none;">
-
-Post was not sent - check your email addresses!
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-2" style="display: none;">
-
-Email check failed, please try again
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="errors errors-3" style="display: none;">
-
-Sorry, your blog cannot share posts by email.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div id="likes-other-gravatars">
-
-.. raw:: html
-
-   <div class="likes-text">
-
-%d bloggers like this:
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|image24|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. |image0| image:: https://bartoszmilewski.files.wordpress.com/2017/05/assoc.jpg?w=510&h=240
    :class: alignnone wp-image-8745 size-large
@@ -1749,61 +487,3 @@ Sorry, your blog cannot share posts by email.
    :width: 388px
    :height: 175px
    :target: https://bartoszmilewski.files.wordpress.com/2017/05/functorid.jpg
-.. |image9| image:: https://2.gravatar.com/avatar/ed8df1b934fbb8259a5d1f369e168172?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image10| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image11| image:: https://2.gravatar.com/avatar/b4a7426cee3700d21354b77b4a29fddd?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image12| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image13| image:: https://2.gravatar.com/avatar/b4a7426cee3700d21354b77b4a29fddd?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image14| image:: https://0.gravatar.com/avatar/cdd238c033f64cf484a76802ebc06522?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image15| image:: https://2.gravatar.com/avatar/812d1ddd63af9f53a7936c580487ed3d?s=48&d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image16| image:: https://1.gravatar.com/avatar/d42dd46c69476ea0478111fa098ef4a4?s=48&d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |image17| image:: https://0.gravatar.com/avatar/c018f213204496b4bbf481e7c8e6c15c?s=48&d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&r=G
-   :class: avatar avatar-48
-   :width: 48px
-   :height: 48px
-.. |Gravatar| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-   :target: https://gravatar.com/site/signup/
-.. |WordPress.com Logo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Twitter picture| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Facebook photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |Google+ photo| image:: https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25
-   :class: no-grav
-   :width: 25px
-.. |loading| image:: https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif
-   :class: loading
-   :width: 16px
-   :height: 16px
-.. |image24| image:: https://pixel.wp.com/b.gif?v=noscript
-

@@ -319,9 +319,6 @@ Challenges
    it works on morphisms (which in this case are natural
    transformations).
 
-Next: `It’s All About
-Morphisms <https://bartoszmilewski.com/2015/11/17/its-all-about-morphisms/>`__.
-
 Acknowledgments
 ===============
 
