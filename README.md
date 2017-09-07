@@ -6,6 +6,8 @@ Milewski's
 My main goal is to create an EPUB version of the series that is easy to consume
 on e-readers.
 
+**JUST WANT TO READ THE BOOK?** The most recent build of the book is in the `latest` directory.
+
 ## Building the EPUB
 
 The main tool you need for building the output
