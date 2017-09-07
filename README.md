@@ -39,12 +39,3 @@ The output goes into the `rst` directory. I do a few small edits to the file:
 3. Turn section rubrics into RST section headers
 
 And then I link the new file into `index.rst`.
-
-### Images sources
-
-I'm currently using the wordpress-hosted images of the original blog posts as
-the image sources. This works just fine, even though Sphinx warns about it. It
-might be best in the long term to copy the images into this repository, but it's
-not strictly necessary so I haven't bothered. If anyone wants to pull those
-files in (and I imagine it should be pretty automatable), I'm all in favor of
-it.
