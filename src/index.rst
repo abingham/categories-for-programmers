@@ -34,11 +34,3 @@ Categories for Programmers
    :glob:
 
    part3/*
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
