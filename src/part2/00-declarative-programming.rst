@@ -199,7 +199,6 @@ pre-existing programming constructs, and give rise to new ones. Most
 importantly, category theory provides a meta-language for reasoning
 about computer programs at a declarative level. It also encourages
 reasoning about problem specification before it is cast into code.
-Colimits <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/>`__.
 
 Acknowledgments
 ===============

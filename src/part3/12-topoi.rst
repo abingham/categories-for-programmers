@@ -243,9 +243,6 @@ doesn’t make sense to claim that a statement is true if we cannot prove
 it in finite amount of time. A topos with its more nuanced truth object
 provides a more general framework for modeling interesting logics.
 
-Next: `Lawvere
-Theories <https://bartoszmilewski.com/2017/08/26/lawvere-theories/>`__.
-
 Challenges
 ==========
 

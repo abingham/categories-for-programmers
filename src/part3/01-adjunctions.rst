@@ -386,8 +386,8 @@ description of the adjunction to Haskell code. I highly encourage this
 as an exercise.
 
 We are now ready to explain why, in Haskell, the right adjoint is
-automatically a `representable
-functor <https://bartoszmilewski.com/2015/07/29/representable-functors/>`__.
+automatically a :doc:`representable
+functor <../part2/03-representable-functors>`.
 The reason for this is that, to the first approximation, we can treat
 the category of Haskell types as the category of sets.
 
@@ -426,8 +426,8 @@ Product from Adjunction
 We have previously introduced several concepts using universal
 constructions. Many of those concepts, when defined globally, are easier
 to express using adjunctions. The simplest non-trivial example is that
-of the product. The gist of the `universal construction of the
-product <https://bartoszmilewski.com/2015/01/07/products-and-coproducts/>`__
+of the product. The gist of the :doc:`universal construction of the
+product <../part1/04-products-and-coproducts>`
 is the ability to factorize any product-like candidate through the
 universal product.
 
@@ -439,7 +439,7 @@ unique morphism ``m::c->(a, b)`` that factorizes ``p`` and ``q`` through
 ``fst`` and ``snd``.
 
 As we’ve seen
-`earlier <https://bartoszmilewski.com/2015/01/07/products-and-coproducts/>`__,
+:doc:`earlier <../part1/04-products-and-coproducts>`,
 in Haskell, we can implement a ``factorizer`` that generates this
 morphism from the two projections:
 
@@ -592,8 +592,8 @@ Exponential from Adjunction
 ===========================
 
 The exponential ``ba``, or the function object ``a⇒b``, can be defined
-using a `universal
-construction <https://bartoszmilewski.com/2015/03/13/function-types/>`__.
+using a :doc:`universal
+construction <../part1/08-function-types>`.
 This construction, if it exists for all pairs of objects, can be seen as
 an adjunction. Again, the trick is to concentrate on the statement:
 

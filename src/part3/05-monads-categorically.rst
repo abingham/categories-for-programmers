@@ -504,7 +504,7 @@ programming conferences.
 Monads from Adjunctions
 =======================
 
-An `adjunction <https://bartoszmilewski.com/2016/04/18/adjunctions/>`__,
+An :doc:`adjunction <../part3/01-adjunctions>`,
 ``L ⊣ R``, is a pair of functors going back and forth between two
 categories *C* and *D*. There are two ways of composing them giving rise
 to two endofunctors, ``R ∘ L`` and ``L ∘ R``. As per an adjunction,

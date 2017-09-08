@@ -23,12 +23,12 @@ the hom-\ *functor* ``C(a, -)`` to any ``a``.
 
 It’s a mapping of objects from category *C* to functors, which are
 *objects* in the functor category (see the section about functor
-categories in `Natural
-Transformations <https://bartoszmilewski.com/2015/04/07/natural-transformations/>`__).
+categories in :doc:`Natural
+Transformations <../part1/09-natural-transformations>`).
 Let’s use the notation ``[C, Set]`` for the functor category from *C* to
 **Set**. You may also recall that hom-functors are the prototypical
-`representable
-functors <https://bartoszmilewski.com/2015/07/29/representable-functors/>`__.
+:doc:`representable
+functors <../part2/03-representable-functors>`.
 
 Every time we have a mapping of objects between two categories, it’s
 natural to ask if such a mapping is also a functor. In other words
@@ -111,8 +111,8 @@ called the co-Yoneda embedding. Observe that we could have started by
 fixing the target object (rather than the source object) of each
 hom-set, ``C(-, a)``. That would give us a contravariant hom-functor.
 Contravariant functors from *C* to **Set** are our familiar presheaves
-(see, for instance, `Limits and
-Colimits <https://bartoszmilewski.com/2015/04/15/limits-and-colimits/>`__).
+(see, for instance, :doc:`Limits and
+Colimits <../part2/01-limits-and-colimits>`).
 The co-Yoneda embedding defines the embedding of a category *C* in the
 category of presheaves. Its action on morphisms is given by:
 

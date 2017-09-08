@@ -124,8 +124,8 @@ In the monoid example, the functor in question is:
 
     data MonF a = MEmpty | MAppend a a
 
-This is Haskell for ``1 + a × a`` (remember `algebraic data
-structures <https://bartoszmilewski.com/2015/01/13/simple-algebraic-data-types/>`__).
+This is Haskell for ``1 + a × a`` (remember :doc:`algebraic data
+structures <../part1/05-simple-algebraic-data-types>`).
 
 A ring would be defined using the following functor:
 

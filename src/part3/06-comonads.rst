@@ -400,8 +400,8 @@ Now consider comonoid laws that are dual to the monoid unit laws.
     rho . bimap id destroy . split = id
 
 Here, ``lambda`` and ``rho`` are the left and right unitors,
-respectively (see the definition of `monoidal
-categories <https://bartoszmilewski.com/2016/12/27/monads-categorically/>`__).
+respectively (see the definition of :doc:`monoidal
+categories <../part3/05-monads-categorically>`).
 Plugging in the definitions, we get:
 
 .. code-block:: haskell

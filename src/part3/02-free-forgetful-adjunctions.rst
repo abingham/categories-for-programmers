@@ -45,8 +45,8 @@ m\ :sub:`3` than there are morphisms between them.
 
 The functor ``F`` that’s the left adjoint to the forgetful functor ``U``
 is the free functor that builds free monoids from their generator sets.
-The adjunction follows from the `free monoid universal
-construction <https://bartoszmilewski.com/2015/07/21/free-monoids/>`__
+The adjunction follows from the :doc:`free monoid universal
+construction <../part2/02-free-monoids>`
 we’ve discussed before.
 
 In terms of hom-sets, we can write this adjunction as:
