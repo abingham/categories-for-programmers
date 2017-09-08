@@ -110,7 +110,7 @@ synonym for a list of ``Char``, is an example of an infinite set.
 
 When we declare ``x`` to be an ``Integer``:
 
-::
+.. code-block:: haskell
 
     x :: Integer
 
@@ -152,7 +152,7 @@ of view, to extend every type by one more special value called the
 *bottom* and denoted by ``_|_``, or Unicode ⊥. This “value” corresponds
 to a non-terminating computation. So a function declared as:
 
-::
+.. code-block:: haskell
 
     f :: Bool -> Bool
 
@@ -164,7 +164,7 @@ is convenient to treat every runtime error as a bottom, and even allow
 functions to return the bottom explicitly. The latter is usually done
 using the expression ``undefined``, as in:
 
-::
+.. code-block:: haskell
 
     f :: Bool -> Bool
     f x = undefined
@@ -172,7 +172,7 @@ using the expression ``undefined``, as in:
 This definition type checks because ``undefined`` evaluates to bottom,
 which is a member of any type, including ``Bool``. You can even write:
 
-::
+.. code-block:: haskell
 
     f :: Bool -> Bool
     f = undefined
@@ -240,7 +240,7 @@ simple, if not trivial.
 Consider the definition of a factorial function in Haskell, which is a
 language quite amenable to denotational semantics:
 
-::
+.. code-block:: haskell
 
     fact n = product [1..n]
 
@@ -248,7 +248,7 @@ The expression ``[1..n]`` is a list of integers from 1 to n. The
 function ``product`` multiplies all elements of a list. That’s just like
 a definition of factorial taken from a math text. Compare this with C:
 
-::
+.. code-block:: c++
 
     int fact(int n) {
         int i;
@@ -328,7 +328,7 @@ no restrictions whatsoever. It can return any type (although it never
 will, because it can’t be called). In other words it’s a function that’s
 polymorphic in the return type. Haskellers have a name for it:
 
-::
+.. code-block:: haskell
 
     absurd :: Void -> a
 
@@ -346,7 +346,7 @@ functions from and to this type. A function from ``void`` can always be
 called. If it’s a pure function, it will always return the same result.
 Here’s an example of such a function:
 
-::
+.. code-block:: c++
 
     int f44() { return 44; }
 
@@ -362,7 +362,7 @@ the Haskell’s love of terseness, the same symbol ``()`` is used for the
 type, the constructor, and the only value corresponding to a singleton
 set. So here’s this function in Haskell:
 
-::
+.. code-block:: haskell
 
     f44 :: () -> Integer
     f44 () = 44
@@ -373,7 +373,7 @@ pattern matching the only constructor for unit, namely ``()``, and
 producing the number 44. You call this function by providing the unit
 value ``()``:
 
-::
+.. code-block:: haskell
 
     f44 ()
 
@@ -396,7 +396,7 @@ element of A to the single element of that singleton set. For every A
 there is exactly one such function. Here’s this function for
 ``Integer``:
 
-::
+.. code-block:: haskell
 
     fInt :: Integer -> ()
     fInt x = ()
@@ -406,7 +406,7 @@ terseness, Haskell lets you use the wildcard pattern, the underscore,
 for an argument that is discarded. This way you don’t have to invent a
 name for it. So the above can be rewritten as:
 
-::
+.. code-block:: haskell
 
     fInt :: Integer -> ()
     fInt _ = ()
@@ -421,14 +421,14 @@ such functions with one equation using a type parameter instead of a
 concrete type. What should we call a polymorphic function from any type
 to unit type? Of course we’ll call it ``unit``:
 
-::
+.. code-block:: haskell
 
     unit :: a -> ()
     unit _ = ()
 
 In C++ you would write this function as:
 
-::
+.. code-block:: c++
 
     template<class T>
     void unit(T) {}
@@ -438,7 +438,7 @@ Next in the typology of types is a two-element set. In C++ it’s called
 in C++ ``bool`` is a built-in type, whereas in Haskell it can be defined
 as follows:
 
-::
+.. code-block:: haskell
 
     data Bool = True | False
 
@@ -446,7 +446,7 @@ as follows:
 ``False``.) In principle, one should also be able to define a Boolean
 type in C++ as an enumeration:
 
-::
+.. code-block:: c++
 
     enum bool {
         true,
@@ -494,18 +494,18 @@ Challenges
    not.
 
    #. The factorial function from the example in the text.
-   #. ::
+   #. .. code-block:: c++
 
           std::getchar()
 
-   #. ::
+   #. .. code-block:: c++
 
           bool f() {
               std::cout << "Hello!" << std::endl;
               return true;
           }
 
-   #. ::
+   #. .. code-block:: c++
 
           int f(int x)
           {

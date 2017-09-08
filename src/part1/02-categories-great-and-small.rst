@@ -93,7 +93,7 @@ it.
 For instance, natural numbers with zero form a monoid under addition.
 Associativity means that:
 
-::
+.. code-block:: haskell
 
     (a + b) + c = a + (b + c)
 
@@ -101,13 +101,13 @@ Associativity means that:
 
 The neutral element is zero, because:
 
-::
+.. code-block:: haskell
 
     0 + a = a
 
 and
 
-::
+.. code-block:: haskell
 
     a + 0 = a
 
@@ -122,7 +122,7 @@ In Haskell we can define a type class for monoids — a type for which
 there is a neutral element called ``mempty`` and a binary operation
 called ``mappend``:
 
-::
+.. code-block:: haskell
 
     class Monoid m where
         mempty  :: m
@@ -150,7 +150,7 @@ some class much later. As an example, let’s declare ``String`` to be a
 monoid by providing the implementation of ``mempty`` and ``mappend``
 (this is, in fact, done for you in the standard Prelude):
 
-::
+.. code-block:: haskell
 
     instance Monoid String where
         mempty = ""
@@ -163,13 +163,13 @@ A word about Haskell syntax: Any infix operator can be turned into a
 two-argument function by surrounding it with parentheses. Given two
 strings, you can concatenate them by inserting ``++`` between them:
 
-::
+.. code-block:: haskell
 
     "Hello " ++ "world!"
 
 or by passing them as two arguments to the parenthesized ``(++)``:
 
-::
+.. code-block:: haskell
 
     (++) "Hello " "world!"
 
@@ -180,14 +180,14 @@ used to when learning Haskell.)
 It’s worth emphasizing that Haskell lets you express equality of
 functions, as in:
 
-::
+.. code-block:: haskell
 
     mappend = (++)
 
 Conceptually, this is different than expressing the equality of values
 produced by functions, as in:
 
-::
+.. code-block:: haskell
 
     mappend s1 s2 = (++) s1 s2
 
@@ -207,7 +207,7 @@ confusing to the beginner.)
 The closest one can get to declaring a monoid in C++ would be to use the
 (proposed) syntax for concepts.
 
-::
+.. code-block:: c++
 
     template<class T>
       T mempty = delete;
@@ -236,7 +236,7 @@ tests whether there exist appropriate definitions of ``mempty`` and
 An instantiation of the Monoid concept can be accomplished by providing
 appropriate specializations and overloads:
 
-::
+.. code-block:: c++
 
     template<>
     std::string mempty<std::string> = {""};

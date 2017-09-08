@@ -12,7 +12,7 @@ functions that log or trace their execution. Something that, in an
 imperative language, would likely be implemented by mutating some global
 state, as in:
 
-::
+.. code-block:: c++
 
     string logger;
 
@@ -33,7 +33,7 @@ have to pass the log explicitly, in and out. Let’s do that by adding a
 string argument, and pairing regular output with a string that contains
 the updated log:
 
-::
+.. code-block:: c++
 
     pair<bool, string> negate(bool b, string logger) {
          return make_pair(!b, logger + "Not so! ");
@@ -45,13 +45,13 @@ if necessary. However, considering the cumulative nature of the log,
 you’d have to memoize all possible histories that can lead to a given
 call. There would be a separate memo entry for:
 
-::
+.. code-block:: c++
 
     negate(true, "It was the best of times. ");
 
 and
 
-::
+.. code-block:: c++
 
     negate(true, "It was the worst of times. ");
 
@@ -71,7 +71,7 @@ log is a separate concern. We still want the function to produce a
 string, but we’d like to unburden it from producing a log. So here’s the
 compromise solution:
 
-::
+.. code-block:: c++
 
     pair<bool, string> negate(bool b) {
          return make_pair(!b, "Not so! ");
@@ -83,7 +83,7 @@ To see how this can be done, let’s switch to a slightly more realistic
 example. We have one function from string to string that turns lower
 case characters to upper case:
 
-::
+.. code-block:: c++
 
     string toUpper(string s) {
         string result;
@@ -95,7 +95,7 @@ case characters to upper case:
 and another that splits a string into a vector of strings, breaking it
 on whitespace boundaries:
 
-::
+.. code-block:: c++
 
     vector<string> toWords(string s) {
         return words(s);
@@ -103,7 +103,7 @@ on whitespace boundaries:
 
 The actual work is done in the auxiliary function ``words``:
 
-::
+.. code-block:: c++
 
     vector<string> words(string s) {
         vector<string> result{""};
@@ -127,14 +127,14 @@ a generic way by defining a template ``Writer`` that encapsulates a pair
 whose first component is a value of arbitrary type ``A`` and the second
 component is a string:
 
-::
+.. code-block:: c++
 
     template<class A>
     using Writer = pair<A, string>;
 
 Here are the embellished functions:
 
-::
+.. code-block:: c++
 
     Writer<string> toUpper(string s) {
         string result;
@@ -151,7 +151,7 @@ We want to compose these two functions into another embellished function
 that uppercases a string and splits it into words, all the while
 producing a log of those actions. Here’s how we may do it:
 
-::
+.. code-block:: c++
 
     Writer<vector<string>> process(string s) {
         auto p1 = toUpper(s);
@@ -186,7 +186,7 @@ represented by an embellished function. The important point is that this
 morphism is still considered an arrow between the objects ``int`` and
 ``bool``, even though the embellished function returns a pair:
 
-::
+.. code-block:: c++
 
     pair<bool, string> isEven(int n) {
          return make_pair(n % 2 == 0, "isEven ");
@@ -196,7 +196,7 @@ By the laws of a category, we should be able to compose this morphism
 with another morphism that goes from the object ``bool`` to whatever. In
 particular, we should be able to compose it with our earlier ``negate``:
 
-::
+.. code-block:: c++
 
     pair<bool, string> negate(bool b) {
          return make_pair(!b, "Not so! ");
@@ -206,7 +206,7 @@ Obviously, we cannot compose these two morphisms the same way we compose
 regular functions, because of the input/output mismatch. Their
 composition should look more like this:
 
-::
+.. code-block:: c++
 
     pair<bool, string> isOdd(int n) {
         pair<bool, string> p1 = isEven(n);
@@ -231,7 +231,7 @@ corresponding to three objects in our category. It should take two
 embellished functions that are composable according to our rules, and
 return a third embellished function:
 
-::
+.. code-block:: c++
 
     template<class A, class B, class C>
     function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
@@ -247,7 +247,7 @@ return a third embellished function:
 Now we can go back to our earlier example and implement the composition
 of ``toUpper`` and ``toWords`` using this new template:
 
-::
+.. code-block:: c++
 
     Writer<vector<string>> process(string s) {
        return compose<string, string, vector<string>>(toUpper, toWords)(s);
@@ -258,7 +258,7 @@ There is still a lot of noise with the passing of types to the
 C++14-compliant compiler that supports generalized lambda functions with
 return type deduction (credit for this code goes to Eric Niebler):
 
-::
+.. code-block:: c++
 
     auto const compose = [](auto m1, auto m2) {
         return [m1, m2](auto x) {
@@ -270,7 +270,7 @@ return type deduction (credit for this code goes to Eric Niebler):
 
 In this new definition, the implementation of ``process`` simplifies to:
 
-::
+.. code-block:: c++
 
     Writer<vector<string>> process(string s){
        return compose(toUpper, toWords)(s);
@@ -281,7 +281,7 @@ category, but what are the identity morphisms? These are not our regular
 identity functions! They have to be morphisms from type A back to type
 A, which means they are embellished functions of the form:
 
-::
+.. code-block:: c++
 
     Writer<A> identity(A);
 
@@ -290,7 +290,7 @@ at our definition of composition, you’ll see that an identity morphism
 should pass its argument without change, and only contribute an empty
 string to the log:
 
-::
+.. code-block:: c++
 
     template<class A>
     Writer<A> identity(A x) {
@@ -320,7 +320,7 @@ The same thing in Haskell is a little more terse, and we also get a lot
 more help from the compiler. Let’s start by defining the ``Writer``
 type:
 
-::
+.. code-block:: haskell
 
     type Writer a = (a, String)
 
@@ -333,14 +333,14 @@ a comma.
 Our morphisms are functions from an arbitrary type to some ``Writer``
 type:
 
-::
+.. code-block:: haskell
 
     a -> Writer b
 
 We’ll declare the composition as a funny infix operator, sometimes
 called the “fish”:
 
-::
+.. code-block:: haskell
 
     (>=>) :: (a -> Writer b) -> (b -> Writer c) -> (a -> Writer c)
 
@@ -352,7 +352,7 @@ returning a function. The first argument is of the type
 Here’s the definition of this infix operator — the two arguments ``m1``
 and ``m2`` appearing on either side of the fishy symbol:
 
-::
+.. code-block:: haskell
 
     m1 >=> m2 = \x ->
         let (y, s1) = m1 x
@@ -379,7 +379,7 @@ component is the concatenation of two strings, ``s1++s2``.
 I will also define the identity morphism for our category, but for
 reasons that will become clear much later, I will call it ``return``.
 
-::
+.. code-block:: haskell
 
     return :: a -> Writer a
     return x = (x, "")
@@ -387,12 +387,12 @@ reasons that will become clear much later, I will call it ``return``.
 For completeness, let’s have the Haskell versions of the embellished
 functions ``upCase`` and ``toWords``:
 
-::
+.. code-block:: haskell
 
     upCase :: String -> Writer String
     upCase s = (map toUpper s, "upCase ")
 
-::
+.. code-block:: haskell
 
     toWords :: String -> Writer [String]
     toWords s = (words s, "toWords ")
@@ -404,7 +404,7 @@ function ``words`` is defined in the standard Prelude library.
 Finally, the composition of the two functions is accomplished with the
 help of the fish operator:
 
-::
+.. code-block:: haskell
 
     process :: String -> Writer [String]
     process = upCase >=> toWords
@@ -448,7 +448,7 @@ mathematical sense, so it doesn’t fit the standard categorical mold. It
 can, however, be represented by a function that returns an embellished
 type ``optional``:
 
-::
+.. code-block:: c++
 
     template<class A> class optional {
         bool _isValid;
@@ -463,7 +463,7 @@ type ``optional``:
 As an example, here’s the implementation of the embellished function
 ``safe_root``:
 
-::
+.. code-block:: c++
 
     optional<double> safe_root(double x) {
         if (x >= 0) return optional<double>{sqrt(x)};

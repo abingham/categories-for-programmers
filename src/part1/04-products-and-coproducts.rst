@@ -71,7 +71,7 @@ set. Remember, an empty set corresponds to the Haskell type ``Void``
 (there is no corresponding type in C++) and the unique polymorphic
 function from ``Void`` to any other type is called ``absurd``:
 
-::
+.. code-block:: haskell
 
     absurd :: Void -> a
 
@@ -103,7 +103,7 @@ and the unit type ``()`` in Haskell. It’s a type that has only one value
 established that there is one and only one pure function from any type
 to the unit type:
 
-::
+.. code-block:: haskell
 
     unit :: a -> ()
     unit _ = ()
@@ -115,7 +115,7 @@ there are other sets (actually, all of them, except for the empty set)
 that have incoming morphisms from every set. For instance, there is a
 Boolean-valued function (a predicate) defined for every type:
 
-::
+.. code-block:: haskell
 
     yes :: a -> Bool
     yes _ = True
@@ -123,7 +123,7 @@ Boolean-valued function (a predicate) defined for every type:
 But ``Bool`` is not a terminal object. There is at least one more
 ``Bool``-valued function from every type:
 
-::
+.. code-block:: haskell
 
     no :: a -> Bool
     no _ = False
@@ -187,7 +187,7 @@ We understand the inverse in terms of composition and identity: Morphism
 morphism. These are actually two equations because there are two ways of
 composing two morphisms:
 
-::
+.. code-block:: haskell
 
     f . g = id
     g . f = id
@@ -245,12 +245,12 @@ the product to each of the constituents. In Haskell, these two functions
 are called ``fst`` and ``snd`` and they pick, respectively, the first
 and the second component of a pair:
 
-::
+.. code-block:: haskell
 
     fst :: (a, b) -> a
     fst (x, y) = x
 
-::
+.. code-block:: haskell
 
     snd :: (a, b) -> b
     snd (x, y) = y
@@ -262,14 +262,14 @@ components into variables ``x`` and ``y``.
 These definitions can be simplified even further with the use of
 wildcards:
 
-::
+.. code-block:: haskell
 
     fst (x, _) = x
     snd (_, y) = y
 
 In C++, we would use template functions, for instance:
 
-::
+.. code-block:: c++
 
     template<class A, class B>
     A fst(pair<A, B> const & p) {
@@ -282,7 +282,7 @@ lead us to the construction of a product of two sets, *a* and *b*. This
 pattern consists of an object *c* and two morphisms *p* and *q*
 connecting it to *a* and *b*, respectively:
 
-::
+.. code-block:: haskell
 
     p :: c -> a
     q :: c -> b
@@ -302,7 +302,7 @@ Here’s one: ``Int``. Can ``Int`` be considered a candidate for the
 product of ``Int`` and ``Bool``? Yes, it can — and here are its
 projections:
 
-::
+.. code-block:: haskell
 
     p :: Int -> Int
     p x = x
@@ -316,7 +316,7 @@ Here’s another one: ``(Int, Int, Bool)``. It’s a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
-::
+.. code-block:: haskell
 
     p :: (Int, Int, Bool) -> Int
     p (x, _, _) = x
@@ -338,10 +338,10 @@ weak. We also want its projections to be “better,” or “more universal,”
 than the projections of *c’*. What it means is that the projections *p’*
 and *q’* can be reconstructed from *p* and *q* using *m*:
 
-::
+.. code-block:: haskell
 
-    p’ = p . m
-    q’ = q . m
+    p' = p . m
+    q' = q . m
 
 |ProductRanking|
 
@@ -358,21 +358,21 @@ is indeed *better* than the two candidates I presented before.
 
 The mapping ``m`` for the first candidate is:
 
-::
+.. code-block:: haskell
 
     m :: Int -> (Int, Bool)
     m x = (x, True)
 
 Indeed, the two projections, ``p`` and ``q`` can be reconstructed as:
 
-::
+.. code-block:: haskell
 
     p x = fst (m x) = x
     q x = snd (m x) = True
 
 The ``m`` for the second example is similarly uniquely determined:
 
-::
+.. code-block:: haskell
 
     m (x, _, b) = (x, b)
 
@@ -381,10 +381,10 @@ two candidates. Let’s see why the opposite is not true. Could we find
 some ``m'`` that would help us reconstruct ``fst`` and ``snd`` from
 ``p`` and ``q``?
 
-::
+.. code-block:: haskell
 
-    fst = p . m’
-    snd = q . m’
+    fst = p . m'
+    snd = q . m'
 
 In our first example, ``q`` always returned ``True`` and we know that
 there are pairs whose second component is ``False``. We can’t
@@ -396,15 +396,15 @@ factorize ``fst`` and ``snd``. Because both ``p`` and ``q`` ignore the
 second component of the triple, our ``m’`` can put anything in it. We
 can have:
 
-::
+.. code-block:: haskell
 
-    m’ (x, b) = (x, x, b)
+    m' (x, b) = (x, x, b)
 
 or
 
-::
+.. code-block:: haskell
 
-    m’ (x, b) = (x, 42, b)
+    m' (x, b) = (x, 42, b)
 
 and so on.
 
@@ -413,7 +413,7 @@ and ``q``, there is a unique ``m`` from ``c`` to the cartesian product
 ``(a, b)`` that factorizes them. In fact, it just combines ``p`` and
 ``q`` into a pair.
 
-::
+.. code-block:: haskell
 
     m :: c -> (a, b)
     m x = (p x, q x)
@@ -435,7 +435,7 @@ A (higher order) function that produces the factorizing function ``m``
 from two candidates is sometimes called the *factorizer*. In our case,
 it would be the function:
 
-::
+.. code-block:: haskell
 
     factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
     factorizer p q = \x -> (p x, q x)
@@ -448,7 +448,7 @@ which is called the coproduct. When we reverse the arrows in the product
 pattern, we end up with an object *c* equipped with two *injections*,
 ``i`` and ``j``: morphisms from *a* and *b* to *c*.
 
-::
+.. code-block:: haskell
 
     i :: a -> c
     j :: b -> c
@@ -459,7 +459,7 @@ The ranking is also inverted: object *c* is “better” than object *c’*
 that is equipped with the injections *i’* and *j’* if there is a
 morphism *m* from *c* to *c’* that factorizes the injections:
 
-::
+.. code-block:: haskell
 
     i' = m . i
     j' = m . j
@@ -490,7 +490,7 @@ have to define a tag — an enumeration — and combine it with the union.
 For instance, a tagged union of an ``int`` and a ``char const *`` could
 be implemented as:
 
-::
+.. code-block:: c++
 
     struct Contact {
         enum { isPhone, isEmail } tag;
@@ -501,7 +501,7 @@ The two injections can either be implemented as constructors or as
 functions. For instance, here’s the first injection as a function
 ``PhoneNum``:
 
-::
+.. code-block:: c++
 
     Contact PhoneNum(int n) {
         Contact c;
@@ -519,7 +519,7 @@ In Haskell, you can combine any data types into a tagged union by
 separating data constructors with a vertical bar. The ``Contact``
 example translates into the declaration:
 
-::
+.. code-block:: haskell
 
     data Contact = PhoneNum Int | EmailAddr String
 
@@ -528,7 +528,7 @@ Here, ``PhoneNum`` and ``EmailAddr`` serve both as constructors
 For instance, this is how you would construct a contact using a phone
 number:
 
-::
+.. code-block:: haskell
 
     helpdesk :: Contact;
     helpdesk = PhoneNum 2222222
@@ -538,7 +538,7 @@ Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called ``Either``, which is defined in the
 standard Prelude as:
 
-::
+.. code-block:: haskell
 
     Either a b = Left a | Right b
 
@@ -551,7 +551,7 @@ for the coproduct. Given a candidate type ``c`` and two candidate
 injections ``i`` and ``j``, the factorizer for ``Either`` produces the
 factoring function:
 
-::
+.. code-block:: haskell
 
     factorizer :: (a -> c) -> (b -> c) -> Either a b -> c
     factorizer i j (Left a)  = i a
@@ -594,7 +594,7 @@ the singleton, to the product. This morphism selects an element from the
 product set — it selects a concrete pair. It also factorizes the two
 projections:
 
-::
+.. code-block:: haskell
 
     p = fst . m
     q = snd . m
@@ -602,7 +602,7 @@ projections:
 When acting on the singleton value ``()``, the only element of the
 singleton set, these two equations become:
 
-::
+.. code-block:: c++
 
     p () = fst (m ())
     q () = snd (m ())
@@ -667,14 +667,14 @@ Challenges
 #. Show that ``Either`` is a “better” coproduct than ``int`` equipped
    with two injections:
 
-   ::
+   .. code-block:: c++
 
        int i(int n) { return n; }
        int j(bool b) { return b? 0: 1; }
 
    Hint: Define a function
 
-   ::
+   .. code-block:: c++
 
        int m(Either const & e);
 
@@ -685,7 +685,7 @@ Challenges
    ``Either``?
 #. Still continuing: What about these injections?
 
-   ::
+   .. code-block:: c++
 
        int i(int n) {
            if (n < 0) return n;
