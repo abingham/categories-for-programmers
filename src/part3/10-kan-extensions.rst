@@ -48,7 +48,7 @@ If the Kan extension ``F = RanKD`` exists, there must be a unique
 natural transformation ``σ`` from ``F'`` to it, such that ``ε'``
 factorizes through ``ε``, that is:
 
-.. code-block:: haskell
+::
 
     ε' = ε . (σ ∘ K)
 
@@ -60,7 +60,7 @@ on ``K``). This transformation is then vertically composed with ``ε``.
 
 In components, when acting on an object ``i`` in *I*, we get:
 
-.. code-block:: haskell
+::
 
     ε'i = εi ∘ σ K i
 
@@ -81,14 +81,14 @@ The right Kan extension of the functor ``D::I->C`` along the functor
 ``K::I->A`` is a functor ``F::A->C`` (denoted ``RanKD``) together with a
 natural transformation
 
-.. code-block:: haskell
+::
 
     ε :: F ∘ K -> D
 
 such that for any other functor ``F'::A->C`` and a natural
 transformation
 
-.. code-block:: haskell
+::
 
     ε' :: F' ∘ K -> D
 
@@ -100,7 +100,7 @@ there is a unique natural transformation
 
 that factorizes ``ε'``:
 
-.. code-block:: haskell
+::
 
     ε' = ε . (σ ∘ K)
 
@@ -114,7 +114,7 @@ authors go as far as use the notation ``D/K`` for ``RanKD``. Indeed, in
 this notation, the definition of ``ε``, which is also called the counit
 of the right Kan extension, looks like simple cancellation:
 
-.. code-block:: haskell
+::
 
     ε :: D/K ∘ K -> D
 
@@ -145,7 +145,7 @@ a functor from the functor category ``[I, C]`` to the functor category
 precomposition functor ``-∘K``. The latter maps functors in ``[A, C]``
 to functors in ``[I, C]``. The adjunction is:
 
-.. code-block:: haskell
+::
 
     [I, C](F' ∘ K, D) ≅ [A, C](F', RanKD)
 
@@ -159,7 +159,7 @@ Furthermore, if we chose the category *I* to be the same as *C*, we can
 substitute the identity functor ``IC`` for ``D``. We get the following
 identity:
 
-.. code-block:: haskell
+::
 
     [C, C](F' ∘ K, IC) ≅ [A, C](F', RanKIC)
 
@@ -168,13 +168,13 @@ right hand side contains the identity natural transformation and,
 corresponding to it, the left hand side gives us the following natural
 transformation:
 
-.. code-block:: haskell
+::
 
     ε :: RanKIC ∘ K -> IC
 
 This looks very much like the counit of an adjunction:
 
-.. code-block:: haskell
+::
 
     RanKIC ⊣ K
 
@@ -186,21 +186,21 @@ we calculate the Kan extension of the functor precomposed with ``K``, we
 should get the same result as precomposing the original Kan extesion
 with ``K``. In our case, this condition simplifies to:
 
-.. code-block:: haskell
+::
 
     K ∘ RanKIC ≅ RanKK
 
 Notice that, using the division-by-K notation, the adjunction can be
 written as:
 
-.. code-block:: haskell
+::
 
     I/K ⊣ K
 
 which confirms our intuition that an adjunction describes some kind of
 an inverse. The preservation condition becomes:
 
-.. code-block:: haskell
+::
 
     K ∘ I/K ≅ K/K
 
@@ -231,7 +231,7 @@ transformation ``η`` from ``D`` to ``F ∘ K``.
 The colimit is the universal cocone. So for any other functor ``F'`` and
 a natural transformation
 
-.. code-block:: haskell
+::
 
     η' :: D -> F'∘ K
 
@@ -243,7 +243,7 @@ there is a unique natural transformation ``σ`` from ``F`` to ``F'``
 
 such that:
 
-.. code-block:: haskell
+::
 
     η' = (σ ∘ K) . η
 
@@ -256,7 +256,7 @@ such that:
 | |image13|
 | The natural transformation:
 
-.. code-block:: haskell
+::
 
     η :: D -> LanKD ∘ K
 
@@ -265,13 +265,13 @@ is called the unit of the left Kan extension.
 As before, we can recast the one-to-one correspondence between natural
 transformations:
 
-.. code-block:: haskell
+::
 
     η' = (σ ∘ K) . η
 
 in terms of the adjunction:
 
-.. code-block:: haskell
+::
 
     [A, C](LanKD, F') ≅ [I, C](D, F' ∘ K)
 
@@ -284,13 +284,13 @@ to calculate the left adjoint of ``K``, the left Kan extension of the
 identity functor turns out to be the right adjoint of ``K`` (with ``η``
 being the unit of the adjunction):
 
-.. code-block:: haskell
+::
 
     K ⊣ LanKIC
 
 Combining the two results, we get:
 
-.. code-block:: haskell
+::
 
     RanKIC ⊣ K ⊣ LanKIC
 
@@ -320,105 +320,105 @@ object ``a`` to the image of ``K`` is characterized by the hom-functor:
 | |image14|
 | Notice that this hom-functor is a composition of two functors:
 
-.. code-block:: haskell
+::
 
     A(a, K -) = A(a, -) ∘ K
 
 The right Kan extension is the right adjoint of functor composition:
 
-.. code-block:: haskell
+::
 
     [I, Set](F' ∘ K, D) ≅ [A, Set](F', RanKD)
 
 Let’s see what happens when we replace ``F'`` with the hom functor:
 
-.. code-block:: haskell
+::
 
     [I, Set](A(a, -) ∘ K, D) ≅ [A, Set](A(a, -), RanKD)
 
 and then inline the composition:
 
-.. code-block:: haskell
+::
 
     [I, Set](A(a, K -), D) ≅ [A, Set](A(a, -), RanKD)
 
 The right hand side can be reduced using the Yoneda lemma:
 
-.. code-block:: haskell
+::
 
     [I, Set](A(a, K -), D) ≅ RanKD a
 
 We can now rewrite the set of natural transformations as the end to get
 this very convenient formula for the right Kan extension:
 
-.. code-block:: haskell
+::
 
     RanKD a ≅ ∫i Set(A(a, K i), D i)
 
 There is an analogous formula for the left Kan extension in terms of a
 coend:
 
-.. code-block:: haskell
+::
 
     LanKD a = ∫i A(K i, a) × D i
 
 To see that this is the case, we’ll show that this is indeed the left
 adjoint to functor composition:
 
-.. code-block:: haskell
+::
 
     [A, Set](LanKD, F') ≅ [I, Set](D, F'∘ K)
 
 Let’s substitute our formula in the left hand side:
 
-.. code-block:: haskell
+::
 
     [A, Set](∫i A(K i, -) × D i, F')
 
 This is a set of natural transformations, so it can be rewritten as an
 end:
 
-.. code-block:: haskell
+::
 
     ∫a Set(∫i A(K i, a) × D i, F'a)
 
 Using the continuity of the hom-functor, we can replace the coend with
 the end:
 
-.. code-block:: haskell
+::
 
     ∫a ∫i Set(A(K i, a) × D i, F'a)
 
 We can use the product-exponential adjunction:
 
-.. code-block:: haskell
+::
 
     ∫a ∫i Set(A(K i, a), (F'a)D i)
 
 The exponential is isomorphic to the corresponding hom-set:
 
-.. code-block:: haskell
+::
 
     ∫a ∫i Set(A(K i, a), A(D i, F'a))
 
 There is a theorem called the Fubini theorem that allows us to swap the
 two ends:
 
-.. code-block:: haskell
+::
 
     ∫i ∫a Set(A(K i, a), A(D i, F'a))
 
 The inner end represents the set of natural transformations between two
 functors, so we can use the Yoneda lemma:
 
-.. code-block:: haskell
+::
 
     ∫i A(D i, F'(K i))
 
 This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
 
-.. code-block:: haskell
+::
 
     [I, Set](D, F'∘ K)
 
@@ -431,7 +431,7 @@ Kan Extensions in Haskell
 The end/coend formulas for Kan extensions can be easily translated to
 Haskell. Let’s start with the right extension:
 
-.. code-block:: haskell
+::
 
     RanKD a ≅ ∫i Set(A(a, K i), D i)
 
@@ -489,7 +489,7 @@ As expected, it generates free monoids, or Haskell lists:
 
 The left Kan extension is a coend:
 
-.. code-block:: haskell
+::
 
     LanKD a = ∫i A(K i, a) × D i
 
@@ -562,7 +562,7 @@ into *C*: it’s an identity on objects (and on identity morphisms). The
 left Kan extension of ``F`` along ``J``, if it exists, is then a functor
 for *C* to *C*:
 
-.. code-block:: haskell
+::
 
     LanJ F a = ∫i C(J i, a) × F i
 

@@ -52,7 +52,7 @@ Let’s start with the definition of composition. Normally, it takes a
 pair of morphisms, one from ``C(b, c)`` and one from ``C(a, b)`` and
 maps it to a morphism from ``C(a, c)``. In other words it’s a mapping:
 
-.. code-block:: haskell
+::
 
     C(b, c) × C(a, b) -> C(a, c)
 
@@ -84,7 +84,7 @@ We’ve talked about monoidal categories before, but it’s worth restating
 the definition. A monoidal category defines a tensor product that is a
 bifunctor:
 
-.. code-block:: haskell
+::
 
     ⊗ :: V × V -> V
 
@@ -92,7 +92,7 @@ We want the tensor product to be associative, but it’s enough to satisfy
 associativity up to natural isomorphism. This isomorphism is called the
 associator. Its components are:
 
-.. code-block:: haskell
+::
 
     αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c)
 
@@ -103,7 +103,7 @@ serves as the unit of the tensor product; again, up to natural
 isomorphism. The two isomorphisms are called, respectively, the left and
 the right unitor, and their components are:
 
-.. code-block:: haskell
+::
 
     λa :: i ⊗ a -> a
     ρa :: a ⊗ i -> a
@@ -117,13 +117,13 @@ The associator and the unitors must satisfy coherence conditions:
 A monoidal category is called *symmetric* if there is a natural
 isomorphism with components:
 
-.. code-block:: haskell
+::
 
     γa b :: a ⊗ b -> b ⊗ a
 
 whose “square is one”:
 
-.. code-block:: haskell
+::
 
     γb a ∘ γa b = ida⊗b
 
@@ -137,7 +137,7 @@ the categorical product. A category in which such an object existed for
 any pair of objects was called cartesian closed. Here is the adjunction
 that defines the internal hom in a monoidal category:
 
-.. code-block:: haskell
+::
 
     V(a ⊗ b, c) ~ V(a, [b, c])
 
@@ -147,7 +147,7 @@ using the notation ``[b, c]`` for the internal hom. The counit of this
 adjunction is the natural transformation whose components are called
 evaluation morphisms:
 
-.. code-block:: haskell
+::
 
     εa b :: ([a, b] ⊗ a) -> b
 
@@ -155,7 +155,7 @@ Notice that, if the tensor product is not symmetric, we may define
 another internal hom, denoted by ``[[a, c]]``, using the following
 adjunction:
 
-.. code-block:: haskell
+::
 
     V(a ⊗ b, c) ~ V(b, [[a, c]])
 
@@ -178,7 +178,7 @@ entirely rid of sets — we just swept them under the rug.
 Since we cannot talk about individual morphisms in *C*, composition of
 morphisms is replaced by a family of morphisms in *V*:
 
-.. code-block:: haskell
+::
 
     ∘ :: C(b, c) ⊗ C(a, b) -> C(a, c)
 
@@ -341,7 +341,7 @@ hom-sets with internal homs (see the definition above). To make this
 work, we have to define the composition law for internal homs. In other
 words, we have to implement a morphism with the following signature:
 
-.. code-block:: haskell
+::
 
     [b, c] ⊗ [a, b] -> [a, c]
 
@@ -350,13 +350,13 @@ in category theory, we usually use point free implementations. We start
 by specifying the set whose element it’s supposed to be. In this case,
 it’s a member of the hom-set:
 
-.. code-block:: haskell
+::
 
     V([b, c] ⊗ [a, b], [a, c])
 
 This hom-set is isomorphic to:
 
-.. code-block:: haskell
+::
 
     V(([b, c] ⊗ [a, b]) ⊗ a, c)
 
@@ -367,26 +367,26 @@ We construct this morphism by composing several morphisms that are at
 our disposal. To begin with, we can use the associator
 ``α[b, c] [a, b] a`` to reassociate the expression on the left:
 
-.. code-block:: haskell
+::
 
     ([b, c] ⊗ [a, b]) ⊗ a -> [b, c] ⊗ ([a, b] ⊗ a)
 
 We can follow it with the co-unit of the adjunction ``εa b``:
 
-.. code-block:: haskell
+::
 
     [b, c] ⊗ ([a, b] ⊗ a) -> [b, c] ⊗ b
 
 And use the counit ``εb c`` again to get to ``c``. We have thus
 constructed a morphism:
 
-.. code-block:: haskell
+::
 
     εb c . (id[b, c] ⊗ εa b) . α[b, c] [a, b] a
 
 that is an element of the hom-set:
 
-.. code-block:: haskell
+::
 
     V(([b, c] ⊗ [a, b]) ⊗ a, c)
 
@@ -406,7 +406,7 @@ is a member of the following hom-set:
 
 which is isomorphic, through adjunction, to:
 
-.. code-block:: haskell
+::
 
      V(i ⊗ a, a)
 

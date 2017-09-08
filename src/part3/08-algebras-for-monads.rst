@@ -37,7 +37,7 @@ that makes the algebra compatible with the monad ensures that evaluating
 this expression using the algebra whose carrier is ``a`` gives us back
 the original value:
 
-.. code-block:: haskell
+::
 
     alg ∘ ηa = ida
 
@@ -48,7 +48,7 @@ algebra; or we can apply the lifted evaluator to evaluate the inner
 expressions, and then apply the evaluator to the result. We’d like the
 two strategies to be equivalent:
 
-.. code-block:: haskell
+::
 
     alg ∘ μa = alg ∘ m alg
 
@@ -132,11 +132,11 @@ as the evaluator.
 We still have to show that this is a T-algebra. For that, two coherence
 conditions must be satisified:
 
-.. code-block:: haskell
+::
 
     alg ∘ ηTa = idTa
 
-.. code-block:: haskell
+::
 
     alg ∘ μa = alg ∘ T alg
 
@@ -158,7 +158,7 @@ adjunction is indeed our original monad.
 
 The unit of the adjunction is the natural transformation:
 
-.. code-block:: haskell
+::
 
     η :: I -> UT ∘ FT
 
@@ -170,7 +170,7 @@ unit of the monad ``T`` as the unit of this adjunction.
 
 Let’s look at the counit:
 
-.. code-block:: haskell
+::
 
     ε :: FT ∘ UT -> I
 
@@ -205,13 +205,13 @@ second is just the law of the T-algebra ``(a, f)``.
 
 We have established that the two functors form an adjunction:
 
-.. code-block:: haskell
+::
 
     FT ⊣ UT
 
 Every adjunction gives rise to a monad. The round trip
 
-.. code-block:: haskell
+::
 
     UT ∘ FT
 
@@ -220,7 +220,7 @@ Let’s see what its action on an object ``a`` is. The free algebra
 created by ``FT`` is ``(T a, μa)``. The forgetful functor ``FT`` drops
 the evaluator. So, indeed, we have:
 
-.. code-block:: haskell
+::
 
     UT ∘ FT = T
 
@@ -229,7 +229,7 @@ As expected, the unit of the adjunction is the unit of the monad ``T``.
 You may remember that the counint of the adjunction produces monadic
 muliplication through the following formula:
 
-.. code-block:: haskell
+::
 
     μ = R ∘ ε ∘ L
 
@@ -276,13 +276,13 @@ which, in the category *C*, corresponds to:
 
 We define the composition:
 
-.. code-block:: haskell
+::
 
     hK = gK ∘ fK
 
 as a Kleisli arrow in *C*
 
-.. code-block:: haskell
+::
 
     h :: a -> T c
     h = μ ∘ (T g) ∘ f
@@ -305,7 +305,7 @@ value of ``f``. Given a morphism:
 it creates a morphism in *C\ :sub:`T`* with the corresponding Kleisli
 arrow:
 
-.. code-block:: haskell
+::
 
     η ∘ f
 
@@ -332,7 +332,7 @@ is a morphism in *C*:
 
 given by first lifting ``f`` and then applying ``μ``:
 
-.. code-block:: haskell
+::
 
     μT b ∘ T f
 
@@ -347,7 +347,7 @@ You may recognize this as the definition of monadic bind in terms of
 
 It’s easy to see that the two functors form an adjunction:
 
-.. code-block:: haskell
+::
 
     F ⊣ G
 
@@ -384,7 +384,7 @@ There is an obvious forgetful functor ``UW`` from the category of these
 coalgebras to *C*. It just forgets the coevaluation. We’ll consider its
 right adjoint ``FW``.
 
-.. code-block:: haskell
+::
 
     UW ⊣ FW
 
@@ -440,7 +440,7 @@ We also know that ``Store s`` is a comonad:
 The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 
-.. code-block:: haskell
+::
 
     εa ∘ coalg = ida
 
@@ -455,7 +455,7 @@ the structure ``a`` to its previous value, nothing changes.
 
 The second condition:
 
-.. code-block:: haskell
+::
 
     fmap coalg ∘ coalg = δa ∘ coalg
 

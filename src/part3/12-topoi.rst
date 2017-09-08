@@ -185,7 +185,7 @@ We can thus define a set of subobjects of ``b``, ``Sub(b)``, as a family
 of monomorphisms, and see that it is isomorphic to the set of morphisms
 from ``b`` to ``Ω``:
 
-.. code-block:: haskell
+::
 
     Sub(b) ≅ C(b, Ω)
 

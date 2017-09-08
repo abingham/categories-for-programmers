@@ -15,7 +15,7 @@ covariant in the second. We can look at it as establishing a global
 relationship between objects in the category. This relationship is
 described by the hom-functor:
 
-.. code-block:: haskell
+::
 
     C(-, =) :: Cop × C -> Set
 
@@ -24,14 +24,14 @@ relation between objects in a category. A relation may also involve two
 different categories *C* and *D*. A functor, which describes such a
 relation, has the following signature and is called a profunctor:
 
-.. code-block:: haskell
+::
 
     p :: Dop × C -> Set
 
 Mathematicians say that it’s a profunctor from ``C`` to ``D`` (notice
 the inversion), and use a slashed arrow as a symbol for it:
 
-.. code-block:: haskell
+::
 
     C ↛ D
 
@@ -146,7 +146,7 @@ diagram commute:
 
 This is called the wedge condition. It can be written as:
 
-.. code-block:: haskell
+::
 
     p ida f ∘ αa = p f idb ∘ αb
 
@@ -162,7 +162,7 @@ functions ``π`` such that for any other wedge with the apex ``a`` and a
 family ``α`` there is a unique function ``h::a->e`` that makes all
 triangles commute:
 
-.. code-block:: haskell
+::
 
     πa ∘ h = αa
 
@@ -171,13 +171,13 @@ triangles commute:
 The symbol for the end is the integral sign, with the “integration
 variable” in the subscript position:
 
-.. code-block:: haskell
+::
 
     ∫c p c c
 
 Components of ``π`` are called projection maps for the end:
 
-.. code-block:: haskell
+::
 
     πa :: ∫c p c c -> p a a
 
@@ -328,13 +328,13 @@ hom-functor. You may recall that such lifting is implemented as
 simultaneous pre- and post-composition. When acting on ``τa`` the lifted
 pair gives us:
 
-.. code-block:: haskell
+::
 
     G f ∘ τa ∘ ida
 
 The other branch of the diagram gives us:
 
-.. code-block:: haskell
+::
 
     idb ∘ τb ∘ F f
 
@@ -363,7 +363,7 @@ cow-edge).
 The symbol for a coend is the integral sign with the “integration
 variable” in the superscript position:
 
-.. code-block:: haskell
+::
 
     ∫ c p c c
 
@@ -462,13 +462,13 @@ can be generalized to ends and coends, which are a generalization of
 limits and colimits, respectively. In particular, we get a very useful
 identity for converting coends to ends:
 
-.. code-block:: haskell
+::
 
     Set(∫ x p x x, c) ≅ ∫x Set(p x x, c)
 
 Let’s have a look at it in pseudo-Haskell:
 
-.. code-block:: haskell
+::
 
     (exists x. p x x) -> c ≅ forall x. p x x -> c
 
@@ -487,13 +487,13 @@ Ninja Yoneda Lemma
 The set of natural transformations that appears in the Yoneda lemma may
 be encoded using an end, resulting in the following formulation:
 
-.. code-block:: haskell
+::
 
     ∫z Set(C(a, z), F z) ≅ F a
 
 There is also a dual formula:
 
-.. code-block:: haskell
+::
 
     ∫ z C(a, z) × F z ≅ F a
 
@@ -519,20 +519,20 @@ that is an isomorphism.
 We start by inserting the left-hand side of the identity we want to
 prove inside a hom-functor that’s going to some arbitrary object ``c``:
 
-.. code-block:: haskell
+::
 
     Set(∫ z C(a, z) × F z, c)
 
 Using the continuity argument, we can replace the coend with the end:
 
-.. code-block:: haskell
+::
 
     ∫z Set(C(a, z) × F z, c)
 
 We can now take advantage of the adjunction between the product and the
 exponential:
 
-.. code-block:: haskell
+::
 
     ∫z Set(C(a, z), c(F z))
 
@@ -551,7 +551,7 @@ This exponential object is isomorphic to the hom-set:
 Finally, we take advantage of the Yoneda embedding to arrive at the
 isomorphism:
 
-.. code-block:: haskell
+::
 
     ∫ z C(a, z) × F z ≅ F a
 
@@ -571,7 +571,7 @@ coend, and the cartesian product of two sets corresponds to “pairs of
 proofs,” we can define composition of profunctors using the following
 formula:
 
-.. code-block:: haskell
+::
 
     (q ∘ p) a b = ∫ c p c a × q b c
 
