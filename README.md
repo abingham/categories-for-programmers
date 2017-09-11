@@ -16,7 +16,7 @@ can
 ## Building the EPUB
 
 The main tool you need for building the output
-is [Sphinx](http://www.sphinx-doc.org/). The Sphinx website does a fine just
+is [Sphinx](http://www.sphinx-doc.org/). The Sphinx website does a fine job
 explaining how to install it, so I won't go into any detail here. On linux or OS
 X you'll also need to install `make`.
 
