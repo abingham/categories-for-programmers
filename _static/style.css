@@ -1,0 +1,27 @@
+@font-face {
+    font-family: FiraMono;
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/FiraMono-Regular.otf") format("opentype");}
+
+.header{
+	font-style: italic;
+}
+
+.image-box {
+	display: inline-block;
+}
+.image-box img{
+
+}
+.image-box p{
+	font-style:italic;
+}
+pre, samp, code,
+.source{
+	font-family: "FiraMono";
+}
+
+.box{
+    background-color: lightgrey;
+}

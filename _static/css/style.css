@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Inconsolata;
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/Inconsolata.otf") format("opentype");
+}
+
+.header{
+	font-style: italic;
+}
+
+.image-box {
+	display: inline-block;
+}
+.image-box img{
+
+}
+.image-box p{
+	font-style:italic;
+}
+pre, samp, code,
+.source{
+	font-family: "Inconsolata";
+}
+
+.box{
+    background-color: lightgrey;
+}
