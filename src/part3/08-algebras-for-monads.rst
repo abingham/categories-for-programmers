@@ -1,6 +1,6 @@
-=====================
- Algebras for Monads
-=====================
+=================================
+ Chapter 8 - Algebras for Monads
+=================================
 
 If we interpret endofunctors as ways of defining expressions, algebras let us
 evaluate them and monads let us form and manipulate them. By combining algebras
