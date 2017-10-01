@@ -1,6 +1,6 @@
-======================
- Monads Categorically
-======================
+==================================
+ Chapter 5 - Monads Categorically
+==================================
 
 If you mention monads to a programmer, you’ll probably end up talking
 about effects. To a mathematician, monads are about algebras. We’ll talk
