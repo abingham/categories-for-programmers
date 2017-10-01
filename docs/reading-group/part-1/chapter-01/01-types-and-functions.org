@@ -1,0 +1,138 @@
+* Static vs. dynamic typing
+
+I think it's safe to leave this argument
+aside for now. We're talking about
+static typing and compilers in this
+book!
+
+But I like this quote:
+
+"A better criterion would be to measure
+how many projects fall behind schedule
+or are delivered with drastically
+reduced functionality."
+
+* Types are sets
+
+- Bool = {True, False}
+- Char = {'a', 'b', 'c', ...}
+- String = { ... all possible strings ...}
+
+* The category called *Set*
+
+We'll be working with *Set*:
+
+- objects are sets (types!)
+- morphisms are functions
+
+"*Set* is a very special category,
+because we can actually peek inside its
+objects and get a lot of intuitions from
+doing that."
+
+* _|_: Brilliant idea or major hack
+
+_|_ (a.k.a. *bottom*) corresponds to a
+*non-terminating computation*, and all
+types in Haskell include it.
+
+* Haskell and bottom
+
+Haskell needs to execute code, and hence
+is subject to the halting problem.
+
+*Hask* vs. *Set*
+
+"Functions that may return bottom are
+called *partial*, as opposed to *total*
+functions, which return valid results
+for every possible argument."
+
+#+BEGIN_SRC haskell
+f :: Bool -> Bool
+f = undefined
+#+END_SRC
+
+* Mathematical models
+
+It would be nice to be able to prove
+things about the semantics of our
+programs.
+
+* Operational semantics
+
+Based on the idea of a formalized,
+idealized interpreter.
+
+Very difficult to prove
+things...programs have to be "executed"
+on the machine.
+
+* Denoatational semantics
+
+Each programming construct is given a
+mathematical interpretation.
+
+To prove qualities of a program, you
+prove (generally relatively simple)
+mathematical theorems.
+
+* But...
+
+"What’s the mathematical model for
+reading a character from the keyboard or
+sending a packet across the network?"
+
+Eugenio Moggi (Univ. of Genoa) showed
+that computational effect can be mapped
+to monads.
+
+More on monads later in the book...
+
+* Pure vs. dirty functions
+
+"In programming languages, functions
+that always produce the same result
+given the same input and have no side
+effects are called *pure functions*."
+
+Functions are pure in Haskell. Not so
+much in C++.
+
+Monads let us model side-effects in
+purely functional languages.
+
+* Interesting types
+
+* Void
+
+Type with no values. *Not the same as
+void in C/C++.*
+
+Makes functions uncallable but
+type-checkable.
+
+#+BEGIN_SRC haskell
+absurd :: Void -> a
+#+END_SRC
+
+*ex falso sequitur quodlibet*
+
+* () / void
+
+A type with a single value.
+
+() is also called "unit" in Haskell.
+
+* Parametric polymorphism
+
+Lower-case type specifiers in Haskell
+mean "any type".
+
+#+BEGIN_SRC haskell
+unit :: a -> ()
+unit _ = ()
+#+END_SRC
+
+Compare to upper-case type specifiers
+which are concrete.

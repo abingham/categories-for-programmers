@@ -1,0 +1,65 @@
+* Categories <=> Composition
+
+Transitivity: *If* a->b *and* b->c *then* a->c
+
+Arrows are *morphisms*.
+
+Example:
+- morphisms are functions
+- objects are types.
+
+#+BEGIN_SRC haskell
+f :: A -> B
+g :: B -> C
+h  = g.f
+#+END_SRC
+
+* Property 1: Associative
+
+"you don't need parentheses to compose them"
+
+#+BEGIN_SRC
+h (g f) = (h g) f = h g f
+#+END_SRC
+
+* Property 2: Unit of composition
+
+"This arrow loops from the object to itself"
+
+#+BEGIN_SRC
+f idA = f
+idB f = f
+#+END_SRC
+
+In Haskell:
+
+#+BEGIN_SRC haskell
+id :: a -> a
+id x = x
+#+END_SRC
+
+* Why categories and functional programming?
+
+* Elegance
+
+"We often describe some piece of code as
+elegant or beautiful, but what we really
+mean is that it’s easy to process by our
+limited human minds."
+
+* Surface area metaphor, part 1
+
+"So what are the right chunks for the
+composition of programs? Their surface
+area has to increase slower than their
+volume...The surface area is the
+information we need in order to compose
+chunks."
+
+* Surface area metaphor, part 2
+
+"The moment you have to dig into the
+implementation of the object in order to
+understand how to compose it with other
+objects, you’ve lost the advantages of
+your programming paradigm."
