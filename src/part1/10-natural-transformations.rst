@@ -1,6 +1,6 @@
-=====================================
- Chapter 9 - Natural Transformations
-=====================================
+==============================
+ 10 - Natural Transformations
+==============================
 
 We talked about functors as mappings between categories that preserve
 their structure. A functor “embeds” one category in another. It may
@@ -346,7 +346,7 @@ For every type ``e``, you can define a family of natural transformations
 from ``Reader e`` to any other functor ``f``. We’ll see later that the
 members of this family are always in one to one correspondence with the
 elements of ``f e`` (the :doc:`Yoneda
-lemma <../part2/04-the-yoneda-lemma>`).
+lemma <../part2/15-the-yoneda-lemma>`).
 
 For instance, consider the somewhat trivial unit type ``()`` with one
 element ``()``. The functor ``Reader ()`` takes any type ``a`` and maps

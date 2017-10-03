@@ -1,6 +1,6 @@
-====================
-Chapter 6 - Functors
-====================
+============
+7 - Functors
+============
 
 At the risk of sounding like a broken record, I will say this about
 functors: A functor is a very simple but powerful idea. Category theory

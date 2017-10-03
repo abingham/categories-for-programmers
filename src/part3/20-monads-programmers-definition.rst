@@ -1,6 +1,6 @@
-============================================
- Chapter 3 - Monads: Programmer’s Definition
-============================================
+====================================
+20 - Monads: Programmer’s Definition
+====================================
 
 Programmers have developed a whole mythology around monads. It’s
 supposed to be one of the most abstract and difficult concepts in
@@ -78,7 +78,7 @@ The Kleisli Category
 ====================
 
 We have previously arrived at the :doc:`writer
-monad <../part1/03-kleisli-categories>` by
+monad <../part1/04-kleisli-categories>` by
 embellishing regular functions. The particular embellishment was done by
 pairing their return values with strings or, more generally, with
 elements of a monoid. We can now recognize that such embellishment is a

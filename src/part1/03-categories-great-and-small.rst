@@ -1,6 +1,6 @@
-========================================
- Chapter 2 - Categories Great and Small
-========================================
+================================
+ 3 - Categories Great and Small
+================================
 
 You can get real appreciation for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in

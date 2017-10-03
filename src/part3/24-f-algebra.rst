@@ -1,6 +1,6 @@
-========================
- Chapter 7 - F-Algebras
-========================
+===============
+24 - F-Algebras
+===============
 
 We’ve seen several formulations of a monoid: as a set, as a
 single-object category, as an object in a monoidal category. How much
@@ -125,7 +125,7 @@ In the monoid example, the functor in question is:
     data MonF a = MEmpty | MAppend a a
 
 This is Haskell for ``1 + a × a`` (remember :doc:`algebraic data
-structures <../part1/05-simple-algebraic-data-types>`).
+structures <../part1/06-simple-algebraic-data-types>`).
 
 A ring would be defined using the following functor:
 

@@ -1,12 +1,12 @@
-================================
-Chapter 1 - Limits and Colimits
-================================
+========================
+12 - Limits and Colimits
+========================
 
 It seems like in category theory everything is related to everything and
 everything can be viewed from many angles. Take for instance the universal
-construction of the :doc:`product <../part1/04-products-and-coproducts>`. Now
-that we know more about :doc:`functors <../part1/06-functors>` and :doc:`natural
-transformations <../part1/09-natural-transformations>`, can we simplify and,
+construction of the :doc:`product <../part1/05-products-and-coproducts>`. Now
+that we know more about :doc:`functors <../part1/07-functors>` and :doc:`natural
+transformations <../part1/10-natural-transformations>`, can we simplify and,
 possibly, generalize it? Let us try.
 
 |ProductPattern|

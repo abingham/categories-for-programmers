@@ -1,6 +1,6 @@
-=============================
- Chapter 9 - Ends and Coends
-=============================
+====================
+26 - Ends and Coends
+====================
 
 There are many intuitions that we may attach to morphisms in a category,
 but we can all agree that if there is a morphism from the object ``a``

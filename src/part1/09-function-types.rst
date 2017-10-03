@@ -1,6 +1,6 @@
-==========================
-Chapter 8 - Function Types
-==========================
+==================
+8 - Function Types
+==================
 
 So far I’ve been glossing over the meaning of function types. A function
 type is different from other types.
@@ -57,7 +57,7 @@ A function type may be considered a composite type because of its relationship
 to the argument type and the result type. We’ve already seen the constructions
 of composite types — those that involved relationships between objects. We used
 universal constructions to define a :doc:`product type and a coproduct types
-<04-products-and-coproducts/>`. We can use the same trick to define a function
+<05-products-and-coproducts/>`. We can use the same trick to define a function
 type. We will need a pattern that involves three objects: the function type that
 we are constructing, the argument type, and the result type.
 
@@ -157,7 +157,7 @@ universal construction till now. Given the morphism ``h :: z'-> z``, we want to
 close the diagram that has both ``z'`` and ``z`` crossed with ``a``. What we
 really need, given the mapping ``h`` from ``z'`` to ``z``, is a mapping from
 ``z'×a`` to ``z×a``. And now, after discussing the :doc:`functoriality of the
-product <07-functorality>`, we know how to do it. Because the product itself
+product <08-functorality>`, we know how to do it. Because the product itself
 is a functor (more precisely an endo-bi-functor), it’s possible to lift pairs of
 morphisms. In other words, we can define not only products of objects but also
 products of morphisms.

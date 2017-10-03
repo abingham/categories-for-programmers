@@ -1,6 +1,6 @@
-========================================
- Chapter 2 - Free/Forgetful Adjunctions
-========================================
+===============================
+19 - Free/Forgetful Adjunctions
+===============================
 
 Free constructions are a powerful application of adjunctions. A *free
 functor* is defined as the left adjoint to a *forgetful functor*. A
@@ -46,7 +46,7 @@ m\ :sub:`3` than there are morphisms between them.
 The functor ``F`` that’s the left adjoint to the forgetful functor ``U``
 is the free functor that builds free monoids from their generator sets.
 The adjunction follows from the :doc:`free monoid universal
-construction <../part2/02-free-monoids>`
+construction <../part2/13-free-monoids>`
 we’ve discussed before.
 
 In terms of hom-sets, we can write this adjunction as:

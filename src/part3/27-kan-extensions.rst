@@ -1,6 +1,6 @@
-=============================
- Chapter 10 - Kan Extensions
-=============================
+===================
+27 - Kan Extensions
+===================
 
 So far we’ve been mostly working with a single category or a pair of
 categories. In some cases that was a little too constraining. For

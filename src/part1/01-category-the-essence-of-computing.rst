@@ -1,6 +1,6 @@
-======================================
- Category: The Essence of Composition
-======================================
+=========================================
+ 1 - Category: The Essence of Composition
+=========================================
 
 A category is an embarrassingly simple concept. A category consists of
 objects and arrows that go between them. That’s why categories are so

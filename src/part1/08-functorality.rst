@@ -1,6 +1,6 @@
-=========================
-Chapter 7 - Functoriality
-=========================
+=================
+8 - Functoriality
+=================
 
 Now that you know what a functor is, and have seen a few examples, let’s
 see how we can build larger functors from smaller ones. In particular
@@ -121,7 +121,7 @@ Product and Coproduct Bifunctors
 
 An important example of a bifunctor is the categorical product — a product of
 two objects that is defined by a :doc:`universal construction
-<04-products-and-coproducts>`. If the product exists for any pair of objects,
+<05-products-and-coproducts>`. If the product exists for any pair of objects,
 the mapping from those objects to the product is bifunctorial. This is true in
 general, and in Haskell in particular. Here’s the ``Bifunctor`` instance for a
 pair constructor — the simplest product type:
@@ -433,7 +433,7 @@ The Writer Functor
 ==================
 
 I promised that I would come back to the :doc:`Kleisli category
-<03-kleisli-categories>` I described earlier. Morphisms in that category were
+<04-kleisli-categories>` I described earlier. Morphisms in that category were
 represented as “embellished” functions returning the ``Writer`` data structure.
 
 .. code-block:: haskell

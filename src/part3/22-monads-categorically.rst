@@ -1,6 +1,6 @@
-==================================
- Chapter 5 - Monads Categorically
-==================================
+=========================
+22 - Monads Categorically
+=========================
 
 If you mention monads to a programmer, you’ll probably end up talking
 about effects. To a mathematician, monads are about algebras. We’ll talk
@@ -504,7 +504,7 @@ programming conferences.
 Monads from Adjunctions
 =======================
 
-An :doc:`adjunction <../part3/01-adjunctions>`,
+An :doc:`adjunction <../part3/18-adjunctions>`,
 ``L ⊣ R``, is a pair of functors going back and forth between two
 categories *C* and *D*. There are two ways of composing them giving rise
 to two endofunctors, ``R ∘ L`` and ``L ∘ R``. As per an adjunction,

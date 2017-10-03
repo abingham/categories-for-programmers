@@ -1,6 +1,6 @@
-==================================
-Chapter 3 - Representable Functors
-==================================
+===========================
+14 - Representable Functors
+===========================
 
 It’s about time we had a little talk about sets. Mathematicians have a
 love/hate relationship with set theory. It’s the assembly language of

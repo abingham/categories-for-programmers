@@ -1,13 +1,13 @@
-=================================
- Chapter 8 - Algebras for Monads
-=================================
+========================
+25 - Algebras for Monads
+========================
 
 If we interpret endofunctors as ways of defining expressions, algebras let us
 evaluate them and monads let us form and manipulate them. By combining algebras
 with monads we not only gain a lot of functionality but we can also answer a few
 interesting questions. One such question concerns the relation between monads
 and adjunctions. As we’ve seen, every adjunction :doc:`defines a monad
-<../part3/05-monads-categorically>` (and a
+<../part3/22-monads-categorically>` (and a
 comonad). The question is: Can every monad (comonad) be derived from an
 adjunction? The answer is positive. There is a whole family of adjunctions that
 generate a given monad. I’ll show you two such adjunction.
@@ -363,7 +363,7 @@ Coalgebras for Comonads
 =======================
 
 Analogous constructions can be done for any
-:doc:`comonad <../part3/06-comonads>` ``W``. We
+:doc:`comonad <../part3/23-comonads>` ``W``. We
 can define a category of coalgebras that are compatible with a comonad.
 They make the following diagrams commute:
 

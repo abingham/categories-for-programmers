@@ -1,6 +1,6 @@
-==============================================
- Chapter 14 - Monads, Monoids, and Categories
-==============================================
+====================================
+31 - Monads, Monoids, and Categories
+====================================
 
 There is no good place to end a book on category theory. There’s always
 more to learn. Category theory is a vast subject. At the same time, it’s

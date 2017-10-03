@@ -1,6 +1,6 @@
-======================
- Chapter 6 - Comonads
-======================
+=============
+23 - Comonads
+=============
 
 Now that we have covered monads, we can reap the benefits of duality and
 get comonads for free simply by reversing the arrows and working in the
@@ -401,7 +401,7 @@ Now consider comonoid laws that are dual to the monoid unit laws.
 
 Here, ``lambda`` and ``rho`` are the left and right unitors,
 respectively (see the definition of :doc:`monoidal
-categories <../part3/05-monads-categorically>`).
+categories <../part3/22-monads-categorically>`).
 Plugging in the definitions, we get:
 
 .. code-block:: haskell

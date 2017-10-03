@@ -1,6 +1,6 @@
-=============================================
- Category Theory and Declarative Programming
-=============================================
+================================================
+11 - Category Theory and Declarative Programming
+================================================
 
 In the first part of the book I argued that both category theory and
 programming are about composability. In programming, you keep
