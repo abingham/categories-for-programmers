@@ -1,6 +1,6 @@
-=============================
-17 - It’s All About Morphisms
-=============================
+========================
+It’s All About Morphisms
+========================
 
 If I haven’t convinced you yet that category theory is all about
 morphisms then I haven’t done my job properly. Since the next topic is

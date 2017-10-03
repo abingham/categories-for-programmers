@@ -1,6 +1,6 @@
-==========
-29 - Topoi
-==========
+=====
+Topoi
+=====
 
 I realize that we might be getting away from programming and diving into
 hard-core math. But you never know what the next big revolution in

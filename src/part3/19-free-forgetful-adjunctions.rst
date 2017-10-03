@@ -1,6 +1,6 @@
-===============================
-19 - Free/Forgetful Adjunctions
-===============================
+==========================
+Free/Forgetful Adjunctions
+==========================
 
 Free constructions are a powerful application of adjunctions. A *free
 functor* is defined as the left adjoint to a *forgetful functor*. A

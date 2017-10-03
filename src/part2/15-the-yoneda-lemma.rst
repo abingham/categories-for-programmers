@@ -1,6 +1,6 @@
-=====================
-15 - The Yoneda Lemma
-=====================
+================
+The Yoneda Lemma
+================
 
 Most constructions in category theory are generalizations of results
 from other more specific areas of mathematics. Things like products,

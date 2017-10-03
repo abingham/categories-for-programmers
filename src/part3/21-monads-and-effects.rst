@@ -1,6 +1,6 @@
-=======================
-21 - Monads and Effects
-=======================
+==================
+Monads and Effects
+==================
 
 Now that we know what the monad is for — it lets us compose embellished
 functions — the really interesting question is why embellished functions

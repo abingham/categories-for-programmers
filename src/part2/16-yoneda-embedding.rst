@@ -1,6 +1,6 @@
-=====================
-16 - Yoneda Embedding
-=====================
+================
+Yoneda Embedding
+================
 
 We’ve seen previously that, when we fix an object ``a`` in the category
 *C*, the mapping ``C(a, -)`` is a (covariant) functor from *C* to

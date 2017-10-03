@@ -1,6 +1,6 @@
-===============================
-6 - Simple Algebraic Data Types
-===============================
+===========================
+Simple Algebraic Data Types
+===========================
 
 We’ve seen two basic ways of combining types: using a product and a
 coproduct. It turns out that a lot of data structures in everyday

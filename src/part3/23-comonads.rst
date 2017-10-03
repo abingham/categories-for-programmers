@@ -1,6 +1,6 @@
-=============
-23 - Comonads
-=============
+========
+Comonads
+========
 
 Now that we have covered monads, we can reap the benefits of duality and
 get comonads for free simply by reversing the arrows and working in the

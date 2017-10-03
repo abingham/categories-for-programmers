@@ -1,6 +1,6 @@
-====================================
-20 - Monads: Programmer’s Definition
-====================================
+===============================
+Monads: Programmer’s Definition
+===============================
 
 Programmers have developed a whole mythology around monads. It’s
 supposed to be one of the most abstract and difficult concepts in

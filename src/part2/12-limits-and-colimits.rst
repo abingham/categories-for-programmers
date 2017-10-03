@@ -1,6 +1,6 @@
-========================
-12 - Limits and Colimits
-========================
+===================
+Limits and Colimits
+===================
 
 It seems like in category theory everything is related to everything and
 everything can be viewed from many angles. Take for instance the universal

@@ -1,6 +1,6 @@
-========================
-28 - Enriched Categories
-========================
+===================
+Enriched Categories
+===================
 
 A category is *small* if its objects form a set. But we know that there
 are things larger than sets. Famously, a set of all sets cannot be

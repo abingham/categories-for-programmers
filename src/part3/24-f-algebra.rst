@@ -1,6 +1,6 @@
-===============
-24 - F-Algebras
-===============
+==========
+F-Algebras
+==========
 
 We’ve seen several formulations of a monoid: as a set, as a
 single-object category, as an object in a monoidal category. How much

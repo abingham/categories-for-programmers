@@ -1,6 +1,6 @@
-=================
-13 - Free Monoids
-=================
+============
+Free Monoids
+============
 
 Monoids are an important concept in both category theory and in
 programming. Categories correspond to strongly typed languages, monoids

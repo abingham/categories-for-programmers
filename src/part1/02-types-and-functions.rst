@@ -1,6 +1,6 @@
-=========================
- 2 - Types and Functions
-=========================
+=====================
+ Types and Functions
+=====================
 
 The category of types and functions plays an important role in
 programming, so let’s talk about what types are and why we need them.

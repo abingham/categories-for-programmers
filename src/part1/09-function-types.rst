@@ -1,6 +1,6 @@
-==================
-8 - Function Types
-==================
+==============
+Function Types
+==============
 
 So far I’ve been glossing over the meaning of function types. A function
 type is different from other types.

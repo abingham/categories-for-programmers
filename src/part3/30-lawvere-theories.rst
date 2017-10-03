@@ -1,6 +1,6 @@
-=====================
-30 - Lawvere Theories
-=====================
+================
+Lawvere Theories
+================
 
 Nowadays you can’t talk about functional programming without mentioning
 monads. But there is an alternative universe in which, by chance,

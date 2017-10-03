@@ -1,6 +1,6 @@
-==============================
- 10 - Natural Transformations
-==============================
+=======================
+Natural Transformations
+=======================
 
 We talked about functors as mappings between categories that preserve
 their structure. A functor “embeds” one category in another. It may

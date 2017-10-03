@@ -1,6 +1,6 @@
-================
-18 - Adjunctions
-================
+===========
+Adjunctions
+===========
 
 In mathematics we have various ways of saying that one thing is like
 another. The strictest is equality. Two things are equal if there is no
