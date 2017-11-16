@@ -16,21 +16,9 @@ Categories for Programmers
 
 .. toctree::
    :maxdepth: 1
-   :caption: Part I
    :glob:
+   :numbered:
 
    part1/*
-
-.. toctree::
-   :caption: Part II
-   :maxdepth: 1
-   :glob:
-
    part2/*
-
-.. toctree::
-   :caption: Part III
-   :maxdepth: 1
-   :glob:
-
    part3/*
