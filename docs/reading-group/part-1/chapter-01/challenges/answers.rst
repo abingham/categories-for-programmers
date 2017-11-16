@@ -1,14 +1,19 @@
-5. How many different functions are there from ``Bool`` to ``Bool``? Can
-   you implement them all?
+===========
+ Questions
+===========
 
-const true, const false, invert, id
+4. Is the world-wide web a category in any sense? Are links morphisms?
+======================================================================
 
-6. Draw a picture of a category whose only objects are the types
-   ``Void``, ``()`` (unit), and ``Bool``; with arrows corresponding to
-   all possible functions between these types. Label the arrows with the
-   names of the functions.
+If you think of links as morphisms and pages as objects, then one first
+approximation the web is a category.
 
-Void -> Void
-() -> ()
-Bool -> Bool (4)
-Bool -> ()
+5. Is Facebook a category, with people as objects and friendships as morphisms?
+===============================================================================
+
+We think not. You can't always reach your friends' friends.
+
+6. When is a directed graph a category?
+=======================================
+
+It needs cycles to return to self (identity). Reflexive!
